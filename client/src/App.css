@@ -3,6 +3,10 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    text-align: center;
+}
+
 .box-container, .arrow-entity{
     justify-content: space-evenly;
     display: inline-flex;
