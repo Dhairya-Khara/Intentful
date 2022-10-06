@@ -1,7 +1,11 @@
+import './App.css';
+import React from 'react';
+import arrow from './assets/arrow.png'
+import Boxes from './components/Boxes'
 function App() {
   return (
-    <div className="App">
-      <h1>Intentful</h1>
+    <div className='App'>
+      <Boxes></Boxes>
     </div>
   );
 }
