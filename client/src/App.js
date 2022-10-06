@@ -1,11 +1,10 @@
-import './App.css';
-import React from 'react';
-import arrow from './assets/arrow.png'
-import Boxes from './components/Boxes'
+import FileUploader from "./components/FileUploader"
+
 function App() {
   return (
-    <div className='App'>
-      <Boxes></Boxes>
+    <div className="App">
+      <h1>Intentful</h1>
+      <FileUploader/>
     </div>
   );
 }
