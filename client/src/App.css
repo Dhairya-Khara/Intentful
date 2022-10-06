@@ -1,0 +1,27 @@
+
+h1 {
+    text-align: center;
+}
+
+.box-container, .arrow-entity{
+    justify-content: space-evenly;
+    display: inline-flex;
+    width: 100%;
+}
+
+.entity{
+    border-color: black;
+    border-width: 1%;
+    height: fit-content;
+    border-style: solid;
+    padding: 2%;
+}
+
+.arrow{
+    width: 20%;
+    height: 50%;
+}
+
+#C {
+    visibility: hidden;
+}
