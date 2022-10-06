@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <h1>Intentful</h1>
       <FileUploader/>
+      <Boxes/>
     </div>
   );
 }
