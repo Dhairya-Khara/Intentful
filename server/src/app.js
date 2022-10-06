@@ -2,6 +2,8 @@ const express = require('express')
 const multer = require('multer')
 const cors = require('cors')
 
+const getIntents = require('./getIntents')
+
 const app = express()
 app.use(cors())
 
@@ -30,17 +32,16 @@ app.post('/upload', upload.single('file'), async (req, res)=>{
     res.sendStatus(200)
 })
 
-const getAllTranscripts = async () =>{
+app.get('/getTranscripts', async (req, res)=>{
     const allResponses = await Database.find({})
     let allTranscripts = []
     allResponses.forEach((response)=>{
-        allTranscripts.push(response.transcript.toString())
+        console.log(JSON.parse(response.transcript))
+        allTranscripts.push(...getIntents(JSON.parse(response.transcript)))
     })
-    console.log(allTranscripts)
-    return allTranscripts
-}
+    res.send(allTranscripts)
+})
 
-getAllTranscripts()
 
 app.listen(8080, ()=>{
     console.log('server is up')
