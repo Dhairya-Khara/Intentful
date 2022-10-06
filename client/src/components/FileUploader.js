@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import Boxes from './Boxes'
+
 class FileUploader extends React.Component {
 
     constructor() {
@@ -28,6 +30,7 @@ class FileUploader extends React.Component {
         })
     }
 
+
     render() {
         return (
             <div>
@@ -35,7 +38,7 @@ class FileUploader extends React.Component {
                     <input type="file" name="file" onChange={this.handleFileChange} />
                     <button>Upload</button>
                 </form>
-                <p>{this.state.fileUploadStatus}</p>
+                {this.state.fileUploadStatus === "" ? "" : <Boxes />}
             </div>
         )
     }

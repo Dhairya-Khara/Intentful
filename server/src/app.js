@@ -16,7 +16,6 @@ app.get('/', (req, res) =>{
 // configuring file upload
 const storage = multer.diskStorage({
     filename: (req, file, cb) =>{
-        console.log(file)
         cb(null, file.originalname )
     }
 })
@@ -36,8 +35,7 @@ app.get('/getTranscripts', async (req, res)=>{
     const allResponses = await Database.find({})
     let allTranscripts = []
     allResponses.forEach((response)=>{
-        console.log(JSON.parse(response.transcript))
-        allTranscripts.push(...getIntents(JSON.parse(response.transcript)))
+        allTranscripts.push(...getIntents(JSON.parse(response.transcript), allTranscripts.length*100))
     })
     res.send(allTranscripts)
 })

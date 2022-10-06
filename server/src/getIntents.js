@@ -1,11 +1,12 @@
-function getIntents(transcript_json) {
+function getIntents(transcript_json, counter) {
     let outsideArray = []
     let intentsArray = [];
     for (let i = 0; i < transcript_json.length; i++) {
         let message = transcript_json[i];
         
         if (message.intents.length > 0) {
-            intentsArray.push(...message.intents);
+            counter += 1;
+            intentsArray.push({"id": counter, "content": message.intents});
         }
         
     }

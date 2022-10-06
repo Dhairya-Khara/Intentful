@@ -1,4 +1,5 @@
 import FileUploader from "./components/FileUploader"
+import Boxes from "./components/Boxes"
 
 function App() {
   return (
