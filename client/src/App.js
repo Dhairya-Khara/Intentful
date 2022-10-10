@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <h1>Intentful</h1>
-      <h3>By the Techy Blinders</h3>
+      <h3>By the order of Techy Blinders</h3>
       <FileUploader/>
       <Boxes/>
     </div>
