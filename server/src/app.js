@@ -2,8 +2,12 @@ const express = require('express')
 const multer = require('multer')
 const cors = require('cors')
 
+const getIntents = require('./getIntents')
+
 const app = express()
 app.use(cors())
+
+const Database = require('./database')
 
 app.get('/', (req, res) =>{
     res.send('aidan is the best')
@@ -11,22 +15,30 @@ app.get('/', (req, res) =>{
 
 // configuring file upload
 const storage = multer.diskStorage({
-    destination: (req, file, cb)=>{
-        cb(null, __dirname)
-    },
     filename: (req, file, cb) =>{
-        console.log(file)
         cb(null, file.originalname )
     }
 })
 
-const upload = multer({storage: storage})
+const upload = multer()
 
 // route for file upload
-app.post('/upload', upload.single('file'), (req, res)=>{
-    res.send()
+app.post('/upload', upload.single('file'), async (req, res)=>{
+    const item = new Database({
+        transcript: req.file.buffer
+    })
+    await item.save()
+    res.sendStatus(200)
 })
 
+app.get('/getTranscripts', async (req, res)=>{
+    const allResponses = await Database.find({})
+    let allTranscripts = []
+    allResponses.forEach((response)=>{
+        allTranscripts.push(...getIntents(JSON.parse(response.transcript), allTranscripts.length*100))
+    })
+    res.send(allTranscripts)
+})
 
 
 app.listen(8080, ()=>{
