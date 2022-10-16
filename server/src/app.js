@@ -4,14 +4,12 @@ const cors = require('cors')
 
 const getIntents = require('./getIntents')
 const auth = require('./middleware/auth')
+const User = require('./database')
 
 const app = express()
 app.use(cors())
 
-const User = require('./database')
-
-
-// const upload = multer()
+const upload = multer()
 
 // // route for file upload
 // app.post('/upload', upload.single('file'), async (req, res)=>{
