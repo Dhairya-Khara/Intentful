@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
-const connectionURL = "mongodb://127.0.0.1:27017/transcripts"
+const connectionURL = "mongodb://127.0.0.1:27017/Intentful"
 
 let Schema = new mongoose.Schema({
-    emaill: {
+    email: {
         type: String
     },
     password: {
@@ -22,7 +22,7 @@ let Schema = new mongoose.Schema({
 })
 
 
-let Item = mongoose.model('Item', Schema)
+let User = mongoose.model('User', Schema)
 
 //connection to database
 mongoose.connect(connectionURL, {
@@ -30,4 +30,4 @@ mongoose.connect(connectionURL, {
     useUnifiedTopology: true
 })
 
-module.exports = Item
+module.exports = User
