@@ -3,6 +3,7 @@ const multer = require('multer')
 const cors = require('cors')
 
 const getIntents = require('./getIntents')
+const auth = require('./middleware/auth')
 
 const app = express()
 app.use(cors())
@@ -38,6 +39,24 @@ app.post('/createUser', async(req, res) =>{
 
     await user.save()
     res.send(user)
+})
+
+// log user in
+app.post('/loginUser', async (req, res) =>{
+    try{
+        const user = await User.findByCredentials(req.query.email, req.query.password)
+        const token = await user.generateAuthToken()
+        res.send({user, token})
+    }
+    catch (e){
+        res.status(400).send()
+    }
+})
+
+// get users
+app.get('/users', auth, async (req, res)=>{
+    const users = await User.find({})
+    res.send(users)
 })
 
 app.listen(8080, ()=>{
