@@ -1,9 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 import FileUploader from './components/FileUploader'
 import Boxes from './components/Boxes'
 
-class Dashbaord extends React.Component {
-    render() {
+
+export default function Dashboard() {
+    const auth = useSelector((state) => state.auth.authenticated)
+    if(auth){
         return (
             <div>
                 <h1>Intentful</h1>
@@ -13,6 +17,10 @@ class Dashbaord extends React.Component {
             </div>
         )
     }
+    else{
+        return(
+        <div>
+            <h3>403 - Not Authenticated</h3>
+        </div>)
+    }
 }
-
-export default Dashbaord
