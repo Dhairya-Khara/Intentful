@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import arrow from "../../../public/assets/arrow.png"
+import arrow from "../../../assets/arrow.png"
 
 
 class Boxes extends React.Component {
