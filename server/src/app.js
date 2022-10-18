@@ -44,10 +44,10 @@ app.post('/loginUser', async (req, res) =>{
     try{
         const user = await User.findByCredentials(req.query.email, req.query.password)
         const token = await user.generateAuthToken()
-        res.send({user, token})
+        res.send({token})
     }
     catch (e){
-        res.status(400).send()
+        res.status(403).send()
     }
 })
 
