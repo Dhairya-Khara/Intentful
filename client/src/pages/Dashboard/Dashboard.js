@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import FileUploader from './components/FileUploader'
 import Boxes from './components/Boxes'
+import Logout from './components/Logout'
 
 
 export default function Dashboard() {
@@ -10,6 +11,7 @@ export default function Dashboard() {
     if(auth){
         return (
             <div>
+                <Logout />
                 <h1>Intentful</h1>
                 <h3>By the order of Techy Blinders</h3>
                 <FileUploader />
