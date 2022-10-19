@@ -48,8 +48,7 @@ Schema.methods.generateAuthToken = async function () {
 // remove token
 Schema.methods.removeAuthToken = async function(token) {
     const user = this
-    const indexOfToken = user.tokens.indexOf(token)
-    user.tokens.splice(indexOfToken)
+    user.tokens = user.tokens.filter(item => item.token !== token)
     await user.save()
 }
 
