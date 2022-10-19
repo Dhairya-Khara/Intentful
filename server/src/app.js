@@ -1,6 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const cors = require('cors')
+const bodyParser = require('body-parser')
 
 const getIntents = require('./getIntents')
 const auth = require('./middleware/auth')
@@ -8,6 +9,11 @@ const User = require('./database')
 
 const app = express()
 app.use(cors())
+
+// create application/json parser
+const jsonParser = bodyParser.json()
+ 
+
 
 const upload = multer()
 
@@ -30,9 +36,9 @@ const upload = multer()
 // })
 
 // create a user
-app.post('/createUser', async(req, res) =>{
-    const email = req.query.email
-    const password = req.query.password
+app.post('/createUser', jsonParser, async(req, res) =>{
+    const email = req.body.email
+    const password = req.body.password
     const user = new User({email, password})
 
     await user.save()
@@ -40,9 +46,9 @@ app.post('/createUser', async(req, res) =>{
 })
 
 // log user in
-app.post('/loginUser', async (req, res) =>{
+app.post('/loginUser', jsonParser, async (req, res) =>{
     try{
-        const user = await User.findByCredentials(req.query.email, req.query.password)
+        const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
         res.send({token})
     }
@@ -55,6 +61,20 @@ app.post('/loginUser', async (req, res) =>{
 app.get('/users', auth, async (req, res)=>{
     const users = await User.find({})
     res.send(users)
+})
+
+app.post('/logoutUser', auth, async (req,res) =>{
+    const user = req.user
+    user.tokens.forEach((eachItem)=>{
+        if(eachItem.token === req.token){
+            User.updateOne({_id: user._id.toString()}, {
+                $pull: {
+                    tokens: eachItem
+                }
+            }).exec()
+        }
+    })
+    res.sendStatus(200)
 })
 
 app.listen(8080, ()=>{
