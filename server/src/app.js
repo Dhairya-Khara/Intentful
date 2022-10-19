@@ -17,14 +17,7 @@ const jsonParser = bodyParser.json()
 
 const upload = multer()
 
-// // route for file upload
-// app.post('/upload', upload.single('file'), async (req, res)=>{
-//     const item = new Database({
-//         transcript: req.file.buffer
-//     })
-//     await item.save()
-//     res.sendStatus(200)
-// })
+
 
 // app.get('/getTranscripts', async (req, res)=>{
 //     const allResponses = await Database.find({})
@@ -74,6 +67,13 @@ app.post('/logoutUser', auth, async (req,res) =>{
 app.get('/users', auth, async (req, res)=>{
     const users = await User.find({})
     res.send(users)
+})
+
+// route for file upload
+app.post('/uploadTranscript', auth, upload.single('file'), async (req, res)=>{
+    const user = req.user
+    user.saveRawTranscript(req.file.buffer)
+    res.sendStatus(200)
 })
 
 

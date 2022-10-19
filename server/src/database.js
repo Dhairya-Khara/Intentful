@@ -52,6 +52,13 @@ Schema.methods.removeAuthToken = async function(token) {
     await user.save()
 }
 
+// save transcript raw
+Schema.methods.saveRawTranscript = async function(file) {
+    const user = this
+    user.transcripts = user.transcripts.concat({file})
+    await user.save()
+}
+
 
 
 let User = mongoose.model('User', Schema)
