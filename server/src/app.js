@@ -45,7 +45,7 @@ app.post('/createUser', jsonParser, async(req, res) =>{
     res.send(user)
 })
 
-// log user in
+// log the user in
 app.post('/loginUser', jsonParser, async (req, res) =>{
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)
@@ -57,25 +57,25 @@ app.post('/loginUser', jsonParser, async (req, res) =>{
     }
 })
 
+// log the user out
+app.post('/logoutUser', auth, async (req,res) =>{
+    try{
+        const user = req.user
+        const token = req.token
+        await user.removeAuthToken(token)
+        res.sendStatus(200)
+    }
+    catch(e){
+        res.sendStatus(403)
+    }
+})
+
 // get users
 app.get('/users', auth, async (req, res)=>{
     const users = await User.find({})
     res.send(users)
 })
 
-app.post('/logoutUser', auth, async (req,res) =>{
-    const user = req.user
-    user.tokens.forEach((eachItem)=>{
-        if(eachItem.token === req.token){
-            User.updateOne({_id: user._id.toString()}, {
-                $pull: {
-                    tokens: eachItem
-                }
-            }).exec()
-        }
-    })
-    res.sendStatus(200)
-})
 
 app.listen(8080, ()=>{
     console.log('server is up')
