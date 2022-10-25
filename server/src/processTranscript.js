@@ -1,65 +1,45 @@
-import myJson from './transcript3.json' assert {type: 'json'};
+import { createRequire } from "module"; // Bring in the ability to create the 'require' method
+const require = createRequire(import.meta.url); // construct the require method
+const file1 = require('./transcript3.json')
+const file2 = require('./transcript2.json')
+// BERKES VERSION
+//import myJson from './transcript1.json';
 // process individual transcript and return single processed transcript
-function processSingleTranscript(transcript_json) {
-    let intentCountMap = new Map()
-    let intentRelatedMap = new Map()
-    let prevIntent = undefined
-    for (let i = 0; i < transcript_json.length; i++) {
-        let message = transcript_json[i];
+function processSingleTranscript(existingProcessedMap, transcript_json_list) {
+    let processedMap = existingProcessedMap
 
-        if (message.intents.length > 0) {
-            addMessageIntentCounts(intentCountMap, message); // add intents to intentCountMap
-            addRelatedIntents(intentRelatedMap, message); // update intentRelatedMap with the related intents
-        }
-    }
-    return generateSingleProcessedTranscript(intentCountMap, intentRelatedMap);
+    // iterating all transcripts
+    for (const transcript_json of transcript_json_list) {
 
+        let prevIntent = undefined
+        // iterating each message in a single transcript
+        for (let i = 0; i < transcript_json.length; i++) {
+            let message = transcript_json[i];
+            // some intents have multiple intents, so we iterate through that as well
+            for (const intent of message.intents) {
+                if (!processedMap.has(intent)) {
+                    processedMap.set(intent, [1, new Map()])
+                }
+                else {
+                    const currList = processedMap.get(intent)
+                    const newIntentFreq = currList[0] + 1
+                    const sameAssociateMap = currList[1]
 
-    function generateSingleProcessedTranscript(intentCountMap, intentRelatedMap) {
-        let processedTranscript = new Map();
-
-        for (const intent of intentCountMap.keys()) {
-            processedTranscript.set(intent, [intentCountMap.get(intent), intentRelatedMap.get(intent)]);
-        }
-
-        console.log(intentCountMap);
-        console.log(intentRelatedMap);
-        console.log(processedTranscript);
-        // Aidan: maybe at some point we incorporate functionality to see
-        // who the intents came from (system or user)
-        return processedTranscript;
-    }
-
-    function addRelatedIntents(intentRelatedMap, message) {
-        let numIntents = message.intents.length;
-        while (numIntents > 0) {
-            let currIntent = message.intents[numIntents - 1];
-            if (prevIntent === undefined) { // this means this is the first intent in transcript
-                intentRelatedMap.set(currIntent, new Map());
-                prevIntent = currIntent;
-                continue;
-            } else if (!(intentRelatedMap.has(currIntent))) {
-                intentRelatedMap.set(currIntent, new Map());
+                    processedMap.set(intent, [newIntentFreq, sameAssociateMap])
+                }
+                if (prevIntent !== undefined) {
+                    const currList = processedMap.get(prevIntent)
+                    let newAssociateMap = currList[1]
+                    if (!newAssociateMap.has(intent)) {
+                        newAssociateMap.set(intent, 1)
+                    }
+                    else {
+                        const newIntentAssociateFreq = newAssociateMap.get(intent) + 1
+                        newAssociateMap.set(intent, newIntentAssociateFreq)
+                    }
+                }
+                prevIntent = intent
             }
-            numIntents -= 1;
-
-            // if currIntent is same as prev then nothing to update
-            if (currIntent === prevIntent) { continue }
-            intentRelatedMap.get(currIntent).set(prevIntent, 1)
-            intentRelatedMap.get(prevIntent).set(currIntent, 1)
-            // ((intentRelatedMap.get(currIntent).get(prevIntent)) || 1) doesn't work as intended
-
-            prevIntent = currIntent;
-        }
-    }
-
-    function addMessageIntentCounts(intentCountMap, message) {
-        let numIntents = message.intents.length;
-        while (numIntents > 0) {
-            let currIntent = message.intents[numIntents - 1];
-            // add key-value pair or increment value by 1 if it already exists
-            intentCountMap.set(currIntent, ((intentCountMap.get(currIntent) + 1) || 1));
-            numIntents -= 1;
         }
     }
 }
