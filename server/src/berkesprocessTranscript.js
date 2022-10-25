@@ -2,7 +2,9 @@ import { createRequire } from "module"; // Bring in the ability to create the 'r
 const require = createRequire(import.meta.url); // construct the require method
 const file1 = require('./transcript3.json')
 const file2 = require('./transcript2.json')
-// BERKES VERSION
+
+// BERKES VERSION: includes ability to process an existing map. only includes links after
+
 //import myJson from './transcript1.json';
 // process individual transcript and return single processed transcript
 function processSingleTranscript(existingProcessedMap, transcript_json_list) {
