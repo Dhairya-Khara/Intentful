@@ -45,7 +45,7 @@ function processSingleTranscript(existingProcessedMap, transcript_json_list) {
         }
     }
 }
-processSingleTranscript(myJson)
+processSingleTranscript([file1, file2])
 module.exports = processSingleTranscript
 
 // add processed transcript to the aggregate processed transcript

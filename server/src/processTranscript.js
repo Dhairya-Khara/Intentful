@@ -1,6 +1,24 @@
-import myJson from './transcript3.json' assert {type: 'json'};
+// import myJson from './transcript3.json' assert {type: 'json'}; FOR TESTING
 // process individual transcript and return single processed transcript
 function processSingleTranscript(transcript_json) {
+    let { intentCountMap, intentRelatedMap } = getCountAndRelatedMaps(transcript_json)
+    let processedTranscript = getSingleProcessedTranscript(intentCountMap, intentRelatedMap);
+    // console.log(intentCountMap)
+    // console.log(intentRelatedMap)  FOR TESTING
+    // console.log(processedTranscript)
+    return processedTranscript;
+}
+
+function getSingleProcessedTranscript(intentCountMap, intentRelatedMap) {
+    let processedTranscript = new Map();
+
+    for (const intent of intentCountMap.keys()) {
+        processedTranscript.set(intent, [intentCountMap.get(intent), intentRelatedMap.get(intent)]);
+    }
+    return processedTranscript;
+}
+
+function getCountAndRelatedMaps(transcript_json) {
     let intentCountMap = new Map()
     let intentRelatedMap = new Map()
     let prevIntent = undefined
@@ -9,61 +27,49 @@ function processSingleTranscript(transcript_json) {
 
         if (message.intents.length > 0) {
             addMessageIntentCounts(intentCountMap, message); // add intents to intentCountMap
-            addRelatedIntents(intentRelatedMap, message); // update intentRelatedMap with the related intents
+
+            // update intentRelatedMap with the related intents and return an intent to update prevIntent
+            prevIntent = addRelatedIntents(intentRelatedMap, message, prevIntent);
         }
     }
-    return generateSingleProcessedTranscript(intentCountMap, intentRelatedMap);
+    return { intentCountMap, intentRelatedMap }
+}
 
-
-    function generateSingleProcessedTranscript(intentCountMap, intentRelatedMap) {
-        let processedTranscript = new Map();
-
-        for (const intent of intentCountMap.keys()) {
-            processedTranscript.set(intent, [intentCountMap.get(intent), intentRelatedMap.get(intent)]);
-        }
-
-        console.log(intentCountMap);
-        console.log(intentRelatedMap);
-        console.log(processedTranscript);
-        // Aidan: maybe at some point we incorporate functionality to see
-        // who the intents came from (system or user)
-        return processedTranscript;
-    }
-
-    function addRelatedIntents(intentRelatedMap, message) {
-        let numIntents = message.intents.length;
-        while (numIntents > 0) {
-            let currIntent = message.intents[numIntents - 1];
-            if (prevIntent === undefined) { // this means this is the first intent in transcript
-                intentRelatedMap.set(currIntent, new Map());
-                prevIntent = currIntent;
-                continue;
-            } else if (!(intentRelatedMap.has(currIntent))) {
-                intentRelatedMap.set(currIntent, new Map());
-            }
-            numIntents -= 1;
-
-            // if currIntent is same as prev then nothing to update
-            if (currIntent === prevIntent) { continue }
-            intentRelatedMap.get(currIntent).set(prevIntent, 1)
-            intentRelatedMap.get(prevIntent).set(currIntent, 1)
-            // ((intentRelatedMap.get(currIntent).get(prevIntent)) || 1) doesn't work as intended
-
-            prevIntent = currIntent;
-        }
-    }
-
-    function addMessageIntentCounts(intentCountMap, message) {
-        let numIntents = message.intents.length;
-        while (numIntents > 0) {
-            let currIntent = message.intents[numIntents - 1];
-            // add key-value pair or increment value by 1 if it already exists
-            intentCountMap.set(currIntent, ((intentCountMap.get(currIntent) + 1) || 1));
-            numIntents -= 1;
-        }
+function addMessageIntentCounts(intentCountMap, message) {
+    let numIntents = message.intents.length;
+    while (numIntents > 0) {
+        let currIntent = message.intents[numIntents - 1];
+        // add key-value pair or increment value by 1 if it already exists
+        intentCountMap.set(currIntent, ((intentCountMap.get(currIntent) + 1) || 1));
+        numIntents -= 1;
     }
 }
-processSingleTranscript(myJson)
+
+function addRelatedIntents(intentRelatedMap, message, prevIntent = undefined) {
+    let numIntents = message.intents.length;
+    while (numIntents > 0) {
+        let currIntent = message.intents[numIntents - 1];
+        if (prevIntent === undefined) { // this means this is the first intent in transcript
+            intentRelatedMap.set(currIntent, new Map());
+            prevIntent = currIntent;
+            continue;
+        } else if (!(intentRelatedMap.has(currIntent))) {
+            intentRelatedMap.set(currIntent, new Map());
+        }
+        numIntents -= 1;
+
+        // if currIntent is same as prev then nothing to update
+        if (currIntent === prevIntent) { continue }
+        intentRelatedMap.get(currIntent).set(prevIntent, 1)
+        intentRelatedMap.get(prevIntent).set(currIntent, 1)
+        // ((intentRelatedMap.get(currIntent).get(prevIntent)) || 1) doesn't work as intended
+
+        prevIntent = currIntent;
+    }
+    return prevIntent
+}
+
+// processSingleTranscript(myJson)
 module.exports = processSingleTranscript
 
 // add processed transcript to the aggregate processed transcript
