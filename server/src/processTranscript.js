@@ -1,7 +1,6 @@
-import myJson from './transcript1.json' assert {type: 'json'};
+import myJson from './transcript3.json' assert {type: 'json'};
 // process individual transcript and return single processed transcript
 function processSingleTranscript(transcript_json) {
-    let processedTranscript = new Map()
     let intentCountMap = new Map()
     let intentRelatedMap = new Map()
     let prevIntent = undefined
@@ -9,22 +8,29 @@ function processSingleTranscript(transcript_json) {
         let message = transcript_json[i];
 
         if (message.intents.length > 0) {
-            getMessageIntentCounts(message); // add intents to intentCountMap
-            getRelatedIntents(message); // update intentRelatedMap with the related intents
+            addMessageIntentCounts(intentCountMap, message); // add intents to intentCountMap
+            addRelatedIntents(intentRelatedMap, message); // update intentRelatedMap with the related intents
         }
     }
-    for (const intent of intentCountMap.keys()) {
-        processedTranscript.set(intent, [intentCountMap.get(intent), intentRelatedMap.get(intent)])
+    return generateSingleProcessedTranscript(intentCountMap, intentRelatedMap);
+
+
+    function generateSingleProcessedTranscript(intentCountMap, intentRelatedMap) {
+        let processedTranscript = new Map();
+
+        for (const intent of intentCountMap.keys()) {
+            processedTranscript.set(intent, [intentCountMap.get(intent), intentRelatedMap.get(intent)]);
+        }
+
+        console.log(intentCountMap);
+        console.log(intentRelatedMap);
+        console.log(processedTranscript);
+        // Aidan: maybe at some point we incorporate functionality to see
+        // who the intents came from (system or user)
+        return processedTranscript;
     }
-    console.log(intentCountMap)
-    console.log(intentRelatedMap)
-    console.log(processedTranscript)
-    // Aidan: maybe at some point we incorporate functionality to see
-    // who the intents came from (system or user)
-    return processedTranscript;
 
-
-    function getRelatedIntents(message) {
+    function addRelatedIntents(intentRelatedMap, message) {
         let numIntents = message.intents.length;
         while (numIntents > 0) {
             let currIntent = message.intents[numIntents - 1];
@@ -47,7 +53,7 @@ function processSingleTranscript(transcript_json) {
         }
     }
 
-    function getMessageIntentCounts(message) {
+    function addMessageIntentCounts(intentCountMap, message) {
         let numIntents = message.intents.length;
         while (numIntents > 0) {
             let currIntent = message.intents[numIntents - 1];
