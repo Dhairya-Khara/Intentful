@@ -53,11 +53,6 @@ app.post('/logoutUser', auth, async (req, res) => {
     }
 })
 
-// get users
-app.get('/users', auth, async (req, res) => {
-    const users = await User.find({})
-    res.send(users)
-})
 
 // route for file upload. make sure file is json
 app.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
