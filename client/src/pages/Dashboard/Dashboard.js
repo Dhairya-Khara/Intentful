@@ -1,10 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-
 import FileUploader from './components/FileUploader'
-import Boxes from './components/Boxes'
 import Logout from './components/Logout'
-
+import BubbleChart from './components/BubbleChart'
 
 export default function Dashboard() {
     const auth = useSelector((state) => state.auth.authenticated)
@@ -15,7 +13,7 @@ export default function Dashboard() {
                 <h1>Intentful</h1>
                 <h3>By the order of Techy Blinders</h3>
                 <FileUploader />
-                {/* <Boxes /> */}
+                <BubbleChart />
             </div>
         )
     }

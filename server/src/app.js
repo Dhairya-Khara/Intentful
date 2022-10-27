@@ -69,7 +69,6 @@ app.get('/getIntents', auth, async (req, res) => {
     try {
         const user = req.user
         res.send(user.intents)
-        res.sendStatus(200)
     }
 
     catch(e){

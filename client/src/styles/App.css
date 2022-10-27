@@ -21,38 +21,12 @@ html {
     -o-background-size: cover;
     background-size: cover;
     background-repeat:no-repeat;
-    background: -webkit-linear-gradient( to left top, blue, red);
-    background: -moz-linear-gradient( to left top, blue, red);
-    background: -ms-linear-gradient( to left top, blue, red);
-    background: -o-linear-gradient( to left top, blue, red);
-    background: linear-gradient( to left top, blue, red);
+    background: azure;
 }
 input{
     font-family: 'Kollektif', 'Serif';
     padding-left: 2%;
 }
-.box-container, .arrow-entity{
-    justify-content: space-evenly;
-    display: inline-flex;
-    width: 100%;
-    padding-top: 1%;
-}
-
-.entity{
-    border-color: black;
-    background-color: white;
-    border-radius: 10px;
-    border-width: 1%;
-    height: fit-content;
-    border-style: solid;
-    padding: 5%;
-}
-
-.arrow{
-    width: 37%;
-    height: 50%;
-}
-
 #C {
     visibility: hidden;
 }
