@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 
-import Boxes from './Boxes'
 
 export default function FileUploader() {
     const [selectedFile, setSelectedFile] = useState(undefined)
