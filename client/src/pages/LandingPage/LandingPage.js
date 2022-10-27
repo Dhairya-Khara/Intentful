@@ -2,7 +2,6 @@ import React from 'react'
 
 import Register from './components/Register'
 import Login from './components/Login'
-import BubbleChart from '../Dashboard/components/BubbleChart'
 
 
 export default function LandingPage(){
@@ -11,7 +10,6 @@ export default function LandingPage(){
             <Register />
             <br></br>
             <Login />
-            <BubbleChart/>
         </div>
     )
 }
