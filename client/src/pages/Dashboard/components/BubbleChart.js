@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Bubble } from 'react-chartjs-2';
 import RandomColor from 'randomcolor';
+import axios from 'axios'
+import { useSelector } from 'react-redux'
+
 import {
     Chart as ChartJS,
     LinearScale,
@@ -30,92 +33,65 @@ export const options = {
     }
 };
 
-// export const data = {
-//     datasets: [
-//         {
-//             label: 'get_hamburger',
-//             data: Array.from({ length: 1 }, () => ({
-//                 x: 45,
-//                 y: 50,
-//                 r: 150,
-//             })),
-//             backgroundColor: RandomColor(),
-//         },
-//         {
-//             label: 'get_fries',
-//             data: Array.from({ length: 1 }, () => ({
-//                 x: 47.5,
-//                 y: 50,
-//                 r: 90,
-//             })),
-//             backgroundColor: RandomColor(),
-//         },
-//         {
-//             label: 'start_payment',
-//             data: Array.from({ length: 1 }, () => ({
-//                 x: 50,
-//                 y: 50,
-//                 r: 50,
-//             })),
-//             backgroundColor: RandomColor(),
-//         },
-//     ],
-// };
+export default function BubbleChart() {
+    const [data, setData] = useState({})
+    const token = useSelector((state) => state.auth.token)
 
+    const url = "http://localhost:8080/getIntents"
 
+    let a = { "datasets": [] }
 
-
-class BubbleChart extends React.Component {
-
-    constructor() {
-        super()
-
-        this.state = {
-            data: {
-                datasets: [
-                    {
-                        label: 'get_hamburger',
+    useEffect(() => {
+        async function getData() {
+            axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
+                for (const intent in res.data) {
+                    a["datasets"].push({
+                        label: intent,
                         data: Array.from({ length: 1 }, () => ({
                             x: Math.random() * 900,
                             y: Math.random() * 500,
-                            r: 80,
+                            r: res.data[intent][0] * 80
                         })),
-                        backgroundColor: RandomColor(),
-                    },
-                    {
-                        label: 'get_fries',
-                        data: Array.from({ length: 1 }, () => ({
-                            x: Math.random() * 900,
-                            y: Math.random() * 500,
-                            r: 160,
-                        })),
-                        backgroundColor: RandomColor(),
-                    },
-                    {
-                        label: 'start_payment',
-                        data: Array.from({ length: 1 }, () => ({
-                            x: Math.random() * 900,
-                            y: Math.random() * 500,
-                            r: 240,
-                        })),
-                        backgroundColor: RandomColor(),
-                    },
-                ]
-            }
+                        backgroundColor: RandomColor()
+                    })
+                }
+                setData(a)
+            }).catch((error) => {
+                alert(error)
+            })
         }
+        getData()
+    }, [])
+
+    const refreshData = () => {
+        axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
+            for (const intent in res.data) {
+                a["datasets"].push({
+                    label: intent,
+                    data: Array.from({ length: 1 }, () => ({
+                        x: Math.random() * 900,
+                        y: Math.random() * 500,
+                        r: res.data[intent][0] * 80
+                    })),
+                    backgroundColor: RandomColor()
+                })
+            }
+            setData(a)
+        }).catch((error) => {
+            alert(error)
+        })
     }
 
-    render() {
-        return (
-            <div>
-                <Bubble
-                    options={options}
-                    data={this.state.data}
-                />
-            </div>
-        )
+
+    var size = Object.keys(data).length;
+    if (size === 0) {
+        return (<p></p>)
+    }
+    else {
+        return (<div>
+            <button onClick={refreshData}>Refresh view</button>
+            <Bubble options={options} data={data} />
+        </div>)
     }
 
 }
-
-export default BubbleChart
