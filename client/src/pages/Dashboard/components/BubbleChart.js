@@ -39,13 +39,13 @@ export default function BubbleChart() {
 
     const url = "http://localhost:8080/getIntents"
 
-    let a = { "datasets": [] }
+    let dataSoFar = { "datasets": [] }
 
     useEffect(() => {
         async function getData() {
             axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
                 for (const intent in res.data) {
-                    a["datasets"].push({
+                    dataSoFar["datasets"].push({
                         label: intent,
                         data: Array.from({ length: 1 }, () => ({
                             x: Math.random() * 900,
@@ -55,7 +55,7 @@ export default function BubbleChart() {
                         backgroundColor: RandomColor()
                     })
                 }
-                setData(a)
+                setData(dataSoFar)
             }).catch((error) => {
                 alert(error)
             })
@@ -66,7 +66,7 @@ export default function BubbleChart() {
     const refreshData = () => {
         axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
             for (const intent in res.data) {
-                a["datasets"].push({
+                dataSoFar["datasets"].push({
                     label: intent,
                     data: Array.from({ length: 1 }, () => ({
                         x: Math.random() * 900,
@@ -76,14 +76,14 @@ export default function BubbleChart() {
                     backgroundColor: RandomColor()
                 })
             }
-            setData(a)
+            setData(dataSoFar)
         }).catch((error) => {
             alert(error)
         })
     }
 
 
-    var size = Object.keys(data).length;
+    let size = Object.keys(data).length;
     if (size === 0) {
         return (<p></p>)
     }
