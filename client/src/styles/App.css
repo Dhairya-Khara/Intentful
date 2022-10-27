@@ -21,11 +21,7 @@ html {
     -o-background-size: cover;
     background-size: cover;
     background-repeat:no-repeat;
-    background: -webkit-linear-gradient( to left top, blue, red);
-    background: -moz-linear-gradient( to left top, blue, red);
-    background: -ms-linear-gradient( to left top, blue, red);
-    background: -o-linear-gradient( to left top, blue, red);
-    background: linear-gradient( to left top, blue, red);
+    background: azure;
 }
 input{
     font-family: 'Kollektif', 'Serif';
