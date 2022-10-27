@@ -59,6 +59,13 @@ Schema.methods.saveRawTranscript = async function(file) {
     await user.save()
 }
 
+// save intents
+Schema.methods.saveIntents = async function(obj){
+    const user = this
+    user.intents = obj
+    await user.save()
+}
+
 
 
 let User = mongoose.model('User', Schema)
