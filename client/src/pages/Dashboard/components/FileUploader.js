@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
-
-import Boxes from './Boxes'
+import D3BubbleChart from './D3BubbleChart'
 
 export default function FileUploader() {
     const [selectedFile, setSelectedFile] = useState(undefined)
@@ -27,52 +26,8 @@ export default function FileUploader() {
                 <input type="file" name="file" onChange= {e => setSelectedFile(e.target.files[0])} />
                 <button>Upload</button>
             </form>
-            {/* {fileUploadStatus === "" ? "" : <Boxes />} */}
+            {fileUploadStatus === "" ? "" : <D3BubbleChart />}
         </div>
     )
 
 }
-
-// class FileUploader extends React.Component {
-
-//     constructor() {
-//         super()
-//         this.state = {
-//             selectedFile: undefined,
-//             fileUploadStatus: ""
-//         }
-//     }
-
-//     handleUpload = (event) => {
-//         event.preventDefault();
-//         const data = new FormData();
-//         data.append('file', this.state.selectedFile, this.state.selectedFile.name);
-//         axios.post("http://localhost:8080/upload", data).then((res) => {
-//             this.setState({
-//                 fileUploadStatus: "File " + this.state.selectedFile.name + " has been upload successfully."
-//             })
-//         });
-//     }
-
-//     handleFileChange = (event) => {
-//         this.setState({
-//             selectedFile: event.target.files[0]
-//         })
-//     }
-
-
-//     render() {
-//         return (
-//             <div>
-                // <form className="App" onSubmit={this.handleUpload}>
-                //     <input type="file" name="file" onChange={this.handleFileChange} />
-                //     <button>Upload</button>
-                // </form>
-                // {this.state.fileUploadStatus === "" ? "" : <Boxes />}
-//             </div>
-//         )
-//     }
-// }
-
-// export default FileUploader
-
