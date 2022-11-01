@@ -9,7 +9,6 @@ import {
     LinearScale,
     PointElement,
     Tooltip,
-    Legend,
     Title,
     SubTitle
 } from 'chart.js';
@@ -22,6 +21,7 @@ ChartJS.register(
     SubTitle
 );
 
+
 export const options = {
     scales: {
         y: {
@@ -30,7 +30,7 @@ export const options = {
         x: {
             display: false,
         }
-    }
+    },
 };
 
 export default function BubbleChart() {
@@ -49,8 +49,8 @@ export default function BubbleChart() {
                         label: intent,
                         data: Array.from({ length: 1 }, () => ({
                             x: Math.random() * 900,
-                            y: Math.random() * 500,
-                            r: res.data[intent][0] * 80
+                            y: Math.random() * 400,
+                            r: res.data[intent][0] * 60
                         })),
                         backgroundColor: RandomColor()
                     })
@@ -71,7 +71,7 @@ export default function BubbleChart() {
                     data: Array.from({ length: 1 }, () => ({
                         x: Math.random() * 900,
                         y: Math.random() * 500,
-                        r: res.data[intent][0] * 80
+                        r: res.data[intent][0] * 60
                     })),
                     backgroundColor: RandomColor()
                 })
@@ -89,8 +89,8 @@ export default function BubbleChart() {
     }
     else {
         return (<div>
-            <button onClick={refreshData}>Refresh view</button>
-            <Bubble options={options} data={data} />
+            <Bubble options={options} data={data}/>
+            <button  onClick={refreshData} >Refresh view</button>
         </div>)
     }
 
