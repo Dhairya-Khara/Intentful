@@ -57,7 +57,6 @@ export default function D3BubbleChart() {
     else {
         return (
             <div>
-                <h1>Single Transcript Intents</h1>
                 <svg width="1600" height="600">
                     <ForceGraph nodes={data.datasets} maxRadius={/*maxSoFar*/ 40} />
                 </svg>
