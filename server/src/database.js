@@ -53,9 +53,11 @@ Schema.methods.removeAuthToken = async function(token) {
 }
 
 // save transcript raw
-Schema.methods.saveRawTranscript = async function(file) {
+Schema.methods.saveRawTranscript = async function(file, name) {
     const user = this
-    user.transcripts = user.transcripts.concat({file})
+    const obj = {}
+    obj[name] = file
+    user.transcripts = user.transcripts.concat(obj)
     await user.save()
 }
 

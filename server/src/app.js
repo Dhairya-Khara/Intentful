@@ -59,12 +59,12 @@ app.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
     const user = req.user
     const json = JSON.parse(req.file.buffer)
     const intents = processSingleTranscript(json)
-    await user.saveRawTranscript(req.file.buffer)
+    await user.saveRawTranscript(req.file.buffer, req.file.originalname)
     await user.saveIntents(intents)
     res.sendStatus(200)
 })
 
-// route to get transcripts for the user requesting
+// route to get intents for the user requesting
 app.get('/getIntents', auth, async (req, res) => {
     try {
         const user = req.user
@@ -75,6 +75,18 @@ app.get('/getIntents', auth, async (req, res) => {
         res.sendStatus(403)
     }
 
+})
+
+// route to get all the previously uploaded transcript
+app.get('/getTranscripts', auth, async (req, res)=>{
+    try{
+        const user = req.user
+        const files = user.transcripts
+        res.send(files)
+    }
+    catch(e){
+        res.sendStatus(403)
+    }
 })
 
 
