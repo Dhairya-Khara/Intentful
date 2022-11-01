@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import RandomColor from 'randomcolor';
 
 export default function ForceGraph({ nodes }, maxRadius) {
@@ -12,13 +12,15 @@ export default function ForceGraph({ nodes }, maxRadius) {
       .forceSimulation()
       .force("x", d3.forceX(1500))
       .force("y", d3.forceY(500))
-      .force("collision", d3.forceCollide(60 /* will take in maxRadius */));
+      .force("collide", d3.forceCollide().radius(d => d.r + 1));
+      // .force("collision", d3.forceCollide(/* Will take in value passed to maxRadius*/ 60));
+
 
     // update state on every frame
     simulation.on("tick", () => {
       setAnimatedNodes([...simulation.nodes()]);
     });
-
+    
     // copy nodes into simulation
     simulation.nodes([...nodes]);
     // slow down with a small alpha
@@ -30,14 +32,8 @@ export default function ForceGraph({ nodes }, maxRadius) {
   }, [nodes]);
 
   window.addEventListener("mouseup", (e) => {
-    // Let's pick a random color between #000000 and #FFFFFF
     const color = Math.round(Math.random() * 0xffffff);
-  
-    // Let's format the color to fit CSS requirements
     const fill = `#${color.toString(16).padStart(6, "0")}`;
-  
-    // Let's apply our color in the
-    // element we actually clicked on
     e.target.style.fill = fill;
   });
   

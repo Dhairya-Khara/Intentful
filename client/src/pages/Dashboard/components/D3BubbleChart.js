@@ -1,5 +1,5 @@
 import ForceGraph from './ForceGraph'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 
@@ -58,7 +58,7 @@ export default function D3BubbleChart() {
         return (
             <div>
                 <svg width="1600" height="600">
-                    <ForceGraph nodes={data.datasets} maxRadius={/*maxSoFar*/ 40} />
+                    <ForceGraph nodes={data.datasets} maxRadius={/*maxSoFar*/ 60} />
                 </svg>
             </div>)
 
