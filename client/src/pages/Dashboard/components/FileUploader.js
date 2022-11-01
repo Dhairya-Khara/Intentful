@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
-<<<<<<< HEAD
 import D3BubbleChart from './D3BubbleChart'
-=======
-
->>>>>>> 1ebd7544520c6847dc40e6bf2eecfa27e874db5e
 
 export default function FileUploader() {
     const [selectedFile, setSelectedFile] = useState(undefined)
