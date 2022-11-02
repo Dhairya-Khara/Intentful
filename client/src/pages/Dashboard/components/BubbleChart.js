@@ -42,7 +42,7 @@ export default function BubbleChart(props) {
     const refreshData = () => {
         for (const intent in props.intents) {
             dataSoFar["datasets"].push({
-                label: intent,
+                label: intent + ", count: " + props.intents[intent][0],
                 data: Array.from({ length: 1 }, () => ({
                     x: Math.random() * 900,
                     y: Math.random() * 300,
