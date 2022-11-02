@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import File from './File'
+import BubbleChart from './BubbleChart'
 
 export default function FileSystem() {
 
@@ -10,6 +11,7 @@ export default function FileSystem() {
     const token = useSelector((state) => state.auth.token)
     const [selectedFile, setSelectedFile] = useState(undefined)
     const [fileUploadStatus, setFileUploadStatus] = useState('')
+    const [showBubbleChart, setShowBubbleChart] = useState(false)
 
     const getData = () => {
         const url = "http://localhost:8080/getTranscripts"
@@ -55,7 +57,8 @@ export default function FileSystem() {
             <button>Visualize All</button>
 
             <h2>Transcripts</h2>
-            {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} />)}
+            {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} onButtonPress={setShowBubbleChart} />)}
+            {showBubbleChart ? <BubbleChart /> : <div></div>}
         </div>
     )
 }

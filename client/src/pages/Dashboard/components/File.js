@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function File(props) {
     const visualizeData = () => {
-        console.log('hello')
+        props.onButtonPress(true)
     }
 
     return (
