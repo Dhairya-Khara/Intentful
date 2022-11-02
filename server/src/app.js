@@ -60,20 +60,26 @@ app.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
     const user = req.user
     const json = JSON.parse(req.file.buffer)
 
-    // const intents = processSingleTranscript(json)
-    let allIntents = {}
-    const intentsForThisFile = processTranscript(new Map(), [json])
-    // if (user.intents === undefined) {
-    //     allIntents = processTranscript(intentsForThisFile, [])
-    // }
-    // else {
-    //     const userIntentsMap = new Map(Object.entries(user.intents))
-    //     console.log(userIntentsMap.constructor)
-    //     allIntents = processTranscript(userIntentsMap, [json])
-    // }
-    console.log(allIntents)
+    
+    let allPreviousIntents = new Map()
+
+    if(user.intents !== undefined){
+        allPreviousIntents = new Map(Object.entries(user.intents));
+    }
+
+    const intentsForThisFile = processTranscript(allPreviousIntents, [json])
+
+    if(! allPreviousIntents.has("allIntents")){
+        allPreviousIntents.set("allIntents", [intentsForThisFile])
+    }
+    else{
+        allPreviousIntents.set("allIntents", user.intents["allIntents"].push(intentsForThisFile))
+    }
+    allPreviousIntents.set(req.file.originalname, intentsForThisFile)    
+
+
     await user.saveTranscript(req.file.buffer, req.file.originalname, intentsForThisFile)
-    // await user.saveIntents(allIntents)
+    await user.saveIntents(allPreviousIntents)
     res.sendStatus(200)
 })
 
