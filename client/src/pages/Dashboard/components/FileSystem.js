@@ -13,6 +13,17 @@ export default function FileSystem() {
     const [fileUploadStatus, setFileUploadStatus] = useState('')
     const [bubbleChart, setBubbleChart] = useState({ show: false, intents: [] })
 
+
+    const visualizeData = () => {
+        const url = `http://localhost:8080/getIntents`
+        axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
+            setBubbleChart({ show: true, intents: res.data })
+        }).catch((error) => {
+            alert(error)
+        })
+    }
+
+
     const getData = () => {
         const url = "http://localhost:8080/getTranscripts"
         let dataSoFar = []
@@ -54,11 +65,11 @@ export default function FileSystem() {
                 <button>Upload</button>
             </form>
             <br></br>
-            <button>Visualize All</button>
+            <button onClick={visualizeData}>Visualize All</button>
 
             <h2>Transcripts</h2>
             {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} setBubbleChart={setBubbleChart} />)}
-            {bubbleChart.show ? <BubbleChart intents = {bubbleChart.intents}/> : <div></div>}
+            {bubbleChart.show ? <BubbleChart intents={bubbleChart.intents} /> : <div></div>}
         </div>
     )
 }
