@@ -90,6 +90,17 @@ app.get('/getIntents', auth, async (req, res) => {
 
 })
 
+app.get('/getOneTranscriptIntents', auth, async (req, res) => {
+    const name = req.query.name
+    const user = req.user
+    const transcripts = req.user.transcripts
+    for (const obj of transcripts) {
+        if (name in obj) {
+            res.send(obj.intents)
+        }
+    }
+})
+
 // route to get all the previously uploaded transcript
 app.get('/getTranscripts', auth, async (req, res) => {
     try {
