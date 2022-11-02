@@ -45,8 +45,8 @@ export default function BubbleChart(props) {
                 label: intent,
                 data: Array.from({ length: 1 }, () => ({
                     x: Math.random() * 900,
-                    y: Math.random() * 500,
-                    r: props.intents[intent][0] * 80
+                    y: Math.random() * 300,
+                    r: props.intents[intent][0] * 40
                 })),
             })
         }

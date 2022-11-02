@@ -1,5 +1,6 @@
 function processTranscript(existingProcessedMap, transcript_json_list) {
-    let processedMap = existingProcessedMap
+    let processedMap = new Map(existingProcessedMap)
+    console.log(processedMap)
 
     // iterating all transcripts
     for (const transcript_json of transcript_json_list) {
@@ -22,7 +23,13 @@ function processTranscript(existingProcessedMap, transcript_json_list) {
                 }
                 if (prevIntent !== undefined) {
                     const currList = processedMap.get(prevIntent)
-                    let newAssociateMap = currList[1]
+                    let newAssociateMap = undefined
+                    if (currList[1] instanceof Map) {
+                        newAssociateMap = currList[1]
+                    }
+                    else {
+                        newAssociateMap = new Map(Object.entries(currList[1]))
+                    }
                     if (!newAssociateMap.has(intent)) {
                         newAssociateMap.set(intent, 1)
                     }
@@ -30,6 +37,7 @@ function processTranscript(existingProcessedMap, transcript_json_list) {
                         const newIntentAssociateFreq = newAssociateMap.get(intent) + 1
                         newAssociateMap.set(intent, newIntentAssociateFreq)
                     }
+                    currList[1] = newAssociateMap
                 }
                 prevIntent = intent
             }
