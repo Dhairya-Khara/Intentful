@@ -51,6 +51,9 @@ export default function FileSystem() {
                 <input type="file" name="file" onChange={e => setSelectedFile(e.target.files[0])} />
                 <button>Upload</button>
             </form>
+            <br></br>
+            <button>Visualize All</button>
+
             <h2>Transcripts</h2>
             {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} />)}
         </div>
