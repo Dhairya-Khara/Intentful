@@ -1,13 +1,4 @@
-import { createRequire } from "module"; // Bring in the ability to create the 'require' method
-const require = createRequire(import.meta.url); // construct the require method
-const file1 = require('./transcript3.json')
-const file2 = require('./transcript2.json')
-
-// BERKES VERSION: includes ability to process an existing map. only includes links after
-
-//import myJson from './transcript1.json';
-// process individual transcript and return single processed transcript
-function processSingleTranscript(existingProcessedMap, transcript_json_list) {
+function processTranscript(existingProcessedMap, transcript_json_list) {
     let processedMap = existingProcessedMap
 
     // iterating all transcripts
@@ -44,9 +35,8 @@ function processSingleTranscript(existingProcessedMap, transcript_json_list) {
             }
         }
     }
+    return processedMap
 }
-processSingleTranscript([file1, file2])
-module.exports = processSingleTranscript
 
-// add processed transcript to the aggregate processed transcript
+module.exports = processTranscript
 

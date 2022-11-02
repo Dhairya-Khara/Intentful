@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const auth = require('./middleware/auth')
 const User = require('./database')
 const processSingleTranscript = require('./utils/processTranscript')
+const processTranscript = require('./utils/berkesprocessTranscript')
 
 const app = express()
 app.use(cors())
@@ -58,9 +59,21 @@ app.post('/logoutUser', auth, async (req, res) => {
 app.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
     const user = req.user
     const json = JSON.parse(req.file.buffer)
-    const intents = processSingleTranscript(json)
-    await user.saveRawTranscript(req.file.buffer, req.file.originalname)
-    await user.saveIntents(intents)
+
+    // const intents = processSingleTranscript(json)
+    let allIntents = {}
+    const intentsForThisFile = processTranscript(new Map(), [json])
+    // if (user.intents === undefined) {
+    //     allIntents = processTranscript(intentsForThisFile, [])
+    // }
+    // else {
+    //     const userIntentsMap = new Map(Object.entries(user.intents))
+    //     console.log(userIntentsMap.constructor)
+    //     allIntents = processTranscript(userIntentsMap, [json])
+    // }
+    console.log(allIntents)
+    await user.saveTranscript(req.file.buffer, req.file.originalname, intentsForThisFile)
+    // await user.saveIntents(allIntents)
     res.sendStatus(200)
 })
 
@@ -71,20 +84,20 @@ app.get('/getIntents', auth, async (req, res) => {
         res.send(user.intents)
     }
 
-    catch(e){
+    catch (e) {
         res.sendStatus(403)
     }
 
 })
 
 // route to get all the previously uploaded transcript
-app.get('/getTranscripts', auth, async (req, res)=>{
-    try{
+app.get('/getTranscripts', auth, async (req, res) => {
+    try {
         const user = req.user
         const files = user.transcripts
         res.send(files)
     }
-    catch(e){
+    catch (e) {
         res.sendStatus(403)
     }
 })

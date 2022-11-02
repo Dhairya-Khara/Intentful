@@ -25,9 +25,9 @@ let Schema = new mongoose.Schema({
 })
 
 // find user
-Schema.statics.findByCredentials = async (email, password) =>{
-    const user = await User.findOne({email: email, password: password})
-    if(!user){
+Schema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email: email, password: password })
+    if (!user) {
         throw new Error("Unable to find user")
     }
 
@@ -37,32 +37,33 @@ Schema.statics.findByCredentials = async (email, password) =>{
 // generate token
 Schema.methods.generateAuthToken = async function () {
     const user = this
-    const token = jwt.sign({_id: user._id.toString()}, 'by order of the techy blinders') 
+    const token = jwt.sign({ _id: user._id.toString() }, 'by order of the techy blinders')
 
-    user.tokens = user.tokens.concat({token})
+    user.tokens = user.tokens.concat({ token })
     await user.save()
-    
+
     return token
 }
 
 // remove token
-Schema.methods.removeAuthToken = async function(token) {
+Schema.methods.removeAuthToken = async function (token) {
     const user = this
     user.tokens = user.tokens.filter(item => item.token !== token)
     await user.save()
 }
 
 // save transcript raw
-Schema.methods.saveRawTranscript = async function(file, name) {
+Schema.methods.saveTranscript = async function (file, name, intents) {
     const user = this
     const obj = {}
     obj[name] = file
+    obj["intents"] = intents
     user.transcripts = user.transcripts.concat(obj)
     await user.save()
 }
 
 // save intents
-Schema.methods.saveIntents = async function(obj){
+Schema.methods.saveIntents = async function (obj) {
     const user = this
     user.intents = obj
     await user.save()
