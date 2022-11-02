@@ -11,7 +11,7 @@ export default function FileSystem() {
     const token = useSelector((state) => state.auth.token)
     const [selectedFile, setSelectedFile] = useState(undefined)
     const [fileUploadStatus, setFileUploadStatus] = useState('')
-    const [showBubbleChart, setShowBubbleChart] = useState(false)
+    const [bubbleChart, setBubbleChart] = useState({ show: false, intents: [] })
 
     const getData = () => {
         const url = "http://localhost:8080/getTranscripts"
@@ -57,8 +57,8 @@ export default function FileSystem() {
             <button>Visualize All</button>
 
             <h2>Transcripts</h2>
-            {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} onButtonPress={setShowBubbleChart} />)}
-            {showBubbleChart ? <BubbleChart /> : <div></div>}
+            {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} setBubbleChart={setBubbleChart} />)}
+            {bubbleChart.show ? <BubbleChart intents = {bubbleChart.intents}/> : <div></div>}
         </div>
     )
 }

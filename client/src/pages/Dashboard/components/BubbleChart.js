@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Bubble } from 'react-chartjs-2';
 import RandomColor from 'randomcolor';
 import axios from 'axios'
@@ -33,55 +33,29 @@ export const options = {
     }
 };
 
-export default function BubbleChart() {
+export default function BubbleChart(props) {
     const [data, setData] = useState({})
-    const token = useSelector((state) => state.auth.token)
 
-    const url = "http://localhost:8080/getIntents"
 
     let dataSoFar = { "datasets": [] }
 
-    // useEffect(() => {
-    //     async function getData() {
-    //         axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
-    //             for (const intent in res.data) {
-    //                 dataSoFar["datasets"].push({
-    //                     label: intent,
-    //                     data: Array.from({ length: 1 }, () => ({
-    //                         x: Math.random() * 900,
-    //                         y: Math.random() * 500,
-    //                         r: res.data[intent][0] * 80
-    //                     })),
-    //                     backgroundColor: RandomColor()
-    //                 })
-    //             }
-    //             setData(dataSoFar)
-    //         }).catch((error) => {
-    //             alert(error)
-    //         })
-    //     }
-    //     getData()
-    // }, [])
-
     const refreshData = () => {
-        axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
-            for (const intent in res.data) {
-                dataSoFar["datasets"].push({
-                    label: intent,
-                    data: Array.from({ length: 1 }, () => ({
-                        x: Math.random() * 900,
-                        y: Math.random() * 500,
-                        r: res.data[intent][0] * 80
-                    })),
-                    backgroundColor: RandomColor()
-                })
-            }
-            setData(dataSoFar)
-        }).catch((error) => {
-            alert(error)
-        })
+        for (const intent in props.intents) {
+            dataSoFar["datasets"].push({
+                label: intent,
+                data: Array.from({ length: 1 }, () => ({
+                    x: Math.random() * 900,
+                    y: Math.random() * 500,
+                    r: props.intents[intent][0] * 80
+                })),
+            })
+        }
+        setData(dataSoFar)
     }
 
+    useEffect(() => {
+        refreshData()
+    }, [props.intents])
 
     let size = Object.keys(data).length;
     if (size === 0) {
@@ -89,7 +63,6 @@ export default function BubbleChart() {
     }
     else {
         return (<div>
-            <button onClick={refreshData}>Refresh view</button>
             <Bubble options={options} data={data} />
 
         </div>)
