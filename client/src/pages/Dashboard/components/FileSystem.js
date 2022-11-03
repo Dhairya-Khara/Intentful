@@ -59,17 +59,22 @@ export default function FileSystem() {
 
 
     return (
-        <div>
+        <div class="Dashboard">
+        <div class = "TranscriptManagement">
+            <h2>Transcript Management</h2>
             <form className="App" onSubmit={onSubmit}>
-                <input type="file" name="file" onChange={e => setSelectedFile(e.target.files[0])} />
+                <input type="file" name="file" onChange={e => setSelectedFile(e.target.files[0])}/>
                 <button>Upload</button>
             </form>
             <br></br>
             <button onClick={visualizeData}>Visualize All</button>
 
-            <h2>Transcripts</h2>
-            {files === undefined ? <p>No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} setBubbleChart={setBubbleChart} />)}
-            {bubbleChart.show ? <BubbleChart intents={bubbleChart.intents} /> : <div></div>}
+            <h2>Uploaded Transcripts</h2>
+            {files === undefined ? <p className="inactive">No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} setBubbleChart={setBubbleChart} />)}
+        </div>
+        <div class="Bubbles">
+        {bubbleChart.show ? <BubbleChart intents={bubbleChart.intents} /> : <div></div>}
+        </div>
         </div>
     )
 }
