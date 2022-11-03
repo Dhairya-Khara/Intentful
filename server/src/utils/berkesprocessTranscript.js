@@ -1,6 +1,5 @@
 function processTranscript(existingProcessedMap, transcript_json_list) {
     let processedMap = new Map(existingProcessedMap)
-    console.log(processedMap)
 
     // iterating all transcripts
     for (const transcript_json of transcript_json_list) {
