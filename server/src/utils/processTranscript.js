@@ -1,11 +1,6 @@
-// import myJson from './transcript3.json' assert {type: 'json'}; FOR TESTING
-// process individual transcript and return single processed transcript
 function processSingleTranscript(transcript_json) {
     let { intentCountMap, intentRelatedMap } = getCountAndRelatedMaps(transcript_json)
     let processedTranscript = getSingleProcessedTranscript(intentCountMap, intentRelatedMap);
-    // console.log(intentCountMap)
-    // console.log(intentRelatedMap)  FOR TESTING
-    // console.log(processedTranscript)
     return processedTranscript;
 }
 

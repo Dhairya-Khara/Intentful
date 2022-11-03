@@ -1,14 +1,5 @@
-import { createRequire } from "module"; // Bring in the ability to create the 'require' method
-const require = createRequire(import.meta.url); // construct the require method
-const file1 = require('./transcript3.json')
-const file2 = require('./transcript2.json')
-
-// BERKES VERSION: includes ability to process an existing map. only includes links after
-
-//import myJson from './transcript1.json';
-// process individual transcript and return single processed transcript
-function processSingleTranscript(existingProcessedMap, transcript_json_list) {
-    let processedMap = existingProcessedMap
+function processTranscript(existingProcessedMap, transcript_json_list) {
+    let processedMap = new Map(existingProcessedMap)
 
     // iterating all transcripts
     for (const transcript_json of transcript_json_list) {
@@ -31,7 +22,13 @@ function processSingleTranscript(existingProcessedMap, transcript_json_list) {
                 }
                 if (prevIntent !== undefined) {
                     const currList = processedMap.get(prevIntent)
-                    let newAssociateMap = currList[1]
+                    let newAssociateMap = undefined
+                    if (currList[1] instanceof Map) {
+                        newAssociateMap = currList[1]
+                    }
+                    else {
+                        newAssociateMap = new Map(Object.entries(currList[1]))
+                    }
                     if (!newAssociateMap.has(intent)) {
                         newAssociateMap.set(intent, 1)
                     }
@@ -39,14 +36,14 @@ function processSingleTranscript(existingProcessedMap, transcript_json_list) {
                         const newIntentAssociateFreq = newAssociateMap.get(intent) + 1
                         newAssociateMap.set(intent, newIntentAssociateFreq)
                     }
+                    currList[1] = newAssociateMap
                 }
                 prevIntent = intent
             }
         }
     }
+    return processedMap
 }
-processSingleTranscript([file1, file2])
-module.exports = processSingleTranscript
 
-// add processed transcript to the aggregate processed transcript
+module.exports = processTranscript
 

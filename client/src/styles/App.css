@@ -27,6 +27,7 @@ input{
     font-family: 'Kollektif', 'Serif';
     padding-left: 2%;
 }
-#C {
-    visibility: hidden;
+
+.singleFile{
+    display: flex;
 }
