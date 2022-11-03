@@ -77,18 +77,18 @@ input{
     padding-left: 2%;
 }
 
-.App, .singleFile{
+.app, .single-file{
     display: flex;
     justify-content: space-between;
     padding: 5px;
 }
-.Input {
+.input {
     position: relative;
     width: 40%;
     margin-bottom: 1%;
   }
   
-  .Input-text {
+  .input-text {
     display: block;
     margin: 0;
     padding: var(--inputPaddingV) var(--inputPaddingH);
@@ -101,13 +101,14 @@ input{
     border: none;
     border-radius: 0.4rem;
     transition: box-shadow var(--transitionDuration);
+    color:rgba(66, 66, 66, 0.8);
   }
   
-  .Input-text::placeholder {
+  .input-text::placeholder {
     color: #B0BEC5;
   }
   
-  .Input-label {
+  .input-label {
     display: block;
     position: absolute;
     bottom: 50%;
@@ -129,12 +130,12 @@ input{
       z-index 0ms var(--inputTransitionDuration) var(--inputTransitionTF);
   }
   
-  .Input-text:placeholder-shown + .Input-label {
+  .input-text:placeholder-shown + .input-label {
     visibility: hidden;
     z-index: -1;
   }
 
-.fakeButton, button {
+.fake-button, button {
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -150,7 +151,7 @@ input{
   margin-bottom: 1%
 }
 
-.fakeButton:before, button:before {
+.fake-button:before, button:before {
   content: "";
   background: linear-gradient(
     45deg,
@@ -193,7 +194,7 @@ input{
   }
 }
 
-.fakeButton:after, button:after {
+.fake-button:after, button:after {
   z-index: -1;
   content: "";
   position: absolute;
@@ -209,20 +210,20 @@ input{
   transition: all 0.7s ease-in-out;
 }
 
-.fakeButton:hover::after, button:hover::after {
+.fake-button:hover::after, button:hover::after {
     background: rgba(22, 22, 22, 0.3);
     color: #fff;
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: 2px;
   }
     
-  .Input-text:focus {
+  .input-text:focus {
     outline: none;
     box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
   }
   
-  .Input-text:not(:placeholder-shown) + .Input-label,
-  .Input-text:focus:not(:placeholder-shown) + .Input-label {
+  .input-text:not(:placeholder-shown) + .input-label,
+  .input-text:focus:not(:placeholder-shown) + .input-label {
     visibility: visible;
     z-index: 1;
     opacity: 1;
@@ -254,13 +255,13 @@ input{
     border-radius: 2vh;
     }
 
-    .TopRightCorner{
+    .top-right-corner{
         position:absolute;
         top: 3vw;
         right: 3vw;
     }
 
-    .TranscriptManagement {
+    .transcript-management {
         border: none;
         position: relative;
         padding: 50px !important;
@@ -278,11 +279,11 @@ input{
         margin: auto;
         }
 
-    .Dashboard {
+    .dashboard {
         display: flex;
     }
 
-    .Bubbles {
+    .bubbles {
         width: 60%;
         
     }

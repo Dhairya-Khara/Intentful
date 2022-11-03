@@ -14,7 +14,7 @@ export default function File(props) {
     }
 
     return (
-        <div className='singleFile'>
+        <div className='single-file'>
             <p>{props.name}</p>
             <button onClick={visualizeData}>Visualize</button>
         </div>

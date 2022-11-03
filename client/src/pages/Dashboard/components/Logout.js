@@ -28,7 +28,7 @@ export default function Logout() {
 
     return (
         <div>
-            <button onClick={onButtonClick} class = "TopRightCorner">Logout</button>
+            <button onClick={onButtonClick} class = "top-right-corner">Logout</button>
         </div>
     )
 }
