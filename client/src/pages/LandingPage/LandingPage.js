@@ -7,7 +7,7 @@ import Login from './components/Login'
 export default function LandingPage() {
     return (
         <div>
-            <center class = "gradient-wrapper">
+            <center className = "gradient-wrapper">
                 <Register />
                 <br></br>
                 <Login />
