@@ -44,9 +44,9 @@ export default function BubbleChart(props) {
             dataSoFar["datasets"].push({
                 label: intent + ", count: " + props.intents[intent][0],
                 data: Array.from({ length: 1 }, () => ({
-                    x: Math.random() * 900,
-                    y: Math.random() * 300,
-                    r: props.intents[intent][0] * 40
+                    x: Math.random() * 600,
+                    y: Math.random() * 200,
+                    r: props.intents[intent][0] * 20
                 })),
             })
         }
@@ -59,7 +59,7 @@ export default function BubbleChart(props) {
 
     let size = Object.keys(data).length;
     if (size === 0) {
-        return (<p>BUBBLE CHART</p>)
+        return (<p className = "inactive">BUBBLE CHART</p>)
     }
     else {
         return (<div>
