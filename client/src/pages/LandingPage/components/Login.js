@@ -31,9 +31,17 @@ export default function Login() {
     return (
         <div>
             <form onSubmit={onFormSubmit}>
-                <input type="text" placeholder='email' value = {email} onChange = {e => setEmail(e.target.value)}/>
+                <div className="input">
+                    <input type="text" id="register-email-input" className="input-text" placeholder="Your email, e.g. Admin@TechyBlinders.com" 
+                    value = {email} onChange = {e => setEmail(e.target.value)}/>
+                    <label htmlFor="register-email-input" className="input-label">Email</label>
+                </div>
                 <br></br>
-                <input type="password" placeholder="password" value = {password} onChange = {e => setPassword(e.target.value)}/>
+                <div className="input">
+                    <input type="password" id="register-password-input" className="input-text" placeholder="Your password, e.g. #TechyBlinders>>" 
+                    value = {password} onChange = {e => setPassword(e.target.value)}/>
+                    <label htmlFor="register-password-input" className="input-label">Password</label>
+                </div>
                 <br></br>
                 <button>Login</button>
             </form>

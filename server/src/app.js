@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const auth = require('./middleware/auth')
 const User = require('./database')
 const processSingleTranscript = require('./utils/processTranscript')
+const processTranscript = require('./utils/berkesprocessTranscript')
 
 const app = express()
 app.use(cors())
@@ -58,23 +59,59 @@ app.post('/logoutUser', auth, async (req, res) => {
 app.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
     const user = req.user
     const json = JSON.parse(req.file.buffer)
-    const intents = processSingleTranscript(json)
-    await user.saveRawTranscript(req.file.buffer)
-    await user.saveIntents(intents)
+
+    let allCurrentIntents = new Map()
+
+    if(user.intents !== undefined){
+        allCurrentIntents = new Map(Object.entries(user.intents));
+    }
+
+    //single transcript processing
+    let intentsForThisFile = processTranscript(new Map(), [json])
+
+    //multiple transcript processing
+    allCurrentIntents = processTranscript(allCurrentIntents, [json]) 
+
+
+    await user.saveTranscript(req.file.buffer, req.file.originalname, intentsForThisFile)
+    await user.saveIntents(allCurrentIntents)
     res.sendStatus(200)
 })
 
-// route to get transcripts for the user requesting
+// route to get intents for the user requesting
 app.get('/getIntents', auth, async (req, res) => {
     try {
         const user = req.user
         res.send(user.intents)
     }
 
-    catch(e){
+    catch (e) {
         res.sendStatus(403)
     }
 
+})
+
+app.get('/getOneTranscriptIntents', auth, async (req, res) => {
+    const name = req.query.name
+    const user = req.user
+    const transcripts = req.user.transcripts
+    for (const obj of transcripts) {
+        if (name in obj) {
+            res.send(obj.intents)
+        }
+    }
+})
+
+// route to get all the previously uploaded transcript
+app.get('/getTranscripts', auth, async (req, res) => {
+    try {
+        const user = req.user
+        const files = user.transcripts
+        res.send(files)
+    }
+    catch (e) {
+        res.sendStatus(403)
+    }
 })
 
 
