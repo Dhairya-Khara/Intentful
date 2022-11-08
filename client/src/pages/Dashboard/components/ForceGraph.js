@@ -39,7 +39,7 @@ export default function ForceGraph({ nodes }, maxRadius) {
   
 
   return (
-    <svg class = "button">
+    <svg className = "button">
       {animatedNodes.map((node) => (
         <circle 
           cx={node.x}

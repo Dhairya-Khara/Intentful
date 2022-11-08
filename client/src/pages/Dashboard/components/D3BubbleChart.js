@@ -9,10 +9,11 @@ export default function D3BubbleChart() {
     const url = "http://localhost:8080/getIntents"
 
     // let maxSoFar = 0
-    
-    let dataSoFar = { "datasets": [] }
+
+
 
     useEffect(() => {
+        let dataSoFar = { "datasets": [] }
         async function getData() {
             axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
                 for (const intent in res.data) {
@@ -35,19 +36,19 @@ export default function D3BubbleChart() {
         getData()
     }, [])
 
-    const refreshData = () => {
-        axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
-            for (const intent in res.data) {
-                dataSoFar["datasets"].push({
-                    id: intent,
-                    r: res.data[intent][0] * 20
-                })
-            }
-            setData(dataSoFar)
-        }).catch((error) => {
-            alert(error)
-        })
-    }
+    // const refreshData = () => {
+    //     axios.get(url, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
+    //         for (const intent in res.data) {
+    //             dataSoFar["datasets"].push({
+    //                 id: intent,
+    //                 r: res.data[intent][0] * 20
+    //             })
+    //         }
+    //         setData(dataSoFar)
+    //     }).catch((error) => {
+    //         alert(error)
+    //     })
+    // }
 
     let size = Object.keys(data).length;
 
