@@ -1,3 +1,8 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 @font-face{
     font-family: "Kollektif";
     src: url('./Kollektif.ttf');
@@ -279,9 +284,9 @@ input{
         margin: auto;
         }
 
-    .dashboard {
+    /* .dashboard {
         display: flex;
-    }
+    } */
 
     .bubbles {
         width: 60%;

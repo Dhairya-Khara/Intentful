@@ -18,4 +18,3 @@ root.render(
     </PersistGate>
   </Provider>
 );
-

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 import File from './File'
 import BubbleChart from './BubbleChart'
+import D3BubbleChart from './D3BubbleChart'
 
 export default function FileSystem() {
 
@@ -73,7 +74,7 @@ export default function FileSystem() {
             {files === undefined ? <p className="inactive">No Transcripts have been uploaded</p> : files.map((file) => <File key={file} name={file} setBubbleChart={setBubbleChart} />)}
         </div>
         <div className="bubbles">
-        {bubbleChart.show ? <BubbleChart intents={bubbleChart.intents} /> : <div></div>}
+        {bubbleChart.show ? <D3BubbleChart intents={bubbleChart.intents} /> : <div></div>}
         </div>
         </div>
     )

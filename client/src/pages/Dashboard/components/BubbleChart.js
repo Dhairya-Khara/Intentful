@@ -59,7 +59,7 @@ export default function BubbleChart(props) {
 
     let size = Object.keys(data).length;
     if (size === 0) {
-        return (<p className = "inactive">BUBBLE CHART</p>)
+        return (<p className="inactive">BUBBLE CHART</p>)
     }
     else {
         return (<div>
