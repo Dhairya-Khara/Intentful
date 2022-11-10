@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
-import {setAuth} from '../../../redux/authReducer'
+import { setAuth } from '../../../redux/authReducer'
 
 export default function Logout() {
 
@@ -13,22 +13,17 @@ export default function Logout() {
     const token = useSelector((state) => state.auth.token)
 
 
-    const onButtonClick = (e) =>{
+    const onButtonClick = (e) => {
         e.preventDefault();
-        const url = `http://localhost:8080/logoutUser`
 
+        dispatch(setAuth({ auth: false, token: '' }))
+        navigate("/")
 
-        axios.post(url, {}, {headers: {"Authorization": "Bearer " + token}}).then(async (res)=>{
-            dispatch(setAuth({auth: false, token: ''}))
-            navigate("/")
-        }).catch((error)=>{
-            alert("Not Authenticated")
-        })
     }
 
     return (
         <div>
-            <button onClick={onButtonClick} className = "top-right-corner">Logout</button>
+            <button onClick={onButtonClick} className="top-right-corner">Logout</button>
         </div>
     )
 }
