@@ -10,15 +10,10 @@ let Schema = new mongoose.Schema({
     password: {
         type: String
     },
-    tokens: [{ // required for auth, dw about it
-        token: {
-            type: String
-        }
-    }],
-    transcripts: [ // to store raw transcripts files
+    transcripts: [
 
     ],
-    intents: { // model Berke made
+    intents: {
 
     }
 
@@ -39,7 +34,7 @@ Schema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({ _id: user._id.toString() }, 'by order of the techy blinders')
 
-    user.tokens = user.tokens.concat({ token })
+    // user.tokens = user.tokens.concat({ token })
     await user.save()
 
     return token
