@@ -1,6 +1,11 @@
 # Intentful
 This is the Techy Blinders' Voiceflow Project! (ft. Berke Altiparmak, Chenika Bukes, Krishna Cheemalapati, Dhairya Khara, Aidan Li)
 
+Intentful is potentially an add-on feature for Voiceflow to help Voiceflow customers set up their environment faster and smarter. 
+Intentful allows you, a retail company, to upload your transcripts of conversations between the customers and your chat app, and then for each message Intentful detects the "intent" (i.e., 'buy pizza') of the message. It keeps a track of the frequency of the intents so that while setting up your Voiceflow environment, you can prioritize those intents and maximize the customer satisfaction. 
+In addition, Intentful identifies "intent associates," the most frequent intents that come after a specific intent, which is a great feature to have while building your novel chat bot. For example, 'buy fries' being the most frequent intent after 'buy cheeseburger' intent can help you build a chatbot such that it asks the users whether they want fries after they mention they want a cheeseburger. 
+Consequently, Intentful is perfect to both get you started on Voiceflow and maximize your experience with Voiceflow.
+
 ## Getting Started
 - Install MongoDB and NodeJS
 - Clone the repo
