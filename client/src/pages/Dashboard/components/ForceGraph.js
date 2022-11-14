@@ -1,8 +1,8 @@
+// This file adheres to the Single Responsibility Principle since it is only responsible to D3BubbleChart
 import * as d3 from "d3";
-import { useEffect, useMemo, useState } from "react";
-import RandomColor from 'randomcolor';
+import { useEffect, useState } from "react";
 
-export default function ForceGraph({ nodes }, maxRadius) {
+export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
 
   // re-create animation every time nodes change
@@ -10,10 +10,9 @@ export default function ForceGraph({ nodes }, maxRadius) {
     
     const simulation = d3
       .forceSimulation()
-      .force("x", d3.forceX(960))
-      .force("y", d3.forceY(500))
+      .force("x", d3.forceX(3*width/2))
+      .force("y", d3.forceY(height/2))
       .force("collide", d3.forceCollide().radius(d => d.r + 1));
-      // .force("collision", d3.forceCollide(/* Will take in value passed to maxRadius*/ 60));
 
 
     // update state on every frame
@@ -31,13 +30,14 @@ export default function ForceGraph({ nodes }, maxRadius) {
 
   }, [nodes]);
 
+  // change color on mouse click
   window.addEventListener("mouseup", (e) => {
     const color = Math.round(Math.random() * 0xffffff);
     const fill = `#${color.toString(16).padStart(6, "0")}`;
     e.target.style.fill = fill;
   });
   
-
+  // var svg = 
   return (
     <svg className = "button">
       {animatedNodes.map((node) => (
@@ -47,7 +47,7 @@ export default function ForceGraph({ nodes }, maxRadius) {
           r={node.r}
           key={node.id}
           stroke="black"
-          fill={RandomColor()}
+          fill= "aliceblue"
           pointer-events="visiblePainted"
         />
       ))}
