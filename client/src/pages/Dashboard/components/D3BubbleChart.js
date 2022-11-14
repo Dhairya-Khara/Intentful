@@ -1,12 +1,25 @@
+// The Facade class to the ForceGraph component which implements D3
+// The Builder class arranging the attributes for the complex ForceGraph component implemented concretely in ForceGraph.js
 import ForceGraph from './ForceGraph'
-import React, { useState, useMemo, useEffect } from 'react'
-import axios from 'axios'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import useWindowDimensions from './GetWindowSize'
 
 export default function D3BubbleChart(props) {
 
-    const [data, setData] = useState({})
+    const { height, width } = useWindowDimensions();
 
+    let maxSoFar = 0;
+    let count = 0;
+
+    for (const intent in props.intents){
+        if (props.intents[intent][0] > maxSoFar){
+            maxSoFar = props.intents[intent][0]
+        }
+        count++
+    }
+
+
+    const [data, setData] = useState({})
 
     let dataSoFar = { "datasets": [] }
 
@@ -20,15 +33,12 @@ export default function D3BubbleChart(props) {
         setData(dataSoFar)
     }
 
-
     useEffect(() => {
         refreshData()
     }, [props.intents])
 
-
-
-
     let size = Object.keys(data).length;
+
 
     if (size === 0) {
         return (<p></p>)
@@ -36,8 +46,8 @@ export default function D3BubbleChart(props) {
     else {
         return (
             <div>
-                <svg width="1600" height="600">
-                    <ForceGraph nodes={data.datasets} maxRadius={/*maxSoFar*/ 60} />
+                <svg width="100%" height="100%">
+                    <ForceGraph nodes={data.datasets}  width={width} height={height}/>
                 </svg>
             </div>)
 
