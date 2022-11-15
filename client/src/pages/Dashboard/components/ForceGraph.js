@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import RandomColor from 'randomcolor';
 
 export default function ForceGraph({ nodes }, maxRadius) {
