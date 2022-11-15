@@ -49,7 +49,7 @@ export default function D3BubbleChart(props) {
     else {
         return (
             <div>
-                <svg width="100%" height="100%">
+                <svg width={width} height={height}>
                     <ForceGraph nodes={data.datasets}  width={width} height={height}/>
                 </svg>
             </div>)
