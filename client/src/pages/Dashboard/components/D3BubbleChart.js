@@ -19,7 +19,7 @@ export default function D3BubbleChart(props) {
     }
     console.log(count)
     console.log(maxSoFar)
-    let radiusMultiplier = Math.min(20, width/(maxSoFar*count))
+    let radiusMultiplier = Math.min(10, width/(maxSoFar*count))
     console.log(radiusMultiplier)
 
     const [data, setData] = useState({})
@@ -48,7 +48,7 @@ export default function D3BubbleChart(props) {
     }
     else {
         return (
-            <div>
+            <div width="1500" height="1000">
                 <svg width={width} height={height}>
                     <ForceGraph nodes={data.datasets}  width={width} height={height}/>
                 </svg>
