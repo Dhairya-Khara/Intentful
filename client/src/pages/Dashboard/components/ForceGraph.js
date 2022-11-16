@@ -1,11 +1,18 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
+import RandomColor from 'randomcolor';
 
 export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
 
   // re-create animation every time nodes change
   useEffect(() => {
+
+    // const onClick = (e) => {
+    //   console.log(e.target.id)
+    // }
+
+    // window.addEventListener('mouseup', onClick)
 
     const simulation = d3
       .forceSimulation()
@@ -31,6 +38,11 @@ export default function ForceGraph({ nodes, width, height }) {
 
   }, [nodes]);
 
+  // window.addEventListener("mouseup", (e) => {
+
+  //   console.log(e.target.id)
+  // });
+
   const onClick = (e) => {
     console.log(e.target.id)
   }
@@ -44,7 +56,7 @@ export default function ForceGraph({ nodes, width, height }) {
           r={node.r}
           key={node.id}
           stroke="black"
-          fill={"AliceBlue"}
+          fill={RandomColor()}
           pointerEvents="visiblePainted"
           id={node.id}
           onClick={onClick}

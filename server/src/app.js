@@ -41,19 +41,6 @@ app.post('/loginUser', jsonParser, async (req, res) => {
     }
 })
 
-// log the user out
-app.post('/logoutUser', auth, async (req, res) => {
-    try {
-        const user = req.user
-        const token = req.token
-        await user.removeAuthToken(token)
-        res.sendStatus(200)
-    }
-    catch (e) {
-        res.sendStatus(403)
-    }
-})
-
 
 // route for file upload. make sure file is json
 app.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
