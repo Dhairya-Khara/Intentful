@@ -15,7 +15,7 @@ export default function ForceGraph({ nodes, width, height }) {
 
     const simulation = d3
       .forceSimulation()
-      .force("x", d3.forceX(3*width/2))
+      .force("x", d3.forceX(width/2))
       .force("y", d3.forceY(height/2))
       .force("collide", d3.forceCollide().radius(d => d.r + 1));
     // .force("collision", d3.forceCollide(/* Will take in value passed to maxRadius*/ 60));
