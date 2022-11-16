@@ -1,4 +1,4 @@
-const processTranscriptInteractor = require('../TranscriptUseCases/intentIdentifierInteractor')
+const processTranscriptInteractor = require('./intentIdentifierInteractor')
 
 const uploadTranscriptInteractor = async (user, file, filename) => {
     const json = JSON.parse(file)

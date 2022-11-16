@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const auth = require('../Middleware/auth')
-const getTranscriptsInteractor = require('../UseCases/TranscriptUseCases/getTranscripts')
+const getTranscriptsInteractor = require('../UseCases/GetUseCases/getTranscripts')
 
 router.get('/getTranscripts', auth, async (req, res) => {
     const user = req.user

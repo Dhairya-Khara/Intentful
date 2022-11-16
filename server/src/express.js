@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 
 const createUserController = require('./Controllers/userRegisterController')
-const loginUserController = require('./Controllers/loginUser')
+const loginUserController = require('./Controllers/userLoginController.js')
 const uploadTranscriptController = require('./Controllers/transcriptUploadController')
 const getIntentsController = require('./Controllers/getIntents')
 const getOneTranscriptIntentsController = require('./Controllers/getOneTranscriptIntents')
