@@ -1,6 +1,5 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
-import RandomColor from 'randomcolor';
 
 export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
@@ -56,7 +55,7 @@ export default function ForceGraph({ nodes, width, height }) {
           r={node.r}
           key={node.id}
           stroke="black"
-          fill={RandomColor()}
+          fill={"AliceBlue"}
           pointerEvents="visiblePainted"
           id={node.id}
           onClick={onClick}
