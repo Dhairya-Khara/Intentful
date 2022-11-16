@@ -1,4 +1,4 @@
-const processTranscript = require('./utils/transcriptProcessor')
+const processTranscriptInteractor = require('../TranscriptUseCases/intentIdentifierInteractor')
 
 const uploadTranscriptInteractor = async (user, file, filename) => {
     const json = JSON.parse(file)
@@ -10,10 +10,10 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
     }
 
     //single transcript processing
-    let intentsForThisFile = processTranscript(new Map(), [json])
+    let intentsForThisFile = processTranscriptInteractor(new Map(), [json])
 
     //multiple transcript processing
-    allCurrentIntents = processTranscript(allCurrentIntents, [json])
+    allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [json])
 
     // save transcript
     try {

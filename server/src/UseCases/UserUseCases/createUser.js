@@ -1,4 +1,4 @@
-const User = require('../Entities/UserSchema')
+const User = require('../../Entities/UserSchema')
 
 const createUserInteractor = async (email, password) =>{
     const user = new User({email, password})

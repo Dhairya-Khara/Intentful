@@ -1,4 +1,4 @@
-const User = require('../Entities/UserSchema')
+const User = require('../../Entities/UserSchema')
 const jwt = require('jsonwebtoken')
 
 const loginUserInteractor = async (email, password) =>{

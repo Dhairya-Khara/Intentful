@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser')
-const loginUserInteractor = require('../Use Cases/loginUser')
+const loginUserInteractor = require('../UseCases/UserUseCases/loginUser')
 
 
 const jsonParser = bodyParser.json()

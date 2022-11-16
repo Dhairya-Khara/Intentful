@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const auth = require('../Middleware/auth')
 const multer = require('multer')
-const uploadTranscriptInteractor = require('../Use Cases/uploadTranscript')
+const uploadTranscriptInteractor = require('../UseCases/TranscriptUseCases/uploadTranscript')
 
 const upload = multer()
 router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
