@@ -1,13 +1,10 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Modal from "./Modal";
 
 export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
-  const [showModal, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [modalOpen, setModalOpen] = useState(true);
 
   // re-create animation every time nodes change
   useEffect(() => {
@@ -48,42 +45,33 @@ export default function ForceGraph({ nodes, width, height }) {
   // });
 
   const onClick = (e) => {
-    <Modal show={true}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+    setModalOpen(true)
 
-    //console.log(e.target.id)
-    //handleShow()
+    console.log(e.target.id)
   }
 
   return (
-    <svg className="button">
-      {animatedNodes.map((node) => (
-        <>
-          <circle
-            cx={node.x}
-            cy={node.y}
-            r={node.r}
-            key={node.id}
-            stroke="black"
-            fill={"AliceBlue"}
-            pointerEvents="visiblePainted"
-            id={node.id}
-            onClick={onClick}
-          />
-        </>
-      ))}
-    </svg>
+    <div>
+      <h1>Hello</h1>
+      <svg className="button" svg width={width} height={height}>
+        {animatedNodes.map((node) => (
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r={node.r}
+              key={node.id}
+              stroke="black"
+              fill={"AliceBlue"}
+              pointerEvents="visiblePainted"
+              id={node.id}
+              onClick={(e) => {
+                setModalOpen(true);
+                console.log(e.target.id)
+              }}
+            />
+        ))}
+      </svg>
+      {modalOpen && <Modal setOpenModal={setModalOpen} />}
+    </div>
   );
 }
