@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 function ModalReact({ setOpenModal, intentName, intentFrequency, intentAssociates }) {
   return (
-    <Modal.Dialog>
+    <Modal.Dialog size="xl">
       <Modal.Header>
         <Modal.Title>Intent: {intentName}, Frequency: {intentFrequency}</Modal.Title>
       </Modal.Header>

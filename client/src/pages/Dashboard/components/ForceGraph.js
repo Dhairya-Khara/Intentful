@@ -1,8 +1,5 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
-//import Modal from "./Modal";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import ModalReact from "./ModalReact";
 
 export default function ForceGraph({ nodes, width, height }) {
@@ -51,6 +48,7 @@ export default function ForceGraph({ nodes, width, height }) {
   // });
 
   const onClick = (e) => {
+      // idString is in this format: "{intentName},{intentFrequency},{intentAssociates}"
       let idString = JSON.parse(JSON.stringify(e.target.id))
       const iN = idString.substring(0, idString.indexOf(","))
       idString = idString.substring(idString.indexOf(",") + 1)
@@ -58,16 +56,13 @@ export default function ForceGraph({ nodes, width, height }) {
       idString = idString.substring(idString.indexOf(",") + 1)
       let iA = idString
       if (iA.length == 0) {iA = "None"}
+      //intentAssociates is in this format: "{associate1},{frequency1},{associate2},{frequency2},..."
 
       setIntentName(iN)
       setIntentFrequency(iF)
       setIntentAssociates(iA)
 
-      console.log(e.target.id)
       setModalOpen(true)
-      console.log(intentName)
-      console.log(intentFrequency)
-      console.log(intentAssociates)
   }
 
   return (
