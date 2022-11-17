@@ -15,8 +15,12 @@ function ModalReact({ setOpenModal }) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary">Close</Button>
-        <Button variant="primary">Save changes</Button>
+        <Button variant="secondary" onClick={() => {
+              setOpenModal(false);
+            }}>Close</Button>
+        <Button variant="primary" onClick={() => {
+              // DIRECT US TO VOICEFLOW HERE
+            }}>Save changes</Button>
       </Modal.Footer>
     </Modal.Dialog>
   );
