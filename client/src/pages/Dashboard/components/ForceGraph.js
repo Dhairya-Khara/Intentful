@@ -1,8 +1,7 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
-import RandomColor from 'randomcolor';
 
-export default function ForceGraph({ nodes }, maxRadius) {
+export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
 
   // re-create animation every time nodes change
@@ -16,8 +15,8 @@ export default function ForceGraph({ nodes }, maxRadius) {
 
     const simulation = d3
       .forceSimulation()
-      .force("x", d3.forceX(960))
-      .force("y", d3.forceY(500))
+      .force("x", d3.forceX(width))
+      .force("y", d3.forceY(height/2))
       .force("collide", d3.forceCollide().radius(d => d.r + 1));
     // .force("collision", d3.forceCollide(/* Will take in value passed to maxRadius*/ 60));
 
@@ -56,7 +55,7 @@ export default function ForceGraph({ nodes }, maxRadius) {
           r={node.r}
           key={node.id}
           stroke="black"
-          fill={RandomColor()}
+          fill={"AliceBlue"}
           pointerEvents="visiblePainted"
           id={node.id}
           onClick={onClick}
