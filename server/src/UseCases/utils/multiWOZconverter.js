@@ -1,38 +1,41 @@
-import myJson from './dialogues_001.json' assert {type: 'json'}
-
 function convertMultiWOZDialoguetoRaw(multiWOZdialogue) {
     for (let i = 0; i < multiWOZdialogue.length; i++) { // multiWOZdialogue is an array of individual transcripts
         multiWOZdialogue[i] = convertSingleMultiWOZtoRaw(multiWOZdialogue[i])
     }
     return multiWOZdialogue
-    // transcriptProcessor(existingMap, multiWOZdialogue)
 }
 
 function convertSingleMultiWOZtoRaw(singleMultiWOZtranscript) {
     // make SingleMultiWOZtoRaw in place
     let newFormatTranscript = [];
-    for (const turn in singleMultiWOZtranscript.turns) {
-        // get new intents for message object
-        // we take speaker, turn_id, and utterance directly from the original transcript
-        let intentsArray = [];
-        for (const frame in turn.frames) { // frames is a list of frame objects, each frame is a service
-            if (frame.state.active_intent != "NONE") {
-                intentsArray.push(frame.state.active_intent);
-            }
-        }
 
+    // iterate through turns. Transcript.turns is an object, and turn is a key
+    for (const turn in singleMultiWOZtranscript.turns) {
+        // get intents from the nested data for our new message object
+        let turnObj = singleMultiWOZtranscript.turns[turn]
+        let intentsArray = getTurnIntents(turnObj);
+
+        // we take speaker, turn_id, and utterance directly from the original transcript turn
         let newMessageObject = {
-            intents: intentsArray, speaker: turn.speaker, turn_id: turn.turn_id, utterance: turn.utterance
+            intents: intentsArray, speaker: turnObj.speaker, turn_id: turnObj.turn_id, utterance: turnObj.utterance
         };
         newFormatTranscript.push(newMessageObject);
     }
     return newFormatTranscript;
-    // return list[messageObject]
-    // messageObject: 
-    // intents list[str]
-    // speaker "USER" or "SYSTEM"
-    // turn_id str of int 0,1,...
-    // utterance str
+
+
+    function getTurnIntents(turnObj) {
+        let intentsArray = [];
+        for (const frame in turnObj.frames) { // frames is a list of frame objects, each frame is a service
+            let frameObj = turnObj.frames[frame];
+            if (typeof (frameObj.state) !== "undefined" &&
+                frameObj.state.active_intent != "NONE") {
+                intentsArray.push(frameObj.state.active_intent);
+            }
+        }
+        return intentsArray;
+    }
+
 }
 
 module.exports = convertMultiWOZDialoguetoRaw
