@@ -3,15 +3,15 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 // not using any libraries for modal
 
-function ModalReact({ setOpenModal, intentName }) {
+function ModalReact({ setOpenModal, intentName, intentFrequency, intentAssociates }) {
   return (
     <Modal.Dialog>
       <Modal.Header>
-        <Modal.Title>Intent: {intentName}</Modal.Title>
+        <Modal.Title>Intent: {intentName}, Frequency: {intentFrequency}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <p>Modal body text goes here.</p>
+        <p>Intent Associates: {intentAssociates}</p>
       </Modal.Body>
 
       <Modal.Footer>

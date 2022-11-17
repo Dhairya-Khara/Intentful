@@ -56,7 +56,8 @@ export default function ForceGraph({ nodes, width, height }) {
       idString = idString.substring(idString.indexOf(",") + 1)
       const iF = idString.substring(0, idString.indexOf(","))
       idString = idString.substring(idString.indexOf(",") + 1)
-      const iA = idString
+      let iA = idString
+      if (iA.length == 0) {iA = "None"}
 
       setIntentName(iN)
       setIntentFrequency(iF)
@@ -86,7 +87,7 @@ export default function ForceGraph({ nodes, width, height }) {
             />
         ))}
       </svg>
-      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} />}
+      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} />}
     </div>
   );
 }
