@@ -8,6 +8,7 @@ import ModalReact from "./ModalReact";
 export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [intentName, setIntentName] = useState("");
 
   // re-create animation every time nodes change
   useEffect(() => {
@@ -48,9 +49,9 @@ export default function ForceGraph({ nodes, width, height }) {
   // });
 
   const onClick = (e) => {
-    setModalOpen(true)
-
-    console.log(e.target.id)
+      setModalOpen(true)
+      setIntentName(e.target.id)
+      console.log(e.target.id)
   }
 
   return (
@@ -67,14 +68,11 @@ export default function ForceGraph({ nodes, width, height }) {
               fill={"AliceBlue"}
               pointerEvents="visiblePainted"
               id={node.id}
-              onClick={(e) => {
-                setModalOpen(true);
-                console.log(e.target.id)
-              }}
+              onClick={onClick}
             />
         ))}
       </svg>
-      {modalOpen && <ModalReact setOpenModal={setModalOpen} />}
+      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} />}
     </div>
   );
 }

@@ -3,11 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 // not using any libraries for modal
 
-function ModalReact({ setOpenModal }) {
+function ModalReact({ setOpenModal, intentName }) {
   return (
     <Modal.Dialog>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal title</Modal.Title>
+      <Modal.Header>
+        <Modal.Title>Intent: {intentName}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -20,7 +20,8 @@ function ModalReact({ setOpenModal }) {
             }}>Close</Button>
         <Button variant="primary" onClick={() => {
               // DIRECT US TO VOICEFLOW HERE
-            }}>Save changes</Button>
+              // use {intentName}
+            }}>Add Intent to Voiceflow</Button>
       </Modal.Footer>
     </Modal.Dialog>
   );
