@@ -1,5 +1,6 @@
 import React from "react";
 import "./Modal.css";
+// not using any libraries for modal
 
 function Modal({ setOpenModal }) {
   return (

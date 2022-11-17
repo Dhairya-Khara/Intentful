@@ -1,10 +1,12 @@
 import * as d3 from "d3";
 import { useEffect, useState } from "react";
-import Modal from "./Modal";
+//import Modal from "./Modal";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   // re-create animation every time nodes change
   useEffect(() => {
@@ -51,7 +53,7 @@ export default function ForceGraph({ nodes, width, height }) {
   }
 
   return (
-    <div>
+    <div width="1500" height="1000">
       <h1>Hello</h1>
       <svg className="button" svg width={width} height={height}>
         {animatedNodes.map((node) => (
@@ -71,7 +73,20 @@ export default function ForceGraph({ nodes, width, height }) {
             />
         ))}
       </svg>
-      {modalOpen && <Modal setOpenModal={setModalOpen} />}
+      {modalOpen && <Modal.Dialog>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal title</Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+        <p>Modal body text goes here.</p>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button variant="secondary">Close</Button>
+        <Button variant="primary">Save changes</Button>
+      </Modal.Footer>
+    </Modal.Dialog>}
     </div>
   );
 }
