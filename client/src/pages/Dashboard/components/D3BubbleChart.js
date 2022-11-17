@@ -17,10 +17,8 @@ export default function D3BubbleChart(props) {
         }
         count++
     }
-    console.log(count)
-    console.log(maxSoFar)
+    
     let radiusMultiplier = Math.min(15, width/(maxSoFar*count))
-    console.log(radiusMultiplier)
 
     const [data, setData] = useState({})
 
