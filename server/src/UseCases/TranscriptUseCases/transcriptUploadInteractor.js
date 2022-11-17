@@ -9,7 +9,6 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
             //info[1].forEach(subInfo => {
                 //transcriptNames.push(subInfo.keys()[0])})
         })
-        console.log(transcriptNames)
     }
     catch (e) {
         throw new Error("Error in retrieving transcript names", e)
