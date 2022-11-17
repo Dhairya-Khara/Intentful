@@ -29,8 +29,10 @@ export default function D3BubbleChart(props) {
     const refreshData = () => {
         for (const intent in props.intents) {
             dataSoFar["datasets"].push({
-                id: intent,
-                r: props.intents[intent][0] * radiusMultiplier
+                id: intent + "," + props.intents[intent][0] + "," + Object.entries(props.intents[intent][1]),
+                r: props.intents[intent][0] * radiusMultiplier,
+                frequency: props.intents[intent][0],
+                associates: props.intents[intent][1]
             })
         }
         setData(dataSoFar)

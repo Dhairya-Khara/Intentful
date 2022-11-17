@@ -9,6 +9,8 @@ export default function ForceGraph({ nodes, width, height }) {
   const [animatedNodes, setAnimatedNodes] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [intentName, setIntentName] = useState("");
+  const [intentFrequency, setIntentFrequency] = useState(0);
+  const [intentAssociates, setIntentAssociates] = useState("");
 
   // re-create animation every time nodes change
   useEffect(() => {
@@ -49,14 +51,26 @@ export default function ForceGraph({ nodes, width, height }) {
   // });
 
   const onClick = (e) => {
-      setModalOpen(true)
-      setIntentName(e.target.id)
+      let idString = JSON.parse(JSON.stringify(e.target.id))
+      const iN = idString.substring(0, idString.indexOf(","))
+      idString = idString.substring(idString.indexOf(",") + 1)
+      const iF = idString.substring(0, idString.indexOf(","))
+      idString = idString.substring(idString.indexOf(",") + 1)
+      const iA = idString
+
+      setIntentName(iN)
+      setIntentFrequency(iF)
+      setIntentAssociates(iA)
+
       console.log(e.target.id)
+      setModalOpen(true)
+      console.log(intentName)
+      console.log(intentFrequency)
+      console.log(intentAssociates)
   }
 
   return (
     <div width="1500" height="1000">
-      <h1>Hello</h1>
       <svg className="button" svg width={width} height={height}>
         {animatedNodes.map((node) => (
             <circle
