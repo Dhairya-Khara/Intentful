@@ -7,6 +7,8 @@ import { persistStore } from 'redux-persist'
 import AppRouter from './AppRouter';
 import store from "./redux/configureStore"
 import "./styles/App.css"
+//  import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const persistor = persistStore(store)
 
