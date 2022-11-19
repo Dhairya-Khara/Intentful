@@ -17,7 +17,7 @@ export default function Dashboard() {
             <div>
                 <LogOut />
                 <h1>Intentful</h1>
-                <h3>By the order of Techy Blinders</h3>
+                <h3>By order of the Techy Blinders</h3>
                 <FileSystem />
             </div>
         )

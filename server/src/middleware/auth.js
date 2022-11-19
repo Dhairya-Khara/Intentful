@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const User = require('../database')
+const User = require('../Entities/UserSchema')
 
 const auth = async (req, res, next) =>{
     try{
