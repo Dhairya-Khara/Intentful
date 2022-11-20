@@ -1,3 +1,5 @@
+const myjson = require('../../__tests__/sample transcripts/transcript1.json')
+
 function processTranscript(existingProcessedMap, transcript_json_list) {
     let processedMap = new Map(existingProcessedMap)
 
@@ -20,7 +22,7 @@ function processTranscript(existingProcessedMap, transcript_json_list) {
 
                     processedMap.set(intent, [newIntentFreq, sameAssociateMap])
                 }
-                if (prevIntent !== undefined) {
+                if (prevIntent !== undefined && prevIntent !== intent) {
                     const currList = processedMap.get(prevIntent)
                     let newAssociateMap = undefined
                     if (currList[1] instanceof Map) {
@@ -46,4 +48,3 @@ function processTranscript(existingProcessedMap, transcript_json_list) {
 }
 
 module.exports = processTranscript
-
