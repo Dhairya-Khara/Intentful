@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser')
-const createUserInteractor = require('../UseCases/UserUseCases/userRegisterInteractor')
+const createUserInteractor = require('../../UseCases/UserUseCases/userRegisterInteractor')
 
 const mongoose = require("mongoose");
 const request = require("supertest");
-const app = require("../app");
+const app = require("../../app");
 
 // require("dotenv").config();
 
