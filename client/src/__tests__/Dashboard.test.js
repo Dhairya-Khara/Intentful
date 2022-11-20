@@ -1,8 +1,8 @@
+import Dashboard from '../pages/Dashboard/Dashboard'
 import { render, screen } from '@testing-library/react';
-import LandingPage from '../pages/LandingPage/LandingPage';
 
-test('renders the landing page', () => {
-  render(<LandingPage />);
+test('renders the logout button', () => {
+  render(<Dashboard />);
   
   expect(screen.getByRole("heading")).toHaveTextContent(/Intentful/);
 });
