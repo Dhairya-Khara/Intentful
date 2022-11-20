@@ -3,8 +3,6 @@ const sampleTranscript = require('../../sample transcripts/transcript1.json')
 const sampleTranscript2 = require('../../sample transcripts/transcript2.json')
 const sampleTranscript3 = require('../../sample transcripts/transcript3.json')
 
-
-
 describe('processed sample transcript', () => {
     test('has correct values for one transcript', () => {
         const processedTranscript = new Map([
