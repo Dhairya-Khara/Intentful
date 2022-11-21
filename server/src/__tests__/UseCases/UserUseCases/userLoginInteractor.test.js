@@ -14,6 +14,10 @@ describe('UserLoginInteractor test', () => {
         await mongoose.disconnect();
     });
 
+    afterEach(async () => {
+        jest.clearAllMocks();
+    });
+
     it('correctly logs into existing user and gives a token', async () => {
         const mockUser = { email: 'testing@gmail.com', password: 'solid', transcripts: [] };
         const user = new User(mockUser);
@@ -21,8 +25,6 @@ describe('UserLoginInteractor test', () => {
 
         // need to learn how to mock jwt to check for unique token value
         expect(loginUserInteractor('testing@gmail.com', 'solid')).resolves.toBeDefined();
-        const token = await loginUserInteractor('testing@gmail.com', 'solid');
-        expect(token).toBeDefined();
     });
 
     it('throws error if user does not exist', async () => {
