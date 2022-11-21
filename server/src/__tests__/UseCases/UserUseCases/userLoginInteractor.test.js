@@ -28,7 +28,7 @@ describe('UserLoginInteractor test', () => {
     });
 
     it('throws error if user does not exist', async () => {
-        expect.assertions(1);
+        expect.hasAssertions();
         try {
             await loginUserInteractor('notarealuser@gmail.com', 'solid');
         } catch (e) {
