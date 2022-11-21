@@ -16,12 +16,19 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
     }
 
     if (!transcriptNames.includes(filename)) {
+        await userSaveTranscriptAndIntents()
+    }
+
+    else {
+        throw new Error("A transcript with the same name already exists")
+    }
+
+
+    async function userSaveTranscriptAndIntents() {
         const json = JSON.parse(file)
-
         let allCurrentIntents = new Map()
-
         if (user.intents !== undefined) {
-            allCurrentIntents = new Map(Object.entries(user.intents));
+            allCurrentIntents = new Map(Object.entries(user.intents))
         }
 
         //single transcript processing
@@ -30,35 +37,35 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
         //multiple transcript processing
         allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [json])
 
-        // add transcript to user
-        try {
-            const obj = {}
-            obj[filename] = file
-            obj["intents"] = intentsForThisFile
-            user.transcripts = user.transcripts.concat(obj)
-            // await user.save()        See comments at bottom re: only one save
-        }
-        catch (e) {
-            throw new Error("Error in saving transcripts", e)
-        }
-
-        // add intents to user
-        try {
-            user.intents = allCurrentIntents
-            // await user.save()
-        }
-        catch (e) {
-            throw new Error("Error in saving intents", e)
-        }
+        addTranscriptToUser()
+        addIntentsToUser()
         // just do one save: it will be obvious through the thrown errors if 
         // there is an error in saving transcripts or intents
         await user.save()
-    }
 
-    else {
-        throw new Error("A transcript with the same name already exists")
-    }
+        function addIntentsToUser() {
+            try {
+                user.intents = allCurrentIntents
+                // await user.save()
+            }
+            catch (e) {
+                throw new Error("Error in saving intents", e)
+            }
+        }
 
+        function addTranscriptToUser() {
+            try {
+                const obj = {}
+                obj[filename] = file
+                obj["intents"] = intentsForThisFile
+                user.transcripts = user.transcripts.concat(obj)
+                // await user.save()        See comments at bottom re: only one save
+            }
+            catch (e) {
+                throw new Error("Error in saving transcripts", e)
+            }
+        }
+    }
 }
 
 module.exports = uploadTranscriptInteractor
