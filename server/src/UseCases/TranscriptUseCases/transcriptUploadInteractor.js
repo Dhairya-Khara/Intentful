@@ -41,7 +41,12 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
         addIntentsToUser()
         // just do one save: it will be obvious through the thrown errors if 
         // there is an error in saving transcripts or intents
-        await user.save()
+        try {
+            await user.save()
+        }
+        catch (e) {
+            throw new Error("Error in saving intents", e)
+        }
 
         function addIntentsToUser() {
             try {
