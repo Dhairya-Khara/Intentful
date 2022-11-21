@@ -17,7 +17,8 @@ export default function D3BubbleChart(props) {
         }
         count++
     }
-    let radiusMultiplier = Math.min(10, width/(maxSoFar*count))
+
+    let radiusMultiplier = Math.min(15, width/(maxSoFar*count))
 
     const [data, setData] = useState({})
 
@@ -26,8 +27,10 @@ export default function D3BubbleChart(props) {
     const refreshData = () => {
         for (const intent in props.intents) {
             dataSoFar["datasets"].push({
-                id: intent,
-                r: props.intents[intent][0] * radiusMultiplier
+                id: intent + "," + props.intents[intent][0] + "," + Object.entries(props.intents[intent][1]),
+                r: props.intents[intent][0] * radiusMultiplier,
+                frequency: props.intents[intent][0],
+                associates: props.intents[intent][1]
             })
         }
         setData(dataSoFar)
@@ -45,11 +48,7 @@ export default function D3BubbleChart(props) {
     }
     else {
         return (
-            <div width="1500" height="1000">
-                <svg width={width} height={height}>
-                    <ForceGraph nodes={data.datasets}  width={width} height={height}/>
-                </svg>
-            </div>)
+                <ForceGraph nodes={data.datasets}  width={width} height={height}/>)
 
 
     }

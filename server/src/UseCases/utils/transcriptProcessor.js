@@ -18,10 +18,23 @@ function processSingleTranscript(transcript_json, processedMap) {
         for (const intent of message.intents) {
             updateCurrIntentInProcessedMap(intent);
 
-            if (prevIntent !== undefined) {
+            if (prevIntent !== undefined && prevIntent !== intent) {
                 updatePrevIntentInProcessedMap(intent);
             }
             prevIntent = intent;
+        }
+    }
+
+    function updateCurrIntentInProcessedMap(intent) {
+        if (!processedMap.has(intent)) { // add intent to processedMap
+            processedMap.set(intent, [1, new Map()]);
+        }
+        else { // update existing intent frequency and its associates in the map
+            const currList = processedMap.get(intent);
+            const newIntentFreq = currList[0] + 1;
+            const sameAssociateMap = currList[1];
+
+            processedMap.set(intent, [newIntentFreq, sameAssociateMap]);
         }
     }
 
@@ -43,19 +56,6 @@ function processSingleTranscript(transcript_json, processedMap) {
         }
         currList[1] = newAssociateMap;
     }
-
-    function updateCurrIntentInProcessedMap(intent) {
-        if (!processedMap.has(intent)) { // add intent to processedMap
-            processedMap.set(intent, [1, new Map()]);
-        }
-        else { // update existing intent frequency and its associates in the map
-            const currList = processedMap.get(intent);
-            const newIntentFreq = currList[0] + 1;
-            const sameAssociateMap = currList[1];
-
-            processedMap.set(intent, [newIntentFreq, sameAssociateMap]);
-        }
-    }
 }
 
-module.exports = processTranscriptList
+module.exports = processTranscript
