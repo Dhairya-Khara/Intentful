@@ -6,11 +6,16 @@ const createUserInteractor = require('../UseCases/UserUseCases/userRegisterInter
 
 const jsonParser = bodyParser.json()
 
-router.post('/createUser', jsonParser, async(req, res)=>{
+router.post('/createUser', jsonParser, async (req, res) => {
     const email = req.body.email
     const password = req.body.password
-    const user = await createUserInteractor(email, password)
-    res.send(user)
+    try {
+        const user = await createUserInteractor(email, password)
+        res.send(user)
+    }
+    catch (e) {
+        res.send("Unable to register.")
+    }
 })
 
 module.exports = router

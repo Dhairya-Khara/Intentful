@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const auth = require('../Middleware/auth')
-const getOneTranscriptIntentsInteractor = require('../UseCases/GetUseCases/getOneTranscriptIntents')
+const getOneTranscriptIntentsInteractor = require('../UseCases/GetUseCases/getOneTranscriptIntentsInteractor')
 
 router.get('/getOneTranscriptIntents', auth, async (req, res) => {
     const user = req.user
