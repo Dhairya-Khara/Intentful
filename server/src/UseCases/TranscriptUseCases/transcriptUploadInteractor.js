@@ -7,8 +7,6 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
     try {
         existingTranscriptInfo.forEach(info => {
             transcriptNames.push(Object.entries(info[1])[0][0])
-            //info[1].forEach(subInfo => {
-            //transcriptNames.push(subInfo.keys()[0])})
         })
     }
     catch (e) {

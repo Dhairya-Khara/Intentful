@@ -44,7 +44,6 @@ describe('transcriptUploadInteractor test', () => {
         const sampleTranscriptJSON = JSON.stringify(sampleTranscript);
         const sampleTranscriptFilename = 'transcript1.json'
         await expect(uploadTranscriptInteractor(user, sampleTranscriptJSON, sampleTranscriptFilename)).resolves;
-        // await expect(uploadTranscriptInteractor(user, sampleTranscriptJSON, sampleTranscriptFilename)).rejects;
         return uploadTranscriptInteractor(user,
             sampleTranscriptJSON, sampleTranscriptFilename).catch(e =>
                 expect(String(e)).toMatch("A transcript with the same name already exists"));

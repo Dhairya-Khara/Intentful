@@ -12,11 +12,4 @@ describe('getTranscriptsInteractor test', () => {
         const transcriptName = 'transcript3.json'
         expect(getOneTranscriptIntentsInteractor(user, transcriptName)).toBe("No intents");
     });
-
-    // it correctly returns a user's transcript's intents
-    // it('correctly returns an error when the User is not a valid user', async () => {
-    //     const invalidUser = {};
-    //     const errorMessage = 'user not a valid User model or user does not have transcripts property';
-    //     expect(getTranscriptsInteractor(invalidUser)).toEqual(errorMessage);
-    // });
 });
