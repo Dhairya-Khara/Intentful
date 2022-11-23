@@ -5,7 +5,7 @@ import Footer from './../Sitewide/Footer'
 import LoginForm from './LoginForm.js'
 import LandingBody from './LandingBody'
 
-export default function LandingPage() {
+export default function About() {
         const [isShowLogin, setIsShowLogin] = useState(true);
 
   const handleLoginClick = () => {
@@ -16,7 +16,12 @@ export default function LandingPage() {
     <div className="LandingPage">
       <Header handleLoginClick={handleLoginClick} />
       <LoginForm isShowLogin={isShowLogin} />
-      <LandingBody />
+      <div>
+
+      </div>
+      <div>
+        
+      </div>
       <Footer />
     </div>
   );
