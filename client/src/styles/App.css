@@ -483,4 +483,176 @@ html {
 .centered {
   vertical-align: auto;
   margin: auto;
+  text-align: center;
+}
+
+.dev-bios {
+  background-color: var(--dark-bg-color);
+  color: #fff;
+}
+
+.dev-bios h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dev-bios .accent {
+  border: 0px solid var(--accent-color);
+  padding: 5px 0 6px 0;
+}
+.dev-bios .accent.left {
+  border-left-width: 10px;
+  padding-left: 10px;
+}
+.dev-bios .accent.right {
+  border-right-width: 10px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.dev-bios a {
+  text-decoration: none;
+}
+
+.dev-bios .row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.dev-bios .card {
+  width: 80%;
+  max-width: 280px;
+  min-width: 250px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: .75em;
+  margin: 1rem;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #000;
+}
+
+.dev-bios .card:hover {
+  transform: scale(1.04);
+  transition: all 0.5s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.dev-bios .member-img {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: double 4px transparent;
+  background-image: linear-gradient(white, white),
+  	linear-gradient(90deg, #833ab4, darkblue, blue, aqua);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.dev-bios .member-name, .member-position {
+  text-align: center;
+}
+
+.dev-bios .member-position {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: small;
+  flex-wrap: wrap;
+}
+
+.dev-bios .member-name {
+  padding-top: 1.2vh;
+}
+
+.dev-bios .member-position div {
+  padding-inline: 0.15em;
+  margin-inline-end: 0.5em;
+  margin-top: 0.5vh;
+  border-radius: 5px;
+  background-color: rgba(4, 0, 255, 0.35);
+  color: rgba(4, 0, 255, 1);
+  white-space: nowrap;
+}
+
+
+.dev-bios .socials {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0 auto;
+  margin-top: 0.75em;
+  padding: 0;
+  width: 30px;
+}
+
+.dev-bios .social-wrapper .button {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin: 0 5px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.dev-bios .social-wrapper .button:hover {
+  width: 140px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dev-bios .social-wrapper .button .social-icon {
+  display: inline-block;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  line-height: 30px;
+  transition: all 0.3s ease-out;
+}
+
+.dev-bios .social-wrapper .button1:hover .social-icon {
+  background: #5865f2;
+}
+
+.dev-bios .social-wrapper .button2:hover .social-icon {
+  background: #333;
+}
+
+.dev-bios .social-wrapper .button3:hover .social-icon {
+  background: #0072b1;
+}
+
+.dev-bios .social-wrapper .button .social-icon i {
+  font-size: 18px;
+  line-height: 30px;
+  color: black;
+}
+
+.dev-bios .social-wrapper .button:hover .social-icon i {
+  font-size: 18px;
+  line-height: 30px;
+  color: #fff;
+}
+.dev-bios .social-wrapper .button span {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  margin-left: 5px;
+}
+
+.dev-bios .social-wrapper .button1 span {
+  color: #5865f2;
+}
+.dev-bios .social-wrapper .button2 span {
+  color: #333;
+}
+.dev-bios .social-wrapper .button3 span {
+  color: #0072b1;
 }
