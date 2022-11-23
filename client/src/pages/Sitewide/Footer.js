@@ -1,7 +1,5 @@
 import React from 'react'
 import Intentful from './../Images/Intentful.png'
-
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
@@ -15,13 +13,6 @@ export default function Footer() {
     return (
         <div className='nav foot page'>
             <img src={Intentful} className = "fifteenpercent" alt="Techy Blinders Logo"  onClick={onClickImg}></img>
-=======
-export default function Footer() {
-
-    return (
-        <div>
-            <img src={Intentful} alt="Techy Blinders Logo"></img>
->>>>>>> 6070123 (Finalized UI)
             <div className="footer-text">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
             © The Techy Blinders, Inc. 2022. All rights reserved. Use of
             this site constitutes acceptance of our User Agreement and

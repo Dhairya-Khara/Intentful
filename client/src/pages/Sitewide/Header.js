@@ -3,13 +3,8 @@ import TechyBlinders from './../Images/TechyBlinders.png'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
-
-<<<<<<< HEAD
-=======
 import {setAuth} from '../../redux/authReducer'
 
-
->>>>>>> 6070123 (Finalized UI)
 export default function Header() {
 
     const [email, setEmail] = useState('')
@@ -18,17 +13,12 @@ export default function Header() {
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-<<<<<<< HEAD
     const onClickImg = (e) =>{
         navigate("/")
     }
     
     const onClickLogin = (e) =>{
         navigate("/login")
-=======
-    const onClickLogin = (e) =>{
-        navigate("/features")
->>>>>>> 6070123 (Finalized UI)
     }
 
     const onClickAbout = (e) =>{
@@ -36,7 +26,6 @@ export default function Header() {
     }
 
     const onClickFeatures = (e) =>{
-<<<<<<< HEAD
         document.getElementById('feature').scrollIntoView();
     }
 
@@ -51,18 +40,6 @@ export default function Header() {
                 <button className = "navbtn" onClick={onClickLogin}>Log in</button>
                 <button className = "navbtn" onClick={onClickLogin}>Register</button>
             </div>
-=======
-        navigate("/features")
-    }
-
-    return (
-        <div>
-            <img src={TechyBlinders} alt="Intentful"></img>
-            <div className="link">Features</div>
-            <div className="link">About the Team</div>
-            <button>Log in</button>
-            <button>Register</button>
->>>>>>> 6070123 (Finalized UI)
         </div>
     )
 }
