@@ -14,7 +14,7 @@ export default function Dashboard() {
     const auth = useSelector((state) => state.auth.authenticated)
     if (auth) {
         return (
-            <div>
+            <div className='Dashboard page'>
                 <LogOut />
                 <h1>Intentful</h1>
                 <h3>By order of the Techy Blinders</h3>
