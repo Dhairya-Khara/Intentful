@@ -29,7 +29,7 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div className='Login'>
             <form onSubmit={onFormSubmit}>
                 <div className="input">
                     <input type="text" id="register-email-input" className="input-text" placeholder="Your email, e.g. Admin@TechyBlinders.com" 
