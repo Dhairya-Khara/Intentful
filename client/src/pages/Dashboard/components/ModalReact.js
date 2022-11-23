@@ -27,7 +27,6 @@ function ModalReact({ setOpenModal, intentName, intentFrequency, intentAssociate
           setOpenModal(false);
         }}>Close</Button>
         <Button variant="primary" onClick={() => {
-          // use {intentName}
           addBlock(documentID, email, password, intentName)
           alert('Block has been created with intent ' + intentName)
         }}>Add Intent to Voiceflow</Button>
