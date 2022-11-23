@@ -7,7 +7,6 @@ const addBlock = async (diagramID, email, password, intent) => {
 
     const id1 = uniqid()
     const id2 = uniqid()
-    console.log(id1)
     const blocks = [
         {
             "nodeID": id1,
