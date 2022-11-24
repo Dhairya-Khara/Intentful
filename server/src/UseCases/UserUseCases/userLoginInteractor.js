@@ -1,3 +1,6 @@
+const User = require('../../Entities/UserSchema')
+const jwt = require('jsonwebtoken')
+
 /**
  * Checks if email and password combination exists in the database,
  * and if it does, logs the user in.
@@ -5,10 +8,6 @@
  * @param {String} email - The email given by the user
  * @param {String} password - The password chosen by the user
  */
-
-const User = require('../../Entities/UserSchema')
-const jwt = require('jsonwebtoken')
-
 const loginUserInteractor = async (email, password) =>{
     const user = await User.findOne({email, password})
     if(!user){
