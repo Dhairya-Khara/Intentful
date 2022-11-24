@@ -66,7 +66,7 @@ export default function ForceGraph({ nodes, width, height }) {
   }
 
   return (
-    <div width="1500" height="1000">
+    <div width="50vw" height="80vh">
       {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} />}
       <svg className="button" svg width={width} height={height}>
         {animatedNodes.map((node) => (
