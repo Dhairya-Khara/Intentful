@@ -5,20 +5,19 @@ import LogOut from './components/Logout'
 // import BubbleChart from './components/BubbleChart'
 import D3BubbleChart from './components/D3BubbleChart'
 
-import Logout from './components/Logout'
+import LogoutHeader from './components/LogoutHeader'
 import BubbleChart from './components/BubbleChart'
 import FileSystem from './components/FileSystem'
-
+import Footer from './../Sitewide/Footer'
 
 export default function Dashboard() {
     const auth = useSelector((state) => state.auth.authenticated)
     if (auth) {
         return (
             <div className='Dashboard page'>
-                <LogOut />
-                <h1>Intentful</h1>
-                <h3>By order of the Techy Blinders</h3>
+                <LogoutHeader />
                 <FileSystem />
+                <Footer></Footer>
             </div>
         )
     }
