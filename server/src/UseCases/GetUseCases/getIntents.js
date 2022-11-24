@@ -1,6 +1,6 @@
 /**
  * Returns the intents of the user
- * @constructor
+ * @interactor
  * @param {mongoose.Schema} user - The authorized user of the website
  */
 const getIntentsInteractor = (user) =>{
