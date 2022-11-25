@@ -67,7 +67,7 @@ export default function FileSystem() {
   return (
     <div className="dashboard">
       <div className="transcript-management">
-        <h2  id="tm">Transcript Management</h2>
+        <h2 id="tm">Transcript Management</h2>
         <form className="app" onSubmit={onSubmit}>
           <input
             type="file"
@@ -80,6 +80,7 @@ export default function FileSystem() {
         <button onClick={visualizeData}>Visualize All</button>
 
         <h2>Uploaded Transcripts</h2>
+        <div className="transcriptContainer">
           {files === undefined ? (
             <p className="inactive">No Transcripts have been uploaded</p>
           ) : (
@@ -87,6 +88,7 @@ export default function FileSystem() {
               <File key={file} name={file} setBubbleChart={setBubbleChart} />
             ))
           )}
+        </div>
       </div>
       <div className="bubbles">
         {bubbleChart.show ? (

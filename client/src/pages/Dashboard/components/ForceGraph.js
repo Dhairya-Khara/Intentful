@@ -67,7 +67,6 @@ export default function ForceGraph({ nodes, width, height }) {
 
   return (
     <div width="50vw" height="80vh">
-      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} />}
       <svg className="button" svg width={width} height={height}>
         {animatedNodes.map((node) => (
             <circle
@@ -83,7 +82,7 @@ export default function ForceGraph({ nodes, width, height }) {
             />
         ))}
       </svg>
-      
+      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} />}
     </div>
   );
 }
