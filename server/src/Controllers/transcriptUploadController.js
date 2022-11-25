@@ -10,13 +10,12 @@ router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) =
     const file = req.file.buffer
     const filename = req.file.originalname
     try {
-        uploadTranscriptInteractor(user, file, filename)
+        await uploadTranscriptInteractor(user, file, filename)
+        res.sendStatus(200)
     }
     catch(e){
-        res.sendStatus(500)
-        console.log(e)
+        res.sendStatus("422")
     }
-    res.sendStatus(200)
 })
 
 module.exports = router
