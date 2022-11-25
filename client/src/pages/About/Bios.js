@@ -2,7 +2,7 @@ import { GitHub, Instagram, LinkedIn, Roles, Website } from "./Socials";
 import KrishnaPic from "./../Images/KrishnaPic.jpeg";
 import DhairyaPic from "./../Images/DhairyaPic.jpeg";
 import ChenikaPic from "./../Images/ChenikaPic.jpeg";
-import BerkePic from "./../Images/Berke.jpeg";
+import BerkePic from "./../Images/BerkePic.jpg";
 import AidanPic from "./../Images/AidanPic.jpeg";
 
 function Bio(props) {
