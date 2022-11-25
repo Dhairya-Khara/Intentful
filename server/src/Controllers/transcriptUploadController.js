@@ -14,7 +14,7 @@ router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) =
         res.sendStatus(200)
     }
     catch(e){
-        res.sendStatus("422")
+        res.sendStatus(422)
     }
 })
 
