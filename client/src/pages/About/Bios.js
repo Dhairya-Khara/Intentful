@@ -20,45 +20,47 @@ function Execs() {
   return (
     <div className="row">
       <Bio
-        name="Dhairya Khara"
-        pic={DhairyaPic}
-        positions={[Roles.founder, Roles.chiefExec, Roles.teamLead]}
+        name="Berke Altiparmak"
+        pic={BerkePic}
+        positions={[Roles.backend]}
       >
-        <Website>https://abyx.dev</Website>
-        <GitHub>DhairyaKhara</GitHub>
-        <LinkedIn>https://linkedin.com/in/tyler-jon-wong</LinkedIn>
+        <GitHub>BerkeAltiparmak</GitHub>
+        <LinkedIn>https://www.linkedin.com/in/berke-altiparmak/</LinkedIn>
+      </Bio>
+      <Bio name="Chenika Bukes" 
+           pic={ChenikaPic} 
+           positions={[Roles.backend, Roles.frontend]}>
+        
+        <GitHub>chenikabukes</GitHub>
+        <LinkedIn>
+        https://www.linkedin.com/in/chenika-bukes-754398245/
+        </LinkedIn>
       </Bio>
       <Bio
         name="Krishna Cheemalapati"
         pic={KrishnaPic}
-        positions={[Roles.teamLead, Roles.frontend, Roles.backend]}
+        positions={[Roles.frontend, Roles.designer]}
       >
         <Website>https://krishnacheemalapati.github.io</Website>
         <GitHub>krishnacheemalapati</GitHub>
         <LinkedIn>https://linkedin.com/in/krishnacheemalapati</LinkedIn>
       </Bio>
       <Bio
-        name="Berke Altiparmak"
-        pic={BerkePic}
-        positions={[Roles.founder, Roles.vp]}
+        name="Dhairya Khara"
+        pic={DhairyaPic}
+        positions={[Roles.teamLead, Roles.backend]}
       >
-        <Website>https://shreyanshnair.wixsite.com/portfolio</Website>
-        <GitHub>Berke</GitHub>
-        <LinkedIn>https://linkedin.com/in/shreyansh-nair</LinkedIn>
+        <Website>https://dhairya-khara.github.io/personal-website/</Website>
+        <GitHub>DhairyaKhara</GitHub>
+        <LinkedIn>https://www.linkedin.com/in/dhairya-khara/</LinkedIn>
       </Bio>
       <Bio
         name="Aidan Li"
         pic={AidanPic}
-        positions={[Roles.treasurer, Roles.teamLead, Roles.frontend]}
+        positions={[Roles.backend]}
       >
-        <GitHub>Niwri</GitHub>
-        <LinkedIn>https://linkedin.com/in/irwin-ngo-9b306980</LinkedIn>
-      </Bio>
-      <Bio name="Chenika Bukes" pic={ChenikaPic} positions={[Roles.secretary]}>
-        <LinkedIn>
-          https://linkedin.com/in/khondoker-intiser-alam-aa4417229
-        </LinkedIn>
-        <Instagram>khondokerintiser</Instagram>
+        <GitHub>aidanmrli</GitHub>
+        <LinkedIn>https://www.linkedin.com/in/aidan-li/</LinkedIn>
       </Bio>
     </div>
   );
