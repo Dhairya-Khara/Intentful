@@ -29,7 +29,8 @@ export default function Login() {
     }
 
     return (
-        <div className='Login'>
+        <div className='Login' id="Login">
+            <h2>Login</h2>
             <form onSubmit={onFormSubmit}>
                 <div className="input">
                     <input type="text" id="register-email-input" className="input-text" placeholder="Your email, e.g. Admin@TechyBlinders.com" 

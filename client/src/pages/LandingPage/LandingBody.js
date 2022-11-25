@@ -10,7 +10,7 @@ import fakeFeature from "./../Images/fakeFeature.PNG";
 export default function LandingBody() {
   return (
     <div>
-      <div>
+      <div className="HeroSection">
         <img className="Mainimg" src={fakeMain} alt="Main Feature Gif"></img>
         {/* Replace with <img src={mainImg} alt="Main Feature Gif"></img> */}
         <div className="join">

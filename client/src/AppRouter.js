@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import LandingPage from './pages/LandingPage/LandingPage'
 import LoginPage from './pages/Login/LoginPage'
 import About from './pages/About/About'
+import Privacy from './pages/Privacy/Privacy'
 
 
 class AppRouter extends React.Component{
@@ -17,6 +18,7 @@ class AppRouter extends React.Component{
             <Route path = "/dashboard" element = {<Dashboard />} exact = {true} />
             <Route path = "/login" element = {<LoginPage />} exact = {true} />
             <Route path = "/about" element = {<About />} exact = {true} />
+            <Route path = "/privacy" element = {<Privacy />} exact = {true} />
           </Routes>
         </div>
       </BrowserRouter>

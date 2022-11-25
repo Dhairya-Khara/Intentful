@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import TechyBlinders from './../../Images/TechyBlinders.png'
+import Intentful from './../../Images/Intentful2.png'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import LogOut from './Logout'
@@ -15,7 +15,7 @@ export default function LogoutHeader() {
     return (
         <div className='flex page'>
             <div className = "nav left">
-                <img className = "tenpercent" src={TechyBlinders} alt="Intentful" onClick={onClickImg}></img>
+                <img className = "tenpercent" src={Intentful} alt="Intentful" onClick={onClickImg}></img>
             </div>
             <div className='nav'>
                 <LogOut></LogOut>

@@ -11,7 +11,6 @@ const LoginForm = ({ isShowLogin }) => {
         <div>
             <center className = "gradient-wrapper">
                 <Register />
-                <br></br>
                 <Login />
             </center>
         </div>

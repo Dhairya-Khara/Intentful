@@ -14,7 +14,7 @@ body {
   /* generic */
   --gutterSm: 0.2rem;
   --gutterMd: 0.4rem;
-  --gutterLg: 0.8rem;
+  --gutterLg: 1.2rem;
   --gutterXl: 1.2rem;
   --gutterXx: 3.2rem;
   --colorPrimary400: #7e57c2;
@@ -23,7 +23,7 @@ body {
   --fontFamily: "Dosis", sans-serif;
   --fontSizeSm: 0.6rem;
   --fontSizeMd: 0.8rem;
-  --fontSizeLg: 1.1rem;
+  --fontSizeLg: 1.7vw;
   --fontSizeXl: 1.4rem;
   --fontSizeXx: 1.8rem;
   --lineHeightSm: 0.5;
@@ -62,6 +62,7 @@ h1 {
 
 h2 {
   padding-bottom: 2%;
+  font-size: 2.3vw;
 }
 
 h3 {
@@ -94,6 +95,7 @@ input {
   position: relative;
   width: 60%;
   margin-bottom: 1%;
+  margin-top: 1%;
 }
 
 .input-text {
@@ -247,10 +249,12 @@ button:hover::after {
 }
 
 .gradient-wrapper {
+  display: flex;
+  flex-direction: row;
   border: none;
   position: relative;
   padding: 3vh !important;
-  font-size: 14px;
+  padding-top: 0vh !important;
   color: rgba(255, 255, 255, 0.8);
   /* background: #c859ff; */
   background: -webkit-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
@@ -288,7 +292,9 @@ button:hover::after {
   box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
   width: 35%;
   border-radius: 2vh;
-  margin-left: 0;
+  overflow: auto;
+  min-height: 68vh;
+  max-height: 68vh;
 }
 
 .dashboard {
@@ -418,7 +424,7 @@ body {
 
 .create-text {
   font-size: 2.1vw;
-  padding-bottom: 5vh;
+  padding-bottom: 2.1vh;
   padding-left: 4vw;
 }
 
@@ -669,6 +675,54 @@ html {
 }
 
 label {
-  width: 5vw;
   box-sizing: border-box;
+}
+
+.PrivacyPage {
+  max-width: 70%;
+  margin: auto;
+}
+
+.HeroSection {
+  height: 90vh;
+}
+
+.para-text {
+  font-size: 1.8vw;
+  text-align: left;
+  margin-left: 0;
+  width: auto;
+}
+
+#Login:after {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  width: 0.25vh;
+  height: 90%;
+  top: 1.5vh;
+  left: 49.75%;
+  display: block;
+  background-image: -webkit-gradient(linear, left, right, from(rgba(255, 255, 255,1)), to(rgba(255, 255, 255, 0)), color-stop(.5,#333333))
+}
+
+#Login, #Register{
+  min-width: 50%;
+}
+
+#loginHead{
+  margin-top: 0vh;
+}
+
+.Dashboard.page {
+  min-height: 98vh;
+}
+
+.transcriptContainer{
+  overflow-y: scroll;
+  max-height: 19vh;
+}
+
+#tm{
+  margin-top: 0vh !important;
 }
