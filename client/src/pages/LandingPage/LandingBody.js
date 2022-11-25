@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import fakeMain from "./../Images/fakeMain.PNG";
 import fakeFeature from "./../Images/fakeFeature.PNG";
 // The above imports should be replace with the ones below
@@ -8,6 +9,11 @@ import fakeFeature from "./../Images/fakeFeature.PNG";
 // import vfImg from "./../Images/vf.png"
 
 export default function LandingBody() {
+  const navigate = useNavigate();
+    
+    const onClickLogin = (e) =>{
+        navigate("/login")
+    }
   return (
     <div>
       <div className="HeroSection">
@@ -69,10 +75,10 @@ export default function LandingBody() {
             </div>
             <div className = "buttons">
               <div className="registerbtn">
-                <div className="register-button newbtn" role="button">Join Today</div>
+                <div className="register-button newbtni" role="button" onClick={onClickLogin}>Join Today</div>
               </div>
               <div className="loginbtn">
-                <div className="login-button newbtni" role="button">Login</div>
+                <div className="login-button newbtn" role="button" onClick={onClickLogin}>Login</div>
               </div>
             </div>
           </div>

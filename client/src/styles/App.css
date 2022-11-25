@@ -817,3 +817,8 @@ label {
   box-shadow: none;
   transform: translateY(0);
 }
+
+.link{
+  color: var(--blue);
+  cursor: pointer;
+}

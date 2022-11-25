@@ -26,6 +26,7 @@ export default function Header() {
     }
 
     const onClickFeatures = (e) =>{
+        navigate("/");
         document.getElementById('feature').scrollIntoView();
     }
 
@@ -33,12 +34,12 @@ export default function Header() {
         <div className='flex page'>
             <div className = "nav left">
                 <img className = "tenpercent" src={TechyBlinders} alt="Intentful" onClick={onClickImg}></img>
-                <div href="#feature"  onClick={onClickFeatures}>Features</div>
-                <div className="link" onClick={onClickAbout}>About the Team</div>
+                <div className = "link" href="#feature"  onClick={onClickFeatures} role="button">Features</div>
+                <div className="link" onClick={onClickAbout} role="button">About the Team</div>
             </div>
             <div className = "nav">
-                <button className = "navbtn" onClick={onClickLogin}>Log in</button>
-                <button className = "navbtn" onClick={onClickLogin}>Register</button>
+                <butto className = "newbtn" onClick={onClickLogin}>Log in</butto>
+                <butto className = "newbtni" onClick={onClickLogin}>Register</butto>
             </div>
         </div>
     )
