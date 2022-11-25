@@ -23,7 +23,7 @@ export default function LandingBody() {
           <div className="main-text">
             The easiest way to make chatbots <strong>quickly.</strong>
           </div>
-          <button className="join-button">Join Today</button>
+          <buttonp className="join-button" onClick={onClickLogin}>Join Today</buttonp>
         </div>
       </div>
       <div className="LandingPage page">

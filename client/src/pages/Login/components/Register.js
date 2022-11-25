@@ -61,7 +61,7 @@ class Register extends React.Component {
                         <label htmlFor="login-password-input" className="input-label">Password</label>
                     </div>
                     <br></br>
-                    <butto className="newbtni reg">Register</butto>
+                    <button className="newbtni reg">Register</button>
                 </form>
             </div>
         )
