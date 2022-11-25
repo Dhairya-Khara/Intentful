@@ -15,10 +15,10 @@ export default function LoginPage() {
   return (
     <div className="LoginPage page">
       <Header handleLoginClick={handleLoginClick} />
-      <h1 id="loginHead">Ready to take an Intenful test drive?</h1>
+      <h1 id="loginHead">Ready to take an Intentful test drive?</h1>
       <div className="create-text centered">
-        You're just one click away from unlocking the full potential <br></br>
-        of VoiceFlow for your company.
+        You're just two clicks away from unlocking <br></br>
+        the full potential of VoiceFlow for your company.
       </div>
       <LoginForm isShowLogin={isShowLogin} />
       <Footer />

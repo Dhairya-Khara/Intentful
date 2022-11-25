@@ -256,8 +256,7 @@ button:hover::after {
   padding: 3vh !important;
   padding-top: 0vh !important;
   color: rgba(255, 255, 255, 0.8);
-  /* background: #c859ff; */
-  background: -webkit-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+  background: linear-gradient(90deg, var(--blue) 0%, rgba(24,160,251,1) 50%, var(--blue) 100%);
   /* background: linear-gradient(45deg, #c859ff 0%, #ffab8c 100%); */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c859ff', endColorstr='#ffab8c', GradientType=1);
   /* -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); */
@@ -821,4 +820,9 @@ label {
 .link{
   color: var(--blue);
   cursor: pointer;
+}
+
+.newbtni.log, .newbtni.reg{
+  max-width: 10vw;
+  border-color: white;
 }

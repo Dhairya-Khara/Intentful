@@ -44,7 +44,7 @@ export default function Login() {
                     <label htmlFor="register-password-input" className="input-label">Password</label>
                 </div>
                 <br></br>
-                <button>Login</button>
+                <butto className="newbtni log">Login</butto>
             </form>
         </div>
     )
