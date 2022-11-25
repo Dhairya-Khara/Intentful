@@ -69,10 +69,10 @@ export default function LandingBody() {
             </div>
             <div className = "buttons">
               <div className="registerbtn">
-                <div className="register-button">Join Today</div>
+                <div className="register-button newbtn" role="button">Join Today</div>
               </div>
               <div className="loginbtn">
-                <div className="login-button">Login</div>
+                <div className="login-button newbtni" role="button">Login</div>
               </div>
             </div>
           </div>

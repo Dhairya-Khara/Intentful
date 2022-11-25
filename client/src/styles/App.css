@@ -12,6 +12,7 @@ body {
 
 :root {
   /* generic */
+  --blue: #18A0FB;
   --gutterSm: 0.2rem;
   --gutterMd: 0.4rem;
   --gutterLg: 1.2rem;
@@ -76,7 +77,6 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background: #577EC2;
 }
 
 input {
@@ -431,9 +431,10 @@ body {
 .para {
   display: flex;
   flex-direction: row;
-  width: 90vw;
-  margin: auto;
+  width: 100vw;
+  margin-left: -2vw;
   vertical-align: auto;
+  padding-left: 2vw;
 }
 
 .para-img {
@@ -452,17 +453,27 @@ body {
 }
 
 .para.right, .para.left{
-  padding-bottom: 10vh;
+  padding-bottom: 5vh;
+  padding-top: 5vh;
+  padding-right: 3vw;
+}
+
+.para.left{
+  background-color: #eee;
 }
 
 .final-join {
   font-size: 2.1vw;
   display: flex;
   flex-direction: row;
-  width: 88vw;
-  margin: auto;
+  width: 100vw;
   justify-content: space-between;
   vertical-align: auto;
+  padding-left: 5vw;
+  margin-left: -2vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  background-color: #eee;
 }
 
 .buttons {
@@ -725,4 +736,84 @@ label {
 
 #tm{
   margin-top: 0vh !important;
+}
+
+#feature{
+  font-size: 3vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  padding-left: 2.6vw;
+  padding-right: 3vw;
+}
+
+.newbtn {
+  appearance: none;
+  background-color: transparent;
+  border: 0.5vh solid var(--blue);
+  border-radius: 2.5vh;
+  box-sizing: border-box;
+  color: var(--blue);
+  cursor: pointer;
+  display: inline-block;
+  padding: 1vh 2vh;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.newbtn:disabled {
+  pointer-events: none;
+}
+
+.newbtn:hover {
+  color: #fff;
+  background-color: var(--blue);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.newbtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.newbtni {
+  appearance: none;
+  background-color: var(--blue);
+  border: 0.5vh solid var(--blue);
+  border-radius: 2.5vh;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1vh 2vh;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.newbtni:disabled {
+  pointer-events: none;
+}
+
+.newbtni:hover {
+  color: var(--blue);
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.newbtni:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
