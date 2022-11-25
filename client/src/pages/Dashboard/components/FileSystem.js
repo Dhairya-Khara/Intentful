@@ -35,7 +35,7 @@ export default function FileSystem() {
             }
             setFiles(dataSoFar)
         }).catch((error) => {
-            alert(error)
+            alert("Error getting transcripts")
         })
 
     }
@@ -46,10 +46,10 @@ export default function FileSystem() {
         data.append('file', selectedFile, selectedFile.name)
         axios.post("http://localhost:8080/uploadTranscript", data, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
             setFileUploadStatus("File " + selectedFile.name + " has been upload successfully.")
+            setFiles(oldFiles => [...oldFiles, selectedFile.name])
         }).catch((error) => {
-            alert("Not Authenticated")
+            alert("Error uploading file")
         })
-        setFiles(oldFiles => [...oldFiles, selectedFile.name])
     }
 
 
