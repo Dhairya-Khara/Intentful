@@ -14,7 +14,7 @@ router.post('/createUser', jsonParser, async (req, res) => {
         res.send(user)
     }
     catch (e) {
-        res.send("Unable to register.")
+        res.sendStatus(422)
     }
 })
 
