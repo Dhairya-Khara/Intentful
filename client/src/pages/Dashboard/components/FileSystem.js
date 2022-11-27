@@ -48,7 +48,7 @@ export default function FileSystem() {
             setFileUploadStatus("File " + selectedFile.name + " has been upload successfully.")
             setFiles(oldFiles => [...oldFiles, selectedFile.name])
         }).catch((error) => {
-            alert("Error uploading file")
+            alert(error.response.data)
         })
     }
 
