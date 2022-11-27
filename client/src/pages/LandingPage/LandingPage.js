@@ -1,10 +1,6 @@
 import React from 'react'
 import Register from './components/Register'
 import Login from './components/Login'
-import store from "../../redux/configureStore"
-import { persistStore } from 'redux-persist'
-
-const persistor = persistStore(store)
 
 export default function LandingPage() {
     return (
