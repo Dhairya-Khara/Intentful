@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import { Bubble } from 'react-chartjs-2';
-// import RandomColor from 'randomcolor';
-// import axios from 'axios'
-// import { useSelector } from 'react-redux'
 
 import {
     Chart as ChartJS,
     LinearScale,
     PointElement,
     Tooltip,
-    // Legend,
     Title,
     SubTitle
 } from 'chart.js';
@@ -55,6 +51,7 @@ export default function BubbleChart(props) {
 
     useEffect(() => {
         refreshData()
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.intents])
 
     let size = Object.keys(data).length;
