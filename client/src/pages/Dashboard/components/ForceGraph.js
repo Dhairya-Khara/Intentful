@@ -55,7 +55,7 @@ export default function ForceGraph({ nodes, width, height }) {
       const iF = idString.substring(0, idString.indexOf(","))
       idString = idString.substring(idString.indexOf(",") + 1)
       let iA = idString
-      if (iA.length == 0) {iA = "None"}
+      if (iA.length === 0) {iA = "None"}
       //intentAssociates is in this format: "{associate1},{frequency1},{associate2},{frequency2},..."
 
       setIntentName(iN)

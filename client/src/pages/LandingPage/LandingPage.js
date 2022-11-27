@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Header from './../Sitewide/Header'
 import Footer from './../Sitewide/Footer'
 import LandingBody from './LandingBody'

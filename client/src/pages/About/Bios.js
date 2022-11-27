@@ -1,4 +1,4 @@
-import { GitHub, Instagram, LinkedIn, Roles, Website } from "./Socials";
+import { GitHub, LinkedIn, Roles, Website } from "./Socials";
 import KrishnaPic from "./../Images/KrishnaPic.jpeg";
 import DhairyaPic from "./../Images/DhairyaPic.jpeg";
 import ChenikaPic from "./../Images/ChenikaPic.jpeg";

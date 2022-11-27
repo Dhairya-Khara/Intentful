@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Intentful from './../../Images/Intentful2.png'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import LogOut from './Logout'
 

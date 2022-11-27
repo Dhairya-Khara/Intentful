@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import File from "./File";
-import BubbleChart from "./BubbleChart";
+// import BubbleChart from "./BubbleChart";
 import D3BubbleChart from "./D3BubbleChart";
 
 export default function FileSystem() {
@@ -10,7 +10,7 @@ export default function FileSystem() {
   const [files, setFiles] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const [selectedFile, setSelectedFile] = useState(undefined);
-  const [fileUploadStatus, setFileUploadStatus] = useState("");
+  const [setFileUploadStatus] = useState("");
   const [bubbleChart, setBubbleChart] = useState({ show: false, intents: [] });
 
   const visualizeData = () => {
@@ -63,7 +63,7 @@ export default function FileSystem() {
 
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   return (
     <div className="dashboard">
