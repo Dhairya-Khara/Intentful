@@ -38,6 +38,7 @@ export default function D3BubbleChart(props) {
 
     useEffect(() => {
         refreshData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.intents]);
 
     let size = Object.keys(data).length;

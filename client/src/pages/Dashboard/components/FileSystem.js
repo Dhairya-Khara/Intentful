@@ -54,6 +54,7 @@ export default function FileSystem() {
 
     useEffect(() => {
         getData()
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
