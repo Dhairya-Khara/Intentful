@@ -22,6 +22,6 @@ export default function Logout() {
     }
 
     return (
-        <button onClick={onButtonClick} className="navbtn">Logout</button>
+        <button onClick={onButtonClick} className="newbtni">Logout</button>
     )
 }

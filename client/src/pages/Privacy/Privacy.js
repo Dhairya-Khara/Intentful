@@ -98,11 +98,11 @@ export default function Privacy() {
               <strong>Website</strong> refers to The Techy Blinders, accessible
               from{" "}
               <a
-                href="www.exa.xo"
+                href="www.intentful.herokuapp.com"
                 rel="external nofollow noopener"
                 target="_blank"
               >
-                www.exa.xo
+                www.intentful.herokuapp.com
               </a>
             </p>
           </li>

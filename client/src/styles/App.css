@@ -77,6 +77,7 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: #ddd;
 }
 
 input {
@@ -89,6 +90,7 @@ input {
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  align-items: center;
 }
 
 .input {
@@ -279,19 +281,17 @@ buttonp:hover::after {
   border: none;
   position: relative;
   padding: 4vh;
-  margin-left: -2vw !important;
-  padding-left: 8vh;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
   /* background: #c859ff; */
-  background: -webkit-linear-gradient(45deg, #c859ff 0%, #ffab8c 100%);
+  background-color: #343347;
   /* background: linear-gradient(45deg, #c859ff 0%, #ffab8c 100%); */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c859ff', endColorstr='#ffab8c', GradientType=1);
   /* -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); */
   -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
   box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
   width: 30%;
-  border-radius: 2vh;
+  border-radius: 0 2vh 2vh 0;
   overflow: auto;
   min-height: 63vh;
   max-height: 63vh;
@@ -553,7 +553,7 @@ html {
   padding: .75em;
   margin: 1rem;
   border-radius: 25px;
-  background-color: #fff;
+  background-color: rgb(188, 232, 255);
   color: #000;
 }
 
@@ -749,7 +749,7 @@ label {
 
 .newbtn {
   appearance: none;
-  background-color: transparent;
+  background-color: #fff;
   border: 0.5vh solid var(--blue);
   border-radius: 2.5vh;
   box-sizing: border-box;
@@ -835,4 +835,35 @@ label {
   margin: auto;
   float: none;
   overflow: hidden;
+}
+
+.Dashboard.page{
+  overflow-y:clip;
+  margin-left: 0%;
+}
+
+.newbtni.file{
+  max-width: fit-content;
+}
+
+h2.filesHeader{
+  margin-bottom: 0%;
+}
+
+div.transcriptContainer{
+  padding-right: 0!important;
+}
+
+.newbtni.file.up{
+  margin-right: 1vw;
+}
+
+.newbtn.up{
+  margin-right: 1vw;
+  width: 96%;
+}
+
+#file-chosen{
+  vertical-align: middle;
+  height:fit-content;
 }

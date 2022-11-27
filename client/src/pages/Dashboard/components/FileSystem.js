@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import File from "./File";
@@ -6,6 +6,7 @@ import BubbleChart from "./BubbleChart";
 import D3BubbleChart from "./D3BubbleChart";
 
 export default function FileSystem() {
+  const ref = useRef(null);
   const [files, setFiles] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const [selectedFile, setSelectedFile] = useState(undefined);
@@ -67,27 +68,46 @@ export default function FileSystem() {
   return (
     <div className="dashboard">
       <div className="transcript-management">
-        <h2 id="tm">Transcript Management</h2>
-        <form className="app" onSubmit={onSubmit}>
-          <input
-            type="file"
-            name="file"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
-          <button>Upload</button>
-        </form>
-        <br></br>
-        <button onClick={visualizeData}>Visualize All</button>
-
-        <h2>Uploaded Transcripts</h2>
-        <div className="transcriptContainer">
-          {files === undefined ? (
-            <p className="inactive">No Transcripts have been uploaded</p>
-          ) : (
-            files.map((file) => (
-              <File key={file} name={file} setBubbleChart={setBubbleChart} />
-            ))
-          )}
+        <div className="newTranscript">
+          <h2 className="filesHeader" id="tm">
+            New Transcripts
+          </h2>
+          <form className="app" onSubmit={onSubmit}>
+            <input
+              id="fileUpload"
+              type="file"
+              name="file"
+              onChange={(e) => {
+                setSelectedFile(e.target.files[0]);
+                document.getElementById("file-chosen").textContent =
+                  e.target.files[0].name;
+              }}
+              hidden
+            />
+            <label htmlFor="fileUpload" className="newbtni file">
+              Choose File
+            </label>
+            <span id="file-chosen" ref={ref}>
+              No file chosen
+            </span>
+            <button className="newbtni file up">Upload</button>
+          </form>
+          <br></br>
+          <button onClick={visualizeData} className="newbtn up">
+            Visualize All Uploaded Transcripts
+          </button>
+        </div>
+        <div className="oldTranscript">
+          <h2 className="filesHeader">Uploaded Transcripts</h2>
+          <div className="transcriptContainer">
+            {files === undefined ? (
+              <p className="inactive">No Transcripts have been uploaded</p>
+            ) : (
+              files.map((file) => (
+                <File key={file} name={file} setBubbleChart={setBubbleChart} />
+              ))
+            )}
+          </div>
         </div>
       </div>
       <div className="bubbles">
