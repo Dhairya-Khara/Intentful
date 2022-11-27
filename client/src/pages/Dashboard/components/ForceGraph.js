@@ -10,6 +10,7 @@ export default function ForceGraph({ nodes, width, height }) {
   const [intentAssociates, setIntentAssociates] = useState("");
 
   // re-create animation every time nodes change
+  // We update state on every frame, then copy nodes into the simulation, and finally stop the simulation on unmount
   useEffect(() => {
 
     const simulation = d3
