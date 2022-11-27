@@ -9,7 +9,7 @@ export default function Logout() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const token = useSelector((state) => state.auth.token)
+   //const token = useSelector((state) => state.auth.token)
 
 
     const onButtonClick = (e) => {

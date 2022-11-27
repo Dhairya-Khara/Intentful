@@ -38,7 +38,7 @@ export default function ForceGraph({ nodes, width, height }) {
 
     // stop simulation on unmount
     return () => simulation.stop();
-
+     // eslint-disable-next-line react-hooks/exhaustive-deps
 
   }, [nodes]);
 
