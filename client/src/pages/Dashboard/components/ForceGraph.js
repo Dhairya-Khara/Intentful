@@ -12,40 +12,23 @@ export default function ForceGraph({ nodes, width, height }) {
   // re-create animation every time nodes change
   useEffect(() => {
 
-    // const onClick = (e) => {
-    //   console.log(e.target.id)
-    // }
-
-    // window.addEventListener('mouseup', onClick)
-
     const simulation = d3
       .forceSimulation()
       .force("x", d3.forceX(width))
       .force("y", d3.forceY(height/2))
       .force("collide", d3.forceCollide().radius(d => d.r + 1));
-    // .force("collision", d3.forceCollide(/* Will take in value passed to maxRadius*/ 60));
-
-
-    // update state on every frame
+ 
     simulation.on("tick", () => {
       setAnimatedNodes([...simulation.nodes()]);
     });
 
-    // copy nodes into simulation
     simulation.nodes([...nodes]);
-    // slow down with a small alpha
+
     simulation.alpha(0.1).restart();
 
-    // stop simulation on unmount
     return () => simulation.stop();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
 
   }, [nodes]);
-
-  // window.addEventListener("mouseup", (e) => {
-
-  //   console.log(e.target.id)
-  // });
 
   const onClick = (e) => {
       // idString is in this format: "{intentName},{intentFrequency},{intentAssociates}"
