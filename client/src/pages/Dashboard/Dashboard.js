@@ -1,12 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import FileUploader from './components/FileUploader'
 import LogOut from './components/Logout'
-// import BubbleChart from './components/BubbleChart'
-import D3BubbleChart from './components/D3BubbleChart'
-
-import Logout from './components/Logout'
-import BubbleChart from './components/BubbleChart'
 import FileSystem from './components/FileSystem'
 
 
