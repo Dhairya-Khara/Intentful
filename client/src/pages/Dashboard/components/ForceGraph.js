@@ -28,7 +28,8 @@ export default function ForceGraph({ nodes, width, height }) {
 
     return () => simulation.stop();
 
-  }, [nodes]);
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [nodes]);
 
   const onClick = (e) => {
       // idString is in this format: "{intentName},{intentFrequency},{intentAssociates}"
