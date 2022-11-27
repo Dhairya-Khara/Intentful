@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TechyBlinders from './../Images/TechyBlinders.png'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
-import {setAuth} from '../../redux/authReducer'
+// import {setAuth} from '../../redux/authReducer'
 
 export default function Header() {
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [password, setPassword] = useState('')
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const navigate = useNavigate();
 
     const onClickImg = (e) =>{
