@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect} from 'react'
 import { Bubble } from 'react-chartjs-2';
-import RandomColor from 'randomcolor';
-import axios from 'axios'
-import { useSelector } from 'react-redux'
 
 import {
     Chart as ChartJS,
     LinearScale,
     PointElement,
     Tooltip,
-    Legend,
     Title,
     SubTitle
 } from 'chart.js';
