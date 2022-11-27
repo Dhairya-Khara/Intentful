@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class Register extends React.Component {
 
-    constructor(){
+    constructor() {
         super()
         this.state = {
             email: "",
@@ -11,36 +11,35 @@ class Register extends React.Component {
         }
     }
 
-    onEmailUpdate = (e) =>{
+    onEmailUpdate = (e) => {
         const email = e.target.value;
-        this.setState(()=>{
-            return {email}
+        this.setState(() => {
+            return { email }
         })
     }
 
-    onPasswordUpdate = (e) =>{
+    onPasswordUpdate = (e) => {
         const password = e.target.value;
-        this.setState(()=>{
-            return{password}
+        this.setState(() => {
+            return { password }
         })
     }
 
-    onFormSubmit = (e) =>{
+    onFormSubmit = (e) => {
         e.preventDefault()
         const url = `http://localhost:8080/createUser`
-        axios.post(url, {"email": this.state.email, "password": this.state.password}).then(async (res)=>{
-            if(res.status === 200){
-                alert("User with email " + this.state.email + " has been created.")
-                this.setState(()=>{
-                    return({
-                        email: "",
-                        password: ""
-                    })
+        axios.post(url, { "email": this.state.email, "password": this.state.password }).then(async (res) => {
+
+            alert("User with email " + this.state.email + " has been created.")
+            this.setState(() => {
+                return ({
+                    email: "",
+                    password: ""
                 })
-            }
-            else{
-                alert("Error")
-            }
+            })
+
+        }).catch((e) => {
+            alert('Invalid email')
         })
     }
 
@@ -48,16 +47,16 @@ class Register extends React.Component {
         return (
             <div>
                 <h2>Register</h2>
-                <form onSubmit = {this.onFormSubmit}>
+                <form onSubmit={this.onFormSubmit}>
                     <div className="input">
-                        <input type="text" id="login-email-input" className="input-text" placeholder="Your email, e.g. MrWonderful@cs.toronto.edu" 
-                        value = {this.state.email} onChange = {this.onEmailUpdate}/>
+                        <input type="text" id="login-email-input" className="input-text" placeholder="Your email, e.g. MrWonderful@cs.toronto.edu"
+                            value={this.state.email} onChange={this.onEmailUpdate} />
                         <label htmlFor="login-email-input" className="input-label">Email</label>
                     </div>
                     <br></br>
                     <div className="input">
-                        <input type="password" id="login-password-input" className="input-text" placeholder="Your password, e.g. #Wonderful123" 
-                        value = {this.state.password} onChange = {this.onPasswordUpdate}/>
+                        <input type="password" id="login-password-input" className="input-text" placeholder="Your password, e.g. #Wonderful123"
+                            value={this.state.password} onChange={this.onPasswordUpdate} />
                         <label htmlFor="login-password-input" className="input-label">Password</label>
                     </div>
                     <br></br>
