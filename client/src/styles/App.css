@@ -307,7 +307,6 @@ buttonp:hover::after {
 
 svg {
   max-width: 70vw;
-  height: auto;
 }
 
 .nav {
@@ -828,14 +827,6 @@ label {
   border-color: white;
 }
 
-#ModalModal{
-  justify-content: center;
-  text-align: center;
-  margin: auto;
-  float: none;
-  overflow: hidden;
-}
-
 .Dashboard.page{
   overflow-y:clip;
   margin-left: 0%;
@@ -857,7 +848,7 @@ div.transcriptContainer{
   margin-right: 1vw;
 }
 
-#newbtni{
+#newbtn{
   margin-right: 1vw;
   width: 96%;
 }
@@ -870,4 +861,57 @@ div.transcriptContainer{
 .nav.foot.page{
   display: flex;
   justify-content: space-between;
+}
+
+.input-text.dash{
+  font-size: 1.0vw;
+  width: 15vw;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.input-label.dash{
+  display: flex;
+  font-size: 1.4vw;
+  padding-bottom: 0vh;
+  margin-bottom: -0.6vh;
+  text-align: center;
+  left: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+}
+
+.ModalBoxes{
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input.dash{
+  text-align: center;
+  align-items: center;
+}
+
+p{
+  margin-top: 0vh;
+  margin-bottom: 4vh;
+}
+
+#ModalModal {
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  float: none;
+  overflow: hidden;
+  color: white;
+  background-color: #333447;
+  border-radius: 3vh;
+  padding: 2vh;
+  width: 80%;
+  transition: all 0.5s;
 }

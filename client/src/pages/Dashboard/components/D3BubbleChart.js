@@ -18,10 +18,6 @@ export default function D3BubbleChart(props) {
         }
         count++
     }
-    console.log(height)
-    console.log(width)
-    console.log(maxSoFar)
-    console.log(count)
 
     let radiusMultiplier = Math.min(15, width/(maxSoFar*count))
 
