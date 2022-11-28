@@ -147,7 +147,7 @@ input {
 }
 
 .fake-button,
-buttonp {
+.buttonp {
   padding: 0.6em 2em;
   margin-top: 2vh;
   border: none;
@@ -165,7 +165,7 @@ buttonp {
 }
 
 .fake-button:before,
-buttonp:before {
+.buttonp:before {
   content: "";
   background: linear-gradient(45deg,
       #fe0101,
@@ -209,7 +209,7 @@ buttonp:before {
 }
 
 .fake-button:after,
-buttonp:after {
+.buttonp:after {
   z-index: -1;
   content: "";
   position: absolute;
@@ -226,7 +226,7 @@ buttonp:after {
 }
 
 .fake-button:hover::after,
-buttonp:hover::after {
+.buttonp:hover::after {
   background: rgba(22, 22, 22, 0.3);
   color: #fff;
   -webkit-text-stroke-color: #000;
