@@ -56,8 +56,7 @@ export default function LandingBody() {
             <div className="para-text">
               Instead of having to import each intent manually, our voiceflow
               integration allows users to create Voiceflow intent blocks with
-              the click of a button, improving development times by upwards of
-              30%!
+              the click of a button, improving development times dramatically!
             </div>
           </div>
           <img

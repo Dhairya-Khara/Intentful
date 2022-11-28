@@ -19,10 +19,11 @@ export default function Footer() {
             <img src={Intentful} className = "fifteenpercent" alt="Techy Blinders Logo"  onClick={onClickImg}></img>
             <div className="footer-text">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
             © The Techy Blinders, Inc. 2022. All rights reserved. Use of
-            this site constitutes acceptance of our User Agreement and <a href="/privacy" onClick={onClickPrivacy}>Privacy Policy</a> and Cookie Statement and Your California Privacy
-            Rights. The Techy Blinders may earn a portion of sales from
+            this site constitutes acceptance of our User Agreement and <a href="/privacy" onClick={onClickPrivacy}>Privacy Policy and Cookie Statement</a>.<br></br> 
+            The Techy Blinders may earn a portion of sales from
             products that are purchased through our site as part of our
-            Affiliate Partnerships with retailers. The material on this site
+            Affiliate Partnerships with retailers.<br></br> 
+            The material on this site
             may not be reproduced, distributed, transmitted, cached or
             otherwise used, except with the prior written permission of The
             Techy Blinders.

@@ -33,13 +33,13 @@ export default function Login() {
             <h2>Login</h2>
             <form onSubmit={onFormSubmit}>
                 <div className="input">
-                    <input type="text" id="register-email-input" className="input-text" placeholder="Your email, e.g. Admin@TechyBlinders.com" 
+                    <input type="text" id="register-email-input" className="input-text" placeholder="Your email" 
                     value = {email} onChange = {e => setEmail(e.target.value)}/>
                     <label htmlFor="register-email-input" className="input-label">Email</label>
                 </div>
                 <br></br>
                 <div className="input">
-                    <input type="password" id="register-password-input" className="input-text" placeholder="Your password, e.g. #TechyBlinders>>" 
+                    <input type="password" id="register-password-input" className="input-text" placeholder="Your password" 
                     value = {password} onChange = {e => setPassword(e.target.value)}/>
                     <label htmlFor="register-password-input" className="input-label">Password</label>
                 </div>

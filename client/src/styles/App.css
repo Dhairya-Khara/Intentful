@@ -290,11 +290,10 @@ buttonp:hover::after {
   /* -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); */
   -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
   box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  width: 30%;
+  max-width: 30vw;
   border-radius: 0 2vh 2vh 0;
   overflow: auto;
-  min-height: 63vh;
-  max-height: 63vh;
+  max-height: 88.5vh;
 }
 
 .dashboard {
@@ -553,8 +552,8 @@ html {
   padding: .75em;
   margin: 1rem;
   border-radius: 25px;
-  background-color: rgb(188, 232, 255);
-  color: #000;
+  background-color: var(--blue);
+  color: #fff;
 }
 
 .dev-bios .card:hover {
@@ -732,7 +731,7 @@ label {
 
 .transcriptContainer{
   overflow-y: scroll;
-  height: 40vh;
+  height: 60vh;
 }
 
 #tm{
@@ -858,7 +857,7 @@ div.transcriptContainer{
   margin-right: 1vw;
 }
 
-.newbtn.up{
+#newbtni{
   margin-right: 1vw;
   width: 96%;
 }
@@ -866,4 +865,9 @@ div.transcriptContainer{
 #file-chosen{
   vertical-align: middle;
   height:fit-content;
+}
+
+.nav.foot.page{
+  display: flex;
+  justify-content: space-between;
 }

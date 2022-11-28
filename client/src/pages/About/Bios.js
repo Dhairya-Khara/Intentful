@@ -1,4 +1,4 @@
-import { GitHub, LinkedIn, Roles, Website } from "./Socials";
+import { GitHub, LinkedIn, Website } from "./Socials";
 import KrishnaPic from "./../Images/KrishnaPic.jpeg";
 import DhairyaPic from "./../Images/DhairyaPic.jpeg";
 import ChenikaPic from "./../Images/ChenikaPic.jpeg";
@@ -22,14 +22,14 @@ function Execs() {
       <Bio
         name="Berke Altiparmak"
         pic={BerkePic}
-        positions={[Roles.backend]}
+        positions={[]}
       >
         <GitHub>BerkeAltiparmak</GitHub>
         <LinkedIn>https://www.linkedin.com/in/berke-altiparmak/</LinkedIn>
       </Bio>
       <Bio name="Chenika Bukes" 
            pic={ChenikaPic} 
-           positions={[Roles.backend, Roles.frontend]}>
+           positions={[]}>
         
         <GitHub>chenikabukes</GitHub>
         <LinkedIn>
@@ -39,7 +39,7 @@ function Execs() {
       <Bio
         name="Krishna Cheemalapati"
         pic={KrishnaPic}
-        positions={[Roles.frontend, Roles.designer]}
+        positions={[]}
       >
         <Website>https://krishnacheemalapati.github.io</Website>
         <GitHub>krishnacheemalapati</GitHub>
@@ -48,7 +48,7 @@ function Execs() {
       <Bio
         name="Dhairya Khara"
         pic={DhairyaPic}
-        positions={[Roles.teamLead, Roles.backend]}
+        positions={[]}
       >
         <Website>https://dhairya-khara.github.io/personal-website/</Website>
         <GitHub>DhairyaKhara</GitHub>
@@ -57,7 +57,7 @@ function Execs() {
       <Bio
         name="Aidan Li"
         pic={AidanPic}
-        positions={[Roles.backend]}
+        positions={[]}
       >
         <GitHub>aidanmrli</GitHub>
         <LinkedIn>https://www.linkedin.com/in/aidan-li/</LinkedIn>

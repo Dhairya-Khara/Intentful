@@ -49,13 +49,13 @@ class Register extends React.Component {
                 <h2>Register</h2>
                 <form onSubmit={this.onFormSubmit}>
                     <div className="input">
-                        <input type="text" id="login-email-input" className="input-text" placeholder="Your email, e.g. MrWonderful@cs.toronto.edu"
+                        <input type="text" id="login-email-input" className="input-text" placeholder="Your email"
                             value={this.state.email} onChange={this.onEmailUpdate} />
                         <label htmlFor="login-email-input" className="input-label">Email</label>
                     </div>
                     <br></br>
                     <div className="input">
-                        <input type="password" id="login-password-input" className="input-text" placeholder="Your password, e.g. #Wonderful123"
+                        <input type="password" id="login-password-input" className="input-text" placeholder="Your password"
                             value={this.state.password} onChange={this.onPasswordUpdate} />
                         <label htmlFor="login-password-input" className="input-label">Password</label>
                     </div>
