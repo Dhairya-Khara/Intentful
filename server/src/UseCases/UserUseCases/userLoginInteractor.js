@@ -8,13 +8,14 @@ const jwt = require('jsonwebtoken')
  * @param {String} email - The email given by the user
  * @param {String} password - The password chosen by the user
  */
-const loginUserInteractor = async (email, password) =>{
+const userLoginInteractor = async (email, password) =>{
     const user = await User.findOne({email, password})
     if(!user){
         throw new Error("Unable to find user.")
     }
-    const token = jwt.sign({ _id: user._id.toString() }, 'by order of the techy blinders')
+    const userId = user._id.toString()
+    const token = jwt.sign({ _id: userId }, 'by order of the techy blinders')
     return token
 }
 
-module.exports = loginUserInteractor
+module.exports = userLoginInteractor
