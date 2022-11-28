@@ -16,7 +16,7 @@ export default function ForceGraph({ nodes, width, height }) {
     const simulation = d3
       .forceSimulation()
       .force("x", d3.forceX(width))
-      .force("y", d3.forceY(height/2))
+      .force("y", d3.forceY(height))
       .force("collide", d3.forceCollide().radius(d => d.r + 1));
  
     simulation.on("tick", () => {
@@ -51,7 +51,7 @@ export default function ForceGraph({ nodes, width, height }) {
   }
 
   return (
-    <div width="50vw" height="80vh">
+    <div width="100vw" height="80vh">
       <svg className="button" svg width={width} height={height}>
         {animatedNodes.map((node) => (
             <circle
