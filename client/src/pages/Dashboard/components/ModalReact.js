@@ -10,10 +10,8 @@ function ModalReact({ setOpenModal, intentName, intentFrequency, intentAssociate
   const [password, setPassword] = useState('')
   const [documentID, setDocumentID] = useState('')
   return (
-    <Modal.Dialog size="xl">
-      <Modal.Header>
-        <Modal.Title>Intent: {intentName}, Frequency: {intentFrequency}</Modal.Title>
-      </Modal.Header>
+    <Modal.Dialog size="xl" className="ModalModal" id="ModalModal" >
+      <Modal.Header />
 
       <Modal.Body>
         <p>Intent Associates: {intentAssociates}</p>
