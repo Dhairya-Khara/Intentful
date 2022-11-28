@@ -16,7 +16,7 @@ export default function File(props) {
     return (
         <div className='single-file'>
             <p>{props.name}</p>
-            <button onClick={visualizeData}>Visualize</button>
+            <button onClick={visualizeData} className="newbtni file">Visualize</button>
         </div>
     )
 }

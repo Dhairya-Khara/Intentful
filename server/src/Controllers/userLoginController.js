@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser')
-const loginUserInteractor = require('../UseCases/UserUseCases/userLoginInteractor.js.js')
+const loginUserInteractor = require('../UseCases/UserUseCases/userLoginInteractor.js')
 
 
 const jsonParser = bodyParser.json()
@@ -13,8 +13,8 @@ router.post('/loginUser', jsonParser, async (req, res) => {
         const token = await loginUserInteractor(email, password)
         res.send({ token })
     }
-    catch(e){
-        res.send("Cant find user")
+    catch (e) {
+        res.status(403).send("Cant find user")
     }
 })
 

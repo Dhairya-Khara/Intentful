@@ -1,6 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
 import { setAuth } from '../../../redux/authReducer'
@@ -10,7 +9,7 @@ export default function Logout() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const token = useSelector((state) => state.auth.token)
+    // const token = useSelector((state) => state.auth.token)
 
 
     const onButtonClick = (e) => {
@@ -22,8 +21,6 @@ export default function Logout() {
     }
 
     return (
-        <div>
-            <button onClick={onButtonClick} className="top-right-corner">Logout</button>
-        </div>
+        <button onClick={onButtonClick} className="newbtni">Logout</button>
     )
 }

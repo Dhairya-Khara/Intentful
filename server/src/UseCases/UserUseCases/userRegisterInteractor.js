@@ -6,15 +6,27 @@ const User = require('../../Entities/UserSchema')
  * @param {String} email - The email given by the user
  * @param {String} password - The password chosen by the user
  */
-const createUserInteractor = async (email, password) =>{
-    const user = new User({email, password})
-    try{
-        await user.save()
-        return user
+const createUserInteractor = async (email, password) => {
+    if (validateEmail(email)) {
+        const user = new User({ email, password })
+
+        try {
+            await user.save()
+            return user
+        }
+        catch (e) {
+            console.log(e)
+        }
+    } else {
+        throw new Error("Unable to register user: email invalid.")
     }
-    catch(e){
-        console.log(e)
-    }
+
+}
+
+function validateEmail(email) {
+    // use regex to check if email is a valid email
+    const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return res.test(String(email).toLowerCase());
 }
 
 module.exports = createUserInteractor
