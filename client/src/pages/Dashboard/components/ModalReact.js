@@ -14,8 +14,6 @@ function formatIntent(intent) {
 }
 
 function formatAssociates(intentAssociates, intentName) {
-  console.log(intentName);
-  console.log(intentAssociates);
   const associates = intentAssociates.split(",");
   const formattedIntentName = formatIntent(intentName);
   const formattedAssociates = [];
