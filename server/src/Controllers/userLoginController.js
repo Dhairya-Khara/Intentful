@@ -14,7 +14,7 @@ router.post('/loginUser', jsonParser, async (req, res) => {
         res.send({ token })
     }
     catch (e) {
-        res.send("Cant find user")
+        res.status(403).send("Cant find user")
     }
 })
 
