@@ -9,7 +9,7 @@ export default function FileSystem() {
   const [files, setFiles] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const [selectedFile, setSelectedFile] = useState(undefined);
-  const [setFileUploadStatus] = useState("");
+  const [, setFileUploadStatus] = useState("");
   const [bubbleChart, setBubbleChart] = useState({ show: false, intents: [] });
 
   const visualizeData = () => {
