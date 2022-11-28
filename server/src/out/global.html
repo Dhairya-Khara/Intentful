@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="createUserInteractor"><span class="type-signature">(async) </span>createUserInteractor<span class="signature">(email, password)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="identifyIntents"><span class="type-signature"></span>identifyIntents<span class="signature">(existingProcessedMap, transcript_json_list)</span><span class="type-signature"> &rarr; {Map}</span></h4>
     
 
     
@@ -112,7 +112,9 @@
 
 
 <div class="description">
-    Creates the user and registers it to the database.
+    Returns a map of all processed transcripts and their identified intents
+by processing newly uploaded transcripts and merging the resulting map
+with the already existing one.
 </div>
 
 
@@ -148,13 +150,13 @@
 
         <tr>
             
-                <td class="name"><code>email</code></td>
+                <td class="name"><code>existingProcessedMap</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -164,20 +166,20 @@
 
             
 
-            <td class="description last">The email given by the user</td>
+            <td class="description last">Map of already processed transcripts with their intents.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>password</code></td>
+                <td class="name"><code>transcript_json_list</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
@@ -187,7 +189,7 @@
 
             
 
-            <td class="description last">The password chosen by the user</td>
+            <td class="description last">List of transcripts to be uploaded</td>
         </tr>
 
     
@@ -228,7 +230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="userRegisterInteractor.js.html">userRegisterInteractor.js</a>, <a href="userRegisterInteractor.js.html#line9">line 9</a>
+        <a href="intentIdentifierInteractor.js.html">intentIdentifierInteractor.js</a>, <a href="intentIdentifierInteractor.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -253,167 +255,28 @@
 
 
 
-
-
-
-
+<h5>Returns:</h5>
 
         
-            
-
-    
-
-    
-    <h4 class="name" id="loginUserInteractor"><span class="type-signature">(async) </span>loginUserInteractor<span class="signature">(email, password)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Checks if email and password combination exists in the database,
-and if it does, logs the user in.
+<div class="param-desc">
+    allCurrentIntents - Map of all processed transcripts (uploaded by user) and their intents.
 </div>
 
 
 
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
         
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>email</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
+<span class="param-type">Map</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The email given by the user</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The password chosen by the user</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="userLoginInteractor.js.html">userLoginInteractor.js</a>, <a href="userLoginInteractor.js.html#line11">line 11</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
+    </dd>
 </dl>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -435,13 +298,13 @@ and if it does, logs the user in.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createUserInteractor">createUserInteractor</a></li><li><a href="global.html#loginUserInteractor">loginUserInteractor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#identifyIntents">identifyIntents</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Nov 24 2022 02:20:52 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sun Nov 27 2022 23:23:07 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
