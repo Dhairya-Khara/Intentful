@@ -55,7 +55,7 @@ export default function D3BubbleChart(props) {
     }
     else {
         return (
-                <ForceGraph nodes={data.datasets}  width={3*width/2} height={1.35*height}/>)
+                <ForceGraph nodes={data.datasets}  width={3*width/2} height={1.2*height}/>)
 
 
     }
