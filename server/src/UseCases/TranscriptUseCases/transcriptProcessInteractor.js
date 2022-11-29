@@ -1,3 +1,13 @@
+/**
+ * Returns a map of all processed transcripts and their identified intents
+ * by processing newly uploaded transcripts and merging the resulting map
+ * with the already existing one.
+ * @interactor
+ * @param {Object} existingProcessedMap - Map of already processed transcripts with their intents.
+ * @param {Array} transcript_json_list - List of transcripts to be uploaded
+ * @return {Map} processedMap - Map of all processed transcripts of user and their intents.
+ */
+
 function processTranscript(existingProcessedMap, transcript_json_list) {
     let processedMap = new Map(existingProcessedMap)
 
