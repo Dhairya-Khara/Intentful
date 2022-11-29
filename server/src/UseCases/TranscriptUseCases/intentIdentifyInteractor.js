@@ -9,9 +9,9 @@ const processTranscript = require('./transcriptProcessInteractor')
  * @param {Array} transcript_json_list - List of transcripts to be uploaded
  * @return {Map} allCurrentIntents - Map of all processed transcripts (uploaded by user) and their intents.
  */
-const identifyIntents = (existingProcessedMap, transcript_json_list) =>{
+const intentIdentifyInteractor = (existingProcessedMap, transcript_json_list) =>{
     const allCurrentIntents = processTranscript(existingProcessedMap, transcript_json_list)
     return allCurrentIntents
 }
 
-module.exports = identifyIntents
+module.exports = intentIdentifyInteractor

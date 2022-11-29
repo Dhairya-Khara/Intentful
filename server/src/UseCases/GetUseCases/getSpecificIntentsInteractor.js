@@ -5,14 +5,14 @@
  * @param {String} name - Name of the transcript file requested by the user.
  * @returns {Object} user.intents - The intents identified in user's transcipts.
  */
-const getOneTranscriptIntentsInteractor = (user, name) =>{
-    const transcript = user.transcripts
-    for(const obj of transcript){
-        if(name in obj){
-            return obj.intents
+const getSpecificIntentsInteractor = (user, name) =>{
+    const allTranscripts = user.transcripts
+    for(const transcript of allTranscripts){
+        if(name in transcript){
+            return transcript.intents
         }
     }
     return "No intents"
 }
 
-module.exports = getOneTranscriptIntentsInteractor
+module.exports = getSpecificIntentsInteractor

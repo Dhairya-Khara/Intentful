@@ -8,13 +8,13 @@
  * @return {Map} processedMap - Map of all processed transcripts of user and their intents.
  */
 
-function processTranscript(existingProcessedMap, transcript_json_list) {
+function transcriptProcessInteractor(existingProcessedMap, transcript_json_list) {
     let processedMap = new Map(existingProcessedMap)
 
     for (const transcript_json of transcript_json_list) {
         processSingleTranscript(transcript_json, processedMap);
     }
-    return processedMap
+    return transcriptProcessInteractor
 
 }
 
