@@ -1,5 +1,15 @@
 const processTranscriptInteractor = require('./intentIdentifierInteractor')
 
+/**
+ * Processes the transcript that the user has uploaded using 
+ * transcriptProcessInteractor Use Case, then identifies intents using
+ * intentIdentifierInteractor Use Case, and finally saves the transcript
+ * and the intents to the database.
+ * @interactor
+ * @param {mongoose.Schema} user - The current authorized user of the website
+ * @param {JSON} file - The JSON transcript file that the user has uploaded
+ * @param {String} filename - Name of the file the user has uploaded
+ */
 const uploadTranscriptInteractor = async (user, file, filename) => {
     if (user.transcripts === undefined || user.email === undefined) { throw new Error("Not a valid user") }
     let transcriptNames = []
