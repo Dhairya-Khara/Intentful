@@ -12,7 +12,7 @@ function vw(percent) {
 
 function getWindowDimensions() {
   var width = vw(50);
-  var height = vh(70)
+  var height = vh(50)
   return {
     width, height
   };

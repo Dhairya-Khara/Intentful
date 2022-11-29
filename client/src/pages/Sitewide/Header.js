@@ -38,8 +38,8 @@ export default function Header() {
                 <div className="link" onClick={onClickAbout} role="button">About the Team</div>
             </div>
             <div className = "nav">
-                <butto className = "newbtn" onClick={onClickLogin}>Log in</butto>
-                <butto className = "newbtni" onClick={onClickLogin}>Register</butto>
+                <div className = "butto newbtn" onClick={onClickLogin}>Log in</div>
+                <div className = "butto newbtni" onClick={onClickLogin}>Register</div>
             </div>
         </div>
     )
