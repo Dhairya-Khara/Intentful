@@ -1,4 +1,4 @@
-const processTranscript = require('../utils/transcriptProcessor')
+const processTranscript = require('./transcriptProcessInteractor')
 
 /**
  * Returns a map of all processed transcripts and their identified intents
