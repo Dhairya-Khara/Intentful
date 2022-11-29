@@ -29,4 +29,4 @@ function validateEmail(email) {
     return res.test(String(email).toLowerCase());
 }
 
-module.exports = createUserInteractor
+module.exports = userRegisterInteractor

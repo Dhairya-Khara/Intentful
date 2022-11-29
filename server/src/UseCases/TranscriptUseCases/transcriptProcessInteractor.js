@@ -68,4 +68,4 @@ function processSingleTranscript(transcript_json, processedMap) {
     }
 }
 
-module.exports = processTranscript
+module.exports = transcriptProcessInteractor
