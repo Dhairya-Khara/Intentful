@@ -1,4 +1,4 @@
-const processTranscriptInteractor = require('./intentIdentifyInteractor')
+const processTranscriptInteractor = require('./intentIdentifierInteractor')
 
 /**
  * Processes the transcript that the user has uploaded using 

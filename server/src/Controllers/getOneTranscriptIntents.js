@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const auth = require('../Middleware/auth')
-const getSpecificIntentsInteractor = require('../UseCases/GetUseCases/getSpecificIntentsInteractor')
+const getOneTranscriptIntentsInteractor = require('../UseCases/GetUseCases/getOneTranscriptIntentsInteractor')
 
 router.get('/getOneTranscriptIntents', auth, async (req, res) => {
     const user = req.user
     const name = req.query.name
-    const intents = getSpecificIntentsInteractor(user, name)
+    const intents = getOneTranscriptIntentsInteractor(user, name)
     res.send(intents)
 })
 

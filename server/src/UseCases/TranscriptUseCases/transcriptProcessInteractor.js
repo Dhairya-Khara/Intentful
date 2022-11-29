@@ -14,7 +14,7 @@ function transcriptProcessInteractor(existingProcessedMap, transcript_json_list)
     for (const transcript_json of transcript_json_list) {
         processSingleTranscript(transcript_json, processedMap);
     }
-    return transcriptProcessInteractor
+    return processedMap
 
 }
 

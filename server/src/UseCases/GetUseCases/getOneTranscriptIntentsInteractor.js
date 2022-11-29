@@ -6,10 +6,10 @@
  * @returns {Object} user.intents - The intents identified in user's transcipts.
  */
 const getSpecificIntentsInteractor = (user, name) =>{
-    const allTranscripts = user.transcripts
-    for(const transcript of allTranscripts){
-        if(name in transcript){
-            return transcript.intents
+    const transcript = user.transcripts
+    for(const obj of transcript){
+        if(name in obj){
+            return obj.intents
         }
     }
     return "No intents"
