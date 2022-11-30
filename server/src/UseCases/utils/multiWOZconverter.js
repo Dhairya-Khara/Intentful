@@ -24,11 +24,10 @@ function convertSingleMultiWOZtoRaw(singleMultiWOZtranscript) {
         let newMessageObject = {
             intents: intentsArray, speaker: turnObj.speaker, turn_id: turnObj.turn_id, utterance: turnObj.utterance
         };
-
-        // turn Object into JSON again so that it is type-compliant with the other transcriptProcessor function
-        let newMessageJSON = JSON.stringify(newMessageObject)
-        newFormatTranscript.push(newMessageJSON);
+        newFormatTranscript.push(newMessageObject);
     }
+    // turn Object into JSON string again so that it is type-compliant with the other transcriptProcessor function
+    newFormatTranscript = JSON.stringify(newFormatTranscript)
     return newFormatTranscript;
 
 

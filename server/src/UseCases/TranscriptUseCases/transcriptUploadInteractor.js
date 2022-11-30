@@ -1,10 +1,10 @@
 const processTranscriptInteractor = require('./intentIdentifierInteractor')
+const multiWOZconverter = require('../utils/multiWOZconverter')
 
 const uploadTranscriptInteractor = async (user, file, filename) => {
     if (user.transcripts === undefined || user.email === undefined) { throw new Error("Not a valid user") }
     let transcriptNames = []
     const existingTranscriptInfo = Object.entries(user.transcripts)
-    console.log('hi1')
     try {
         existingTranscriptInfo.forEach(info => {
             transcriptNames.push(Object.entries(info[1])[0][0])
@@ -15,67 +15,67 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
     }
 
     if (!transcriptNames.includes(filename)) {
-        console.log('hi2')
-        await userSaveTranscriptAndIntents()
+        userSaveTranscriptAndIntents()
     }
 
     else {
-        console.log('hi3')
         throw new Error("A transcript with the same name already exists")
     }
 
 
     async function userSaveTranscriptAndIntents() {
-        try {
-            const json = JSON.parse(file)
+        const json = JSON.parse(file)
+        let convertedMultiWOZtoOrigList = multiWOZconverter(json);
+        for (let i = 0; i < convertedMultiWOZtoOrigList.length; i++) {
+            let currTranscript = convertedMultiWOZtoOrigList[i] // originally a string
+            currTranscript = JSON.parse(currTranscript) // now a JSON object
             let allCurrentIntents = new Map()
             if (user.intents !== undefined) {
                 allCurrentIntents = new Map(Object.entries(user.intents))
             }
 
             //single transcript processing
-            let intentsForThisFile = processTranscriptInteractor(new Map(), [json])
+            let intentsForThisFile = processTranscriptInteractor(new Map(), [currTranscript])
 
             //multiple transcript processing
-            allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [json])
+            allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [currTranscript])
+            // console.log(allCurrentIntents)
 
-            addTranscriptToUser()
-            addIntentsToUser()
+            addTranscriptToUser(i, intentsForThisFile)
+            user.intents = allCurrentIntents
+            console.log(user.intents)
+
             // just do one save: it will be obvious through the thrown errors if 
             // there is an error in saving transcripts or intents
             try {
-                console.log('hi4')
                 await user.save()
             }
             catch (e) {
-                console.log('hi5')
                 throw new Error("Error in saving intents", e)
             }
+        }
+        // function addIntentsToUser(allCurrentIntents) {
+        //     try {
+        //         user.intents = allCurrentIntents
+        //         // await user.save()
+        //     }
+        //     catch (e) {
+        //         throw new Error("Error in saving intents", e)
+        //     }
+        // }
 
-            function addIntentsToUser() {
-                try {
-                    user.intents = allCurrentIntents
-                    // await user.save()
-                }
-                catch (e) {
-                    throw new Error("Error in saving intents", e)
-                }
+        function addTranscriptToUser(i, intentsForThisFile) {
+            try {
+                const obj = {}
+                const currTranscriptFilename = filename + `_transcript_${i}`
+                obj[currTranscriptFilename] = file
+                obj["intents"] = intentsForThisFile
+                user.transcripts = user.transcripts.concat(obj)
+                // await user.save()        See comments at bottom re: only one save
             }
-
-            function addTranscriptToUser() {
-                try {
-                    const obj = {}
-                    obj[filename] = file
-                    obj["intents"] = intentsForThisFile
-                    user.transcripts = user.transcripts.concat(obj)
-                    // await user.save()        See comments at bottom re: only one save
-                }
-                catch (e) {
-                    throw new Error("Error in saving transcripts", e)
-                }
+            catch (e) {
+                throw new Error("Error in saving transcripts", e)
             }
-        } catch (e) {
-            throw new Error("Invalid file format")
         }
     }
 }

@@ -12,7 +12,7 @@ const convertMultiWOZInteractor = async (user, file, filename) => {
     for (let i = 0; i < convertedMultiWOZtoOrigList.length; i++) {
         const currTranscript = convertedMultiWOZtoOrigList[i]
         const currTranscriptFilename = filename + `_transcript_${i}`
-        console.log(i)
+        console.log(currTranscript)
         try {
             await uploadTranscriptInteractor(user, currTranscript, currTranscriptFilename)
         }
