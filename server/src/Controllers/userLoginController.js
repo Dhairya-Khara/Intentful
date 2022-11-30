@@ -6,6 +6,12 @@ const loginUserInteractor = require('../UseCases/UserUseCases/userLoginInteracto
 
 const jsonParser = bodyParser.json()
 
+/**
+ * Uses {@link userLoginInteractor} Use Case to
+ * check if the user exists. If it does, confirms 
+ * email-password combination to log the user in;
+ * if not, sends an error message to the client.
+ */
 router.post('/loginUser', jsonParser, async (req, res) => {
     const email = req.body.email
     const password = req.body.password
