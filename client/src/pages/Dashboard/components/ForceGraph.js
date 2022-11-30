@@ -60,14 +60,14 @@ export default function ForceGraph({ nodes, width, height }) {
               r={node.r}
               key={node.id}
               stroke="black"
-              fill={"AliceBlue"}
+              fill={"var(--blue)"}
               pointerEvents="visiblePainted"
               id={node.id}
               onClick={onClick}
             />
         ))}
       </svg>
-      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} />}
+      <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} opacity={modalOpen} />
     </div>
   );
 }

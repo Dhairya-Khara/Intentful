@@ -92,7 +92,7 @@ export default function FileSystem() {
             <button className="newbtni file up">Upload</button>
           </form>
           <br></br>
-          <button onClick={visualizeData} id = "newbtni" className="newbtn up">
+          <button onClick={visualizeData} id = "newbtn" className="newbtni up">
             Visualize All Uploaded Transcripts
           </button>
         </div>
