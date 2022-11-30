@@ -1,4 +1,4 @@
-const getOneTranscriptIntentsInteractor = require('../../../UseCases/GetUseCases/getOneTranscriptIntentsInteractor');
+const getOneTranscriptIntentsInteractor = require('../../../UseCases/GetUseCases/getSpecificIntentsInteractor');
 const User = require('../../../Entities/UserSchema');
 const sampleTranscript = require('../../sample transcripts/transcript1.json');
 const sampleTranscript2 = require('../../sample transcripts/transcript2.json');

@@ -1,5 +1,5 @@
 const User = require('../../../Entities/UserSchema');
-const getIntentsInteractor = require('../../../UseCases/GetUseCases/getIntentsInteractor');
+const getIntentsInteractor = require('../../../UseCases/GetUseCases/getAllIntentsInteractor');
 // might want to figure out some way to mock User schema if possible
 
 test('returns intents correctly', () => {

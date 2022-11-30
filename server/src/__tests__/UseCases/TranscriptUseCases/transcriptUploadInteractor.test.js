@@ -48,7 +48,6 @@ describe('transcriptUploadInteractor test', () => {
             sampleTranscriptJSON, sampleTranscriptFilename).catch(e =>
                 expect(String(e)).toMatch("A transcript with the same name already exists"));
     });
-
     it('correctly returns an error when the User is not a valid user', async () => {
         const invalidUser = {};
         const sampleTranscriptJSON = JSON.stringify(sampleTranscript);
