@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "docdash": "^2.0.0",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
