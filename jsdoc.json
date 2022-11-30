@@ -1,6 +1,5 @@
 {
     "plugins": ["plugins/markdown"],
-    "recurseDepth": 10,
     "source": {
       "include": ["server"],
       "includePattern": ".js$",
@@ -11,8 +10,9 @@
       "monospaceLinks": true
     },
     "opts": {
-      "destination": "./jsdoc",
+      "destination": "./documentation/",
       "recurse": true,
-      "readme": "./readme.md"
+      "readme": "./readme.md",
+      "template": "doc-template"
     }
 }
