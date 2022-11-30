@@ -1,4 +1,4 @@
-function processTranscriptList(existingProcessedMap, transcript_json_list) {
+function processTranscript(existingProcessedMap, transcript_json_list) {
     let processedMap = new Map(existingProcessedMap)
 
     for (const transcript_json of transcript_json_list) {

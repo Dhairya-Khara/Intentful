@@ -1,4 +1,9 @@
+// DESCRIPTION
+// Converts all the transcripts in a large dialogue file to separate JSON transcripts following the original format.
+// Returns an array containing individual JSON-type transcripts in our original format.
+
 function convertMultiWOZDialoguetoRaw(multiWOZdialogue) {
+    JSON.parse(multiWOZdialogue) // originally type Buffer
     for (let i = 0; i < multiWOZdialogue.length; i++) { // multiWOZdialogue is an array of individual transcripts
         multiWOZdialogue[i] = convertSingleMultiWOZtoRaw(multiWOZdialogue[i])
     }
@@ -19,7 +24,10 @@ function convertSingleMultiWOZtoRaw(singleMultiWOZtranscript) {
         let newMessageObject = {
             intents: intentsArray, speaker: turnObj.speaker, turn_id: turnObj.turn_id, utterance: turnObj.utterance
         };
-        newFormatTranscript.push(newMessageObject);
+
+        // turn Object into JSON again so that it is type-compliant with the other transcriptProcessor function
+        let newMessageJSON = JSON.stringify(newMessageObject)
+        newFormatTranscript.push(newMessageJSON);
     }
     return newFormatTranscript;
 
@@ -35,7 +43,6 @@ function convertSingleMultiWOZtoRaw(singleMultiWOZtranscript) {
         }
         return intentsArray;
     }
-
 }
 
 module.exports = convertMultiWOZDialoguetoRaw
