@@ -12,7 +12,7 @@ router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) =
     const filename = req.file.originalname
 
     try {
-        await convertMultiWOZInteractor(user, file, filename)
+        convertMultiWOZInteractor(user, file, filename)
         // res.sendStatus(200)
     }
     catch (e) {

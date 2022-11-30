@@ -6,16 +6,13 @@ const sampleDialogue = require('./sample transcripts/size3_dialogues_001.json')
 
 const convertMultiWOZInteractor = async (user, file, filename) => {
     if (user.transcripts === undefined || user.email === undefined) { throw new Error("Not a valid user") }
-    console.log(file)
-    console.log(typeof file)
-    console.log(file.length)
-    let convertedMultiWOZtoOrigList = multiWOZconverter(file);
-    console.log(convertedMultiWOZtoOrigList)
-    console.log(typeof convertedMultiWOZtoOrigList)
-    console.log(convertedMultiWOZtoOrigList.length)
-    for (let i = 0; i < convertedTranscriptList.length; i++) {
-        const currTranscript = convertedTranscriptList[i]
+    let json = JSON.parse(file)
+    let convertedMultiWOZtoOrigList = multiWOZconverter(json);
+
+    for (let i = 0; i < convertedMultiWOZtoOrigList.length; i++) {
+        const currTranscript = convertedMultiWOZtoOrigList[i]
         const currTranscriptFilename = filename + `_transcript_${i}`
+        console.log(i)
         try {
             await uploadTranscriptInteractor(user, currTranscript, currTranscriptFilename)
         }
