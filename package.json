@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "docdash": "^2.0.0",
+    "uniqid": "^5.4.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.0"
+  },
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  }
+}

@@ -6,6 +6,13 @@ const createUserInteractor = require('../UseCases/UserUseCases/userRegisterInter
 
 const jsonParser = bodyParser.json()
 
+/**
+ * Uses {@link userRegisterInteractor} Use Case to
+ * check if email and passwords are  up to the
+ * website's standards. If yes, registers the user
+ * to the database; if not, sends an error message
+ * to the client.
+ */
 router.post('/createUser', jsonParser, async (req, res) => {
     const email = req.body.email
     const password = req.body.password

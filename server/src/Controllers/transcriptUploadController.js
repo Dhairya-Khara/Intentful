@@ -3,8 +3,12 @@ const router = express.Router()
 const auth = require('../Middleware/auth')
 const multer = require('multer')
 const uploadTranscriptInteractor = require('../UseCases/TranscriptUseCases/transcriptUploadInteractor')
-
 const upload = multer()
+
+/**
+ * Uses {@link transcriptUploadInteractor} Use Case to
+ * upload the new transcripts the user has chosen to the database.
+ */
 router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
     const user = req.user
     const file = req.file.buffer
