@@ -1,23 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import FileUploader from './components/FileUploader'
-import LogOut from './components/Logout'
-// import BubbleChart from './components/BubbleChart'
-import D3BubbleChart from './components/D3BubbleChart'
-
-import Logout from './components/Logout'
-import BubbleChart from './components/BubbleChart'
+import LogoutHeader from './components/LogoutHeader'
 import FileSystem from './components/FileSystem'
-
 
 export default function Dashboard() {
     const auth = useSelector((state) => state.auth.authenticated)
     if (auth) {
         return (
-            <div>
-                <LogOut />
-                <h1>Intentful</h1>
-                <h3>By order of the Techy Blinders</h3>
+            <div className='Dashboard page'>
+                <LogoutHeader />
                 <FileSystem />
             </div>
         )

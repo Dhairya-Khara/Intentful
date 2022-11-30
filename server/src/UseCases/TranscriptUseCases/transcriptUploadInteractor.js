@@ -23,50 +23,54 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
 
 
     async function userSaveTranscriptAndIntents() {
-        const json = JSON.parse(file)
-        let allCurrentIntents = new Map()
-        if (user.intents !== undefined) {
-            allCurrentIntents = new Map(Object.entries(user.intents))
-        }
-
-        //single transcript processing
-        let intentsForThisFile = processTranscriptInteractor(new Map(), [json])
-
-        //multiple transcript processing
-        allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [json])
-
-        addTranscriptToUser()
-        addIntentsToUser()
-        // just do one save: it will be obvious through the thrown errors if 
-        // there is an error in saving transcripts or intents
         try {
-            await user.save()
-        }
-        catch (e) {
-            throw new Error("Error in saving intents", e)
-        }
+            const json = JSON.parse(file)
+            let allCurrentIntents = new Map()
+            if (user.intents !== undefined) {
+                allCurrentIntents = new Map(Object.entries(user.intents))
+            }
 
-        function addIntentsToUser() {
+            //single transcript processing
+            let intentsForThisFile = processTranscriptInteractor(new Map(), [json])
+
+            //multiple transcript processing
+            allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [json])
+
+            addTranscriptToUser()
+            addIntentsToUser()
+            // just do one save: it will be obvious through the thrown errors if 
+            // there is an error in saving transcripts or intents
             try {
-                user.intents = allCurrentIntents
-                // await user.save()
+                await user.save()
             }
             catch (e) {
                 throw new Error("Error in saving intents", e)
             }
-        }
 
-        function addTranscriptToUser() {
-            try {
-                const obj = {}
-                obj[filename] = file
-                obj["intents"] = intentsForThisFile
-                user.transcripts = user.transcripts.concat(obj)
-                // await user.save()        See comments at bottom re: only one save
+            function addIntentsToUser() {
+                try {
+                    user.intents = allCurrentIntents
+                    // await user.save()
+                }
+                catch (e) {
+                    throw new Error("Error in saving intents", e)
+                }
             }
-            catch (e) {
-                throw new Error("Error in saving transcripts", e)
+
+            function addTranscriptToUser() {
+                try {
+                    const obj = {}
+                    obj[filename] = file
+                    obj["intents"] = intentsForThisFile
+                    user.transcripts = user.transcripts.concat(obj)
+                    // await user.save()        See comments at bottom re: only one save
+                }
+                catch (e) {
+                    throw new Error("Error in saving transcripts", e)
+                }
             }
+        } catch (e) {
+            throw new Error("Invalid file format")
         }
     }
 }

@@ -1,10 +1,20 @@
 import { useState, useEffect } from 'react';
 
+function vh(percent) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return (percent * h) / 100;
+}
+
+function vw(percent) {
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  return (percent * w) / 100;
+}
+
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+  var width = vw(50);
+  var height = vh(50)
   return {
-    width,
-    height
+    width, height
   };
 }
 

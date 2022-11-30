@@ -10,42 +10,27 @@ export default function ForceGraph({ nodes, width, height }) {
   const [intentAssociates, setIntentAssociates] = useState("");
 
   // re-create animation every time nodes change
+  // We update state on every frame, then copy nodes into the simulation, and finally stop the simulation on unmount
   useEffect(() => {
-
-    // const onClick = (e) => {
-    //   console.log(e.target.id)
-    // }
-
-    // window.addEventListener('mouseup', onClick)
 
     const simulation = d3
       .forceSimulation()
       .force("x", d3.forceX(width))
-      .force("y", d3.forceY(height/2))
+      .force("y", d3.forceY(height))
       .force("collide", d3.forceCollide().radius(d => d.r + 1));
-    // .force("collision", d3.forceCollide(/* Will take in value passed to maxRadius*/ 60));
-
-
-    // update state on every frame
+ 
     simulation.on("tick", () => {
       setAnimatedNodes([...simulation.nodes()]);
     });
 
-    // copy nodes into simulation
     simulation.nodes([...nodes]);
-    // slow down with a small alpha
+
     simulation.alpha(0.1).restart();
 
-    // stop simulation on unmount
     return () => simulation.stop();
 
-
-  }, [nodes]);
-
-  // window.addEventListener("mouseup", (e) => {
-
-  //   console.log(e.target.id)
-  // });
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [nodes]);
 
   const onClick = (e) => {
       // idString is in this format: "{intentName},{intentFrequency},{intentAssociates}"
@@ -55,7 +40,7 @@ export default function ForceGraph({ nodes, width, height }) {
       const iF = idString.substring(0, idString.indexOf(","))
       idString = idString.substring(idString.indexOf(",") + 1)
       let iA = idString
-      if (iA.length == 0) {iA = "None"}
+      if (iA.length === 0) {iA = "None"}
       //intentAssociates is in this format: "{associate1},{frequency1},{associate2},{frequency2},..."
 
       setIntentName(iN)
@@ -66,8 +51,7 @@ export default function ForceGraph({ nodes, width, height }) {
   }
 
   return (
-    <div width="1500" height="1000">
-      {modalOpen && <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} />}
+    <div width="100vw" height="80vh">
       <svg className="button" svg width={width} height={height}>
         {animatedNodes.map((node) => (
             <circle
@@ -76,14 +60,14 @@ export default function ForceGraph({ nodes, width, height }) {
               r={node.r}
               key={node.id}
               stroke="black"
-              fill={"AliceBlue"}
+              fill={"var(--blue)"}
               pointerEvents="visiblePainted"
               id={node.id}
               onClick={onClick}
             />
         ))}
       </svg>
-      
+      <ModalReact setOpenModal={setModalOpen} intentName={intentName} intentFrequency={intentFrequency} intentAssociates={intentAssociates} opacity={modalOpen} />
     </div>
   );
 }
