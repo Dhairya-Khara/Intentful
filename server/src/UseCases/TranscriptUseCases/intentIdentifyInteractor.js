@@ -26,6 +26,7 @@ function processSingleTranscript(transcript_json, processedMap) {
     // iterate over each message in a single transcript
     for (let i = 0; i < transcript_json.length; i++) {
         let message = transcript_json[i];
+        
         // some intents have multiple intents, so we iterate through that as well
         for (const intent of message.intents) {
             updateCurrIntentInProcessedMap(intent);
