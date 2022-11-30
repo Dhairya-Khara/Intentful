@@ -1,9 +1,9 @@
-const processTranscriptInteractor = require('./intentIdentifyInteractor')
+const processTranscriptInteractor = require('./transcriptProcessInteractor')
 
 /**
  * Processes the transcript that the user has uploaded using 
- * transcriptProcessInteractor Use Case, then identifies intents using
- * intentIdentifierInteractor Use Case, and finally saves the transcript
+ * {@link transcriptProcessInteractor} Use Case, which identifies intents using
+ * {@link intentIdentifierInteractor} Use Case, and finally saves the transcript
  * and the intents to the database.
  * @interactor
  * @param {mongoose.Schema} user - The current authorized user of the website
