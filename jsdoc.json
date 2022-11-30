@@ -13,6 +13,6 @@
       "destination": "./documentation/",
       "recurse": true,
       "readme": "./readme.md",
-      "template": "doc-template"
+      "template": "./doc-template"
     }
 }

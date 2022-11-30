@@ -612,9 +612,11 @@
 
 
 <div class="description">
-    <p>Returns a map of all processed transcripts and their identified intents
-by processing newly uploaded transcripts and merging the resulting map
-with the already existing one.</p>
+    <p>Returns a map of the intents of each transcript, and an aggregate
+intent list, by reading the intents of the  newly uploaded transctipts.
+If an intent doesn't exist in the map yet, adds it; if italready exists,
+updates the frequency. Moreover, keeps track of which intents come after
+which intent in what frequency, to identify &quot;intent associates&quot;.</p>
 </div>
 
 
@@ -730,191 +732,7 @@ with the already existing one.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TranscriptUseCases_intentIdentifyInteractor.js.html">TranscriptUseCases/intentIdentifyInteractor.js</a>, <a href="TranscriptUseCases_intentIdentifyInteractor.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>allCurrentIntents - Map of all processed transcripts (uploaded by user) and their intents.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Map</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="transcriptProcessInteractor"><span class="type-signature"></span>transcriptProcessInteractor<span class="signature">(existingProcessedMap, transcript_json_list)</span><span class="type-signature"> &rarr; {Map}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Returns a map of all processed transcripts and their identified intents
-by processing newly uploaded transcripts and merging the resulting map
-with the already existing one.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>existingProcessedMap</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map of already processed transcripts with their intents.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transcript_json_list</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>List of transcripts to be uploaded</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TranscriptUseCases_transcriptProcessInteractor.js.html">TranscriptUseCases/transcriptProcessInteractor.js</a>, <a href="TranscriptUseCases_transcriptProcessInteractor.js.html#line11">line 11</a>
+        <a href="TranscriptUseCases_intentIdentifyInteractor.js.html">TranscriptUseCases/intentIdentifyInteractor.js</a>, <a href="TranscriptUseCases_intentIdentifyInteractor.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -972,6 +790,190 @@ with the already existing one.</p>
     
 
     
+    <h4 class="name" id="transcriptProcessInteractor"><span class="type-signature"></span>transcriptProcessInteractor<span class="signature">(existingProcessedMap, transcript_json_list)</span><span class="type-signature"> &rarr; {Map}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns a map of all processed transcripts and their identified intents
+by reading through the newly uploaded trasnscripts and identifying new
+transcripts using <code>intentIdentifierInteractor</code> Use Case.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>existingProcessedMap</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Map of already processed transcripts with their intents.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transcript_json_list</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of transcripts to be uploaded</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TranscriptUseCases_transcriptProcessInteractor.js.html">TranscriptUseCases/transcriptProcessInteractor.js</a>, <a href="TranscriptUseCases_transcriptProcessInteractor.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>allCurrentIntents - Map of all processed transcripts (uploaded by user) and their intents.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Map</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="transcriptUploadInteractor"><span class="type-signature">(async) </span>transcriptUploadInteractor<span class="signature">(user, file, filename)</span><span class="type-signature"></span></h4>
     
 
@@ -981,8 +983,8 @@ with the already existing one.</p>
 
 <div class="description">
     <p>Processes the transcript that the user has uploaded using
-transcriptProcessInteractor Use Case, then identifies intents using
-intentIdentifierInteractor Use Case, and finally saves the transcript
+<a href="global.html#transcriptProcessInteractor"><code>transcriptProcessInteractor</code></a> Use Case, which identifies intents using
+<code>intentIdentifierInteractor</code> Use Case, and finally saves the transcript
 and the intents to the database.</p>
 </div>
 
@@ -1495,7 +1497,7 @@ and if it does, logs the user in.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Nov 29 2022 23:18:37 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Nov 30 2022 01:41:06 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
