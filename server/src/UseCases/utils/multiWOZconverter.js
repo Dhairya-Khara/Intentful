@@ -3,7 +3,7 @@
 // Returns an array containing individual JSON-type transcripts in our original format.
 
 function convertMultiWOZDialoguetoRaw(multiWOZdialogue) {
-    JSON.parse(multiWOZdialogue) // originally type Buffer
+    // JSON.parse(multiWOZdialogue) // originally type Buffer
     for (let i = 0; i < multiWOZdialogue.length; i++) { // multiWOZdialogue is an array of individual transcripts
         multiWOZdialogue[i] = convertSingleMultiWOZtoRaw(multiWOZdialogue[i])
     }

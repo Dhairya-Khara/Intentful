@@ -11,7 +11,7 @@ const convertMultiWOZInteractor = (transcript_json_list) => {
     }
 }
 
-console.log(convertMultiWOZInteractor(sampleDialogue))
-console.log(convertMultiWOZInteractor(sampleDialogue).length)
+// console.log(convertMultiWOZInteractor(sampleDialogue))
+// console.log(convertMultiWOZInteractor(sampleDialogue).length)
 
 module.exports = convertMultiWOZInteractor

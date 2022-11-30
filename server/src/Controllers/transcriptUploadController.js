@@ -10,7 +10,7 @@ router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) =
     const user = req.user
     const file = req.file.buffer
 
-    const convertedTranscriptList = convertMultiWOZInteractor(file); // 
+    let convertedTranscriptList = convertMultiWOZInteractor(file); // 
     console.log(convertedTranscriptList)
     console.log(typeof convertedTranscriptList)
     console.log(convertedTranscriptList.length)

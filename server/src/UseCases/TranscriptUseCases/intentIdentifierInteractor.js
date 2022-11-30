@@ -1,9 +1,7 @@
-const processTranscript = require('../utils/transcriptProcessor');
-const convertMultiWOZInteractor = require('./convertMultiWOZInteractor');
+const processTranscriptList = require('../utils/transcriptProcessor');
 
 const identifyIntents = (existingProcessedMap, transcript_json_list) => {
-    const convertedTranscriptList = convertMultiWOZInteractor(transcript_json_list);
-    const allCurrentIntents = processTranscript(existingProcessedMap, convertedTranscriptList);
+    const allCurrentIntents = processTranscriptList(existingProcessedMap, transcript_json_list);
     return allCurrentIntents;
 }
 
