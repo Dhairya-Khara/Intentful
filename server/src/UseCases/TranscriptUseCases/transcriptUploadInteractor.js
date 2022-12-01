@@ -26,13 +26,15 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
     async function userSaveTranscriptAndIntents() {
         const json = JSON.parse(file)
         let convertedMultiWOZtoOrigList = multiWOZconverter(json);
+        let allCurrentIntents = new Map()
+        if (user.intents !== undefined) {
+            allCurrentIntents = new Map(Object.entries(user.intents))
+        }
+        console.log(user.intents)
+        console.log(allCurrentIntents)
         for (let i = 0; i < convertedMultiWOZtoOrigList.length; i++) {
             let currTranscript = convertedMultiWOZtoOrigList[i] // originally a string
             currTranscript = JSON.parse(currTranscript) // now a JSON object
-            let allCurrentIntents = new Map()
-            if (user.intents !== undefined) {
-                allCurrentIntents = new Map(Object.entries(user.intents))
-            }
 
             //single transcript processing
             let intentsForThisFile = processTranscriptInteractor(new Map(), [currTranscript])
@@ -43,16 +45,17 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
 
             addTranscriptToUser(i, intentsForThisFile)
             user.intents = allCurrentIntents
-            console.log(user.intents)
-
             // just do one save: it will be obvious through the thrown errors if 
             // there is an error in saving transcripts or intents
-            try {
-                await user.save()
-            }
-            catch (e) {
-                throw new Error("Error in saving intents", e)
-            }
+
+        }
+        console.log(user.intents)
+
+        try {
+            await user.save()
+        }
+        catch (e) {
+            throw new Error("Error in saving intents", e)
         }
         // function addIntentsToUser(allCurrentIntents) {
         //     try {
@@ -67,7 +70,7 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
         function addTranscriptToUser(i, intentsForThisFile) {
             try {
                 const obj = {}
-                const currTranscriptFilename = filename + `_transcript_${i}`
+                const currTranscriptFilename = filename + `_${i}`
                 obj[currTranscriptFilename] = file
                 obj["intents"] = intentsForThisFile
                 user.transcripts = user.transcripts.concat(obj)
