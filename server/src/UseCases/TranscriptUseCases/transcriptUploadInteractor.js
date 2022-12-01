@@ -30,8 +30,7 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
         if (user.intents !== undefined) {
             allCurrentIntents = new Map(Object.entries(user.intents))
         }
-        console.log(user.intents)
-        console.log(allCurrentIntents)
+
         for (let i = 0; i < convertedMultiWOZtoOrigList.length; i++) {
             let currTranscript = convertedMultiWOZtoOrigList[i] // originally a string
             currTranscript = JSON.parse(currTranscript) // now a JSON object
@@ -44,12 +43,8 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
             // console.log(allCurrentIntents)
 
             addTranscriptToUser(i, intentsForThisFile)
-            user.intents = allCurrentIntents
-            // just do one save: it will be obvious through the thrown errors if 
-            // there is an error in saving transcripts or intents
-
+            user.intents = allCurrentIntents  // overwrite user's intents with the current intents
         }
-        console.log(user.intents)
 
         try {
             await user.save()
@@ -57,24 +52,17 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
         catch (e) {
             throw new Error("Error in saving intents", e)
         }
-        // function addIntentsToUser(allCurrentIntents) {
-        //     try {
-        //         user.intents = allCurrentIntents
-        //         // await user.save()
-        //     }
-        //     catch (e) {
-        //         throw new Error("Error in saving intents", e)
-        //     }
-        // }
 
         function addTranscriptToUser(i, intentsForThisFile) {
             try {
                 const obj = {}
-                const currTranscriptFilename = filename + `_${i}`
+                let currTranscriptFilename = filename
+                if (i !== 0) {
+                    currTranscriptFilename = currTranscriptFilename + `_${i}`
+                }
                 obj[currTranscriptFilename] = file
                 obj["intents"] = intentsForThisFile
                 user.transcripts = user.transcripts.concat(obj)
-                // await user.save()        See comments at bottom re: only one save
             }
             catch (e) {
                 throw new Error("Error in saving transcripts", e)
