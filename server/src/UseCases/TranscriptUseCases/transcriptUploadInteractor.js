@@ -1,4 +1,6 @@
 const processTranscriptInteractor = require('./transcriptProcessInteractor')
+const multiWOZconverter = require('./multiWOZconverter')
+
 
 /**
  * Processes the transcript that the user has uploaded using 
@@ -31,7 +33,7 @@ const transcriptUploadInteractor = async (user, file, filename) => {
 
     //confirm the filename is unique, or send an error
     if (!transcriptNames.includes(filename)) {
-        await userSaveTranscriptAndIntents()
+        userSaveTranscriptAndIntents()
     }
     else {
         throw new Error("A transcript with the same name already exists")
@@ -39,60 +41,50 @@ const transcriptUploadInteractor = async (user, file, filename) => {
 
     //use other use cases to identify intents and save the transcript and intents
     async function userSaveTranscriptAndIntents() {
-        try {
-            //retrieve existing transcript information (i.e., identified intents)
-            const json = JSON.parse(file)
-            let allCurrentIntents = new Map()
-            if (user.intents !== undefined) {
-                allCurrentIntents = new Map(Object.entries(user.intents))
-            }
+        //retrieve existing transcript information (i.e., identified intents)
+        const json = JSON.parse(file)
+        let convertedMultiWOZtoOrigList = multiWOZconverter(json);
+        let allCurrentIntents = new Map()
+        if (user.intents !== undefined) {
+            allCurrentIntents = new Map(Object.entries(user.intents))
+        }
+
+        for (let i = 0; i < convertedMultiWOZtoOrigList.length; i++) {
+            let currTranscript = convertedMultiWOZtoOrigList[i] // originally a string
+            currTranscript = JSON.parse(currTranscript) // now a JSON object
 
             //single transcript processing; get intents in the newly uploaded files
-            let intentsForThisFile = processTranscriptInteractor(new Map(), [json])
+            let intentsForThisFile = processTranscriptInteractor(new Map(), [currTranscript])
 
-            //multiple transcript processing; merge the result with the existing intents
-            allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [json])
+            //multiple transcript processing
+            allCurrentIntents = processTranscriptInteractor(allCurrentIntents, [currTranscript])
+            // console.log(allCurrentIntents)
 
-            addTranscriptToUser()
-            addIntentsToUser()
-            // just do one save: it will be obvious through the thrown errors if 
-            // there is an error in saving transcripts or intents
-            try {
-                await user.save()
-            }
-            catch (e) {
-                throw new Error("Error in saving intents", e)
-            }
+            addTranscriptToUser(i, intentsForThisFile)
+            user.intents = allCurrentIntents  // overwrite user's intents with the current intents
+        }
 
-            //saving aggregate intents to the database
-            function addIntentsToUser() {
-                try {
-                    user.intents = allCurrentIntents
-                    // await user.save()
-                }
-                catch (e) {
-                    throw new Error("Error in saving intents", e)
-                }
-            }
-
-            //saving newly uploaded transcripts with their intents to the database
-            function addTranscriptToUser() {
-                try {
-                    const obj = {}
-                    obj[filename] = file
-                    obj["intents"] = intentsForThisFile
-                    user.transcripts = user.transcripts.concat(obj)
-                    // await user.save()        See comments at bottom re: only one save
-                }
-                catch (e) {
-                    throw new Error("Error in saving transcripts", e)
-                }
-            }
+        try {
+            await user.save()
         }
         catch (e) {
-            //throw new Error("Invalid file format")
-            //this was causing a constant error in transcriptUploadInteractor.test.js
-            //probably something wrong in transcriptUploadInteractor.test.js
+            throw new Error("Error in saving intents", e)
+        }
+
+        function addTranscriptToUser(i, intentsForThisFile) {
+            try {
+                const obj = {}
+                let currTranscriptFilename = filename
+                if (i !== 0) {
+                    currTranscriptFilename = currTranscriptFilename + `_${i}`
+                }
+                obj[currTranscriptFilename] = file
+                obj["intents"] = intentsForThisFile
+                user.transcripts = user.transcripts.concat(obj)
+            }
+            catch (e) {
+                throw new Error("Error in saving transcripts", e)
+            }
         }
     }
 }
