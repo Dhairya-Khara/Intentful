@@ -6,6 +6,11 @@ body {
 }
 
 @font-face {
+  font-family: "WorkSans";
+  src: url('./WorkSans-VariableFont_wght.ttf');
+}
+
+@font-face {
   font-family: "Kollektif";
   src: url('./Kollektif.ttf');
 }
@@ -51,7 +56,7 @@ body {
 }
 
 * {
-  font-family: 'Kollektif', 'Serif';
+  font-family: 'WorkSans', 'Serif';
 }
 
 h1 {
@@ -77,11 +82,11 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #ddd;
+  background-color:#fff;
 }
 
 input {
-  font-family: 'Kollektif', 'Serif';
+  font-family: 'WorkSans', 'Serif';
   padding-left: 2%;
 }
 
@@ -168,15 +173,13 @@ input {
 .buttonp:before {
   content: "";
   background: linear-gradient(45deg,
-      #fe0101,
-      #fe7401,
-      #fefa01,
-      #47fe01,
-      #00fed5,
-      #002cff,
-      #7902ff,
-      #fe02c8,
-      #fe0101);
+      #2641c2,
+      #1a6bd6,
+      #0d95e9,
+      #18A0FB,
+      #0d95e9,
+      #1a6bd6,
+      #2641c2);
   position: absolute;
   top: -2px;
   left: -2px;
@@ -215,7 +218,7 @@ input {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #222;
+  background: var(--blue);
   color: #fff;
   -webkit-text-stroke-color: #000;
   -webkit-text-stroke-width: 2px;
@@ -351,6 +354,9 @@ svg {
   max-width: 100%;
   height: 90vh;
   overflow-x: hidden;
+  opacity: 20%;
+  filter: brightness(50%);
+  border-radius: 2.5vh;
 }
 
 .page {
@@ -439,6 +445,7 @@ body {
 .para-img {
   width: 42.5vw;
   margin: auto;
+  border-radius: 2.5vh;
 }
 
 .para-with-subtext {
@@ -837,6 +844,7 @@ label {
 }
 
 h2.filesHeader{
+  font-family: 'Kollektif';
   margin-bottom: 0%;
 }
 
@@ -873,6 +881,7 @@ div.transcriptContainer{
 .input-label.dash{
   display: flex;
   font-size: 1.4vw;
+  font-family: 'Kollektif';
   padding-bottom: 0vh;
   margin-bottom: -0.6vh;
   text-align: center;
@@ -881,7 +890,7 @@ div.transcriptContainer{
   margin-right: auto;
   justify-content: center;
   align-items: center;
-  color: #ddd;
+  color: #fff;
 }
 
 .ModalBoxes{

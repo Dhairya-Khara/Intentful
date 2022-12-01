@@ -1,5 +1,5 @@
 import React from 'react'
-import Intentful from './../../Images/Intentful2.png'
+import Intentful from './../../Images/Intentful3.png'
 // import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import LogOut from './Logout'

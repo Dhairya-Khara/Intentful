@@ -72,7 +72,7 @@ function Bios() {
       <div className="inner">
         <h1>About Us</h1>
         <div className="create-text centered">
-          We are the Techy Blinders; an innovative team of developers with
+          We are the Techy Blinders: an innovative team of developers with
           incredible code that will leave you stunned.
         </div>
 		<h1>Meet the Team</h1>
