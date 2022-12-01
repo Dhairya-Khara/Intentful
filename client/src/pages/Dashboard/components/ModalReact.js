@@ -57,7 +57,9 @@ function ModalReact({
   return (
     <Modal.Dialog size="xl" className="ModalModal" id="ModalModal" style={{opacity: opacityValue}}>
       <Modal.Header />
-      <p>Intent: {intentName}</p>
+      {intentFrequency === 1 ? <p> Intent '{intentName}' appeared {intentFrequency} time.</p> :
+      <p> Intent '{intentName}' appeared {intentFrequency} times.</p>}
+
       <p>Intent Associates: {formatted}</p>
       <Modal.Body className="ModalBoxes">
         <div className="input">

@@ -29,20 +29,26 @@ function processSingleTranscript(transcript_json, processedMap) {
         
         // some intents have multiple intents, so we iterate through that as well
         for (const intent of message.intents) {
-            updateCurrIntentInProcessedMap(intent);
+            // update intent frequency in the processed map
+            updateIntentInProcessedMap(intent);
 
+            // update intent associates of the previous intent
             if (prevIntent !== undefined && prevIntent !== intent) {
-                updatePrevIntentInProcessedMap(intent);
+                updateAssociateInProcessedMap(prevIntent, intent);
             }
             prevIntent = intent;
         }
     }
 
-    function updateCurrIntentInProcessedMap(intent) {
-        if (!processedMap.has(intent)) { // add intent to processedMap
+    // update intent frequency in the processed map
+    function updateIntentInProcessedMap(intent) {
+        // if intent doesn't exist, add it
+        if (!processedMap.has(intent)) {
             processedMap.set(intent, [1, new Map()]);
         }
-        else { // update existing intent frequency and its associates in the map
+
+        // if the intent exists, update its frequency
+        else { 
             const currList = processedMap.get(intent);
             const newIntentFreq = currList[0] + 1;
             const sameAssociateMap = currList[1];
@@ -51,7 +57,9 @@ function processSingleTranscript(transcript_json, processedMap) {
         }
     }
 
-    function updatePrevIntentInProcessedMap(intent) {
+    // update intent associates of the previous intent
+    function updateAssociateInProcessedMap(prevIntent, intent) {
+        // get current intent associates
         const currList = processedMap.get(prevIntent);
         let newAssociateMap = undefined;
         if (currList[1] instanceof Map) {
@@ -60,9 +68,13 @@ function processSingleTranscript(transcript_json, processedMap) {
         else {
             newAssociateMap = new Map(Object.entries(currList[1]));
         }
+
+        //if current intent is not an associate of the previous intent, make it so
         if (!newAssociateMap.has(intent)) {
             newAssociateMap.set(intent, 1);
         }
+
+        //if current intent is an associate of the previous intent, update its frequency
         else {
             const newIntentAssociateFreq = newAssociateMap.get(intent) + 1;
             newAssociateMap.set(intent, newIntentAssociateFreq);
