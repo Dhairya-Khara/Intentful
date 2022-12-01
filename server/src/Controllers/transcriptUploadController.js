@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const auth = require('../Middleware/auth')
 const multer = require('multer')
-const uploadTranscriptInteractor = require('../UseCases/TranscriptUseCases/transcriptUploadInteractor')
+const transcriptUploadInteractor = require('../UseCases/TranscriptUseCases/transcriptUploadInteractor')
 const upload = multer()
 
 /**
@@ -15,7 +15,7 @@ router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) =
     const filename = req.file.originalname
 
     try {
-        await uploadTranscriptInteractor(user, file, filename)
+        await transcriptUploadInteractor(user, file, filename)
     }
     catch (e) {
         return res.status(422).send(e.message)

@@ -1,4 +1,6 @@
 const processTranscriptInteractor = require('./transcriptProcessInteractor')
+const multiWOZconverter = require('./multiWOZconverter')
+
 
 /**
  * Processes the transcript that the user has uploaded using 
