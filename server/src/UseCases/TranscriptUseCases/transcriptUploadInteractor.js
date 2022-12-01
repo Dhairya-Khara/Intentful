@@ -1,8 +1,23 @@
-const processTranscriptInteractor = require('./intentIdentifierInteractor')
-const multiWOZconverter = require('../utils/multiWOZconverter')
+const processTranscriptInteractor = require('./transcriptProcessInteractor')
 
-const uploadTranscriptInteractor = async (user, file, filename) => {
-    if (user.transcripts === undefined || user.email === undefined) { throw new Error("Not a valid user") }
+/**
+ * Processes the transcript that the user has uploaded using 
+ * {@link transcriptProcessInteractor} Use Case, which identifies intents using
+ * {@link intentIdentifierInteractor} Use Case, and finally saves the transcript
+ * and the intents to the database.
+ * @interactor
+ * @param {mongoose.Schema} user - The current authorized user of the website
+ * @param {JSON} file - The JSON transcript file that the user has uploaded
+ * @param {String} filename - Name of the file the user has uploaded
+ */
+const transcriptUploadInteractor = async (user, file, filename) => {
+    //throw an error if not a valid user
+    if (user.transcripts === undefined || user.email === undefined) {
+        throw new Error("Not a valid user")
+    }
+
+    //make sure the name of the newly uploaded file doesn't exist in database
+    //i.e., make sure its name is unique
     let transcriptNames = []
     const existingTranscriptInfo = Object.entries(user.transcripts)
     try {
@@ -14,16 +29,17 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
         throw new Error("Error in retrieving transcript names", e)
     }
 
+    //confirm the filename is unique, or send an error
     if (!transcriptNames.includes(filename)) {
         userSaveTranscriptAndIntents()
     }
-
     else {
         throw new Error("A transcript with the same name already exists")
     }
 
-
+    //use other use cases to identify intents and save the transcript and intents
     async function userSaveTranscriptAndIntents() {
+        //retrieve existing transcript information (i.e., identified intents)
         const json = JSON.parse(file)
         let convertedMultiWOZtoOrigList = multiWOZconverter(json);
         let allCurrentIntents = new Map()
@@ -35,7 +51,7 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
             let currTranscript = convertedMultiWOZtoOrigList[i] // originally a string
             currTranscript = JSON.parse(currTranscript) // now a JSON object
 
-            //single transcript processing
+            //single transcript processing; get intents in the newly uploaded files
             let intentsForThisFile = processTranscriptInteractor(new Map(), [currTranscript])
 
             //multiple transcript processing
@@ -71,4 +87,4 @@ const uploadTranscriptInteractor = async (user, file, filename) => {
     }
 }
 
-module.exports = uploadTranscriptInteractor
+module.exports = transcriptUploadInteractor

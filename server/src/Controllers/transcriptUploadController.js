@@ -2,10 +2,13 @@ const express = require('express')
 const router = express.Router()
 const auth = require('../Middleware/auth')
 const multer = require('multer')
-const uploadTranscriptInteractor = require('../UseCases/TranscriptUseCases/transcriptUploadInteractor');
-const convertMultiWOZInteractor = require('../UseCases/TranscriptUseCases/convertMultiWOZInteractor')
-
+const uploadTranscriptInteractor = require('../UseCases/TranscriptUseCases/transcriptUploadInteractor')
 const upload = multer()
+
+/**
+ * Uses {@link transcriptUploadInteractor} Use Case to
+ * upload the new transcripts the user has chosen to the database.
+ */
 router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) => {
     const user = req.user
     const file = req.file.buffer
@@ -13,7 +16,6 @@ router.post('/uploadTranscript', auth, upload.single('file'), async (req, res) =
 
     try {
         await uploadTranscriptInteractor(user, file, filename)
-        // res.sendStatus(200)
     }
     catch (e) {
         return res.status(422).send(e.message)
