@@ -9,6 +9,17 @@ Intentful also identifies "intent associates": the most frequent intents that co
 
 Consequently, Intentful is perfect to both get you started on Voiceflow and maximize your experience with Voiceflow.
 
+## Features:
+### Landing Page 
+- Register, Log-in functionality
+- Team Bios
+### Dashboard
+- Upload single or multiple transcripts in a dialogue.json file
+- View previously uploaded transcripts
+- Ability to visualize all intents of an individual transcript, or all intents of all previously uploaded transcripts
+- See an intent's associates and their frequency by clicking on the intent's bubble
+- Create an intent block with that labelled intent on the Voiceflow site using the Modal (by entering Voiceflow info)
+
 ## Getting Started
 - Install MongoDB and NodeJS
 - Clone the repo
