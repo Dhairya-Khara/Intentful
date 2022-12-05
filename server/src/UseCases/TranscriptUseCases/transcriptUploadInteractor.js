@@ -51,6 +51,8 @@ const transcriptUploadInteractor = async (user, file, filename) => {
         //retrieve existing transcript information (i.e., identified intents)
         const json = JSON.parse(file)
         let convertedMultiWOZtoOrigList = convertMultiWOZInteractor(json);
+
+        // prepare allCurrentIntents variable representing user's existing intents (if they have any)
         let allCurrentIntents = new Map()
         if (user.intents !== undefined) {
             allCurrentIntents = new Map(Object.entries(user.intents))
@@ -60,10 +62,10 @@ const transcriptUploadInteractor = async (user, file, filename) => {
             let currTranscript = convertedMultiWOZtoOrigList[i] // originally a string
             currTranscript = JSON.parse(currTranscript) // now a JSON object
 
-            //single transcript processing; get intents in the newly uploaded files
+            // single transcript processing; get intents in the newly uploaded files
             let intentsForThisFile = transcriptProcessInteractor(new Map(), [currTranscript])
 
-            //multiple transcript processing
+            // multiple transcript processing
             allCurrentIntents = transcriptProcessInteractor(allCurrentIntents, [currTranscript])
 
             addTranscriptToUser(i, intentsForThisFile)
