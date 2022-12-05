@@ -1,11 +1,11 @@
 # Intentful
 This is the Techy Blinders' Voiceflow Project! (ft. Berke Altiparmak, Chenika Bukes, Krishna Cheemalapati, Dhairya Khara, Aidan Li)
 
-Intentful is potentially an add-on feature for Voiceflow to help Voiceflow users set up their environment on the Voiceflow platform faster and smarter.
+Intentful was made to help retail companies turn transcripts into conversational assistants. Intentful is potentially an add-on feature for Voiceflow that helps Voiceflow users set up their environment on the Voiceflow platform faster and smarter.
 
-Intentful allows you, a retail company, to find out what matters the most to your customers. After uploading your transcripts of conversations between the customers and your chat app, Intentful detects the "intent" (i.e., 'buy pizza') of each human message in your transcript. It keeps track of how many times each intent has occurred in the conversation(s), so that while setting up your Voiceflow environment, you can prioritize those intents to maximize customer utility.
+Intentful allows you, a retail company, to find out what matters the most to your customers. After uploading your transcripts of conversations between the customers and your chat app, Intentful detects the "intent" (e.g. 'buy_pizza') of each human message in a single transcript. It keeps track of how many times each intent has occurred in the conversation(s), so that while setting up your Voiceflow environment, you can prioritize those intents to maximize customer utility.
 
-In addition, Intentful identifies "intent associates": the most frequent intents that come after a specific intent. This helps you build options for conversation logic/flow by letting you know common conversation sequences, and subsequently, you can create more thorough logic for them. For example, 'buy_fries' being the most frequent intent after 'buy_cheeseburger' intent can help you build a chatbot that asks the users whether they would like fries after they mention they want a cheeseburger. 
+Intentful also identifies "intent associates": the most frequent intents that come after a specific intent. By letting you know the most common conversation sequences, we help you choose better options for building conversation logic/flow with greater depth. For example, if 'buy_fries' is the most frequent intent after the 'buy_cheeseburger' intent, you can build a chatbot that asks the users whether they would like fries after they mention they want a cheeseburger. 
 
 Consequently, Intentful is perfect to both get you started on Voiceflow and maximize your experience with Voiceflow.
 
