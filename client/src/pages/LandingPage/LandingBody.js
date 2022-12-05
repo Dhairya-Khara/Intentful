@@ -1,9 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import fakeMain from "./../Images/fakeMain.PNG";
-import fakeFeature from "./../Images/fakeFeature.PNG";
-// The above imports should be replace with the ones below
-// once we have everything fleshed out and finalized:
 import mainImg from "./../Images/mainImg.gif"
 import visImg from "./../Images/vis.png"
 import vfImg from "./../Images/vf.png"
