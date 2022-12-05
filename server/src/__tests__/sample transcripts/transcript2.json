@@ -15,7 +15,8 @@
     },
     {
         "intents": [
-            "find_hotel"
+            "find_hotel",
+            "find_restaurant"
         ],
         "speaker": "USER",
         "turn_id": "2",
@@ -29,7 +30,8 @@
     },
     {
         "intents": [
-            "find_hotel"
+            "find_hotel",
+            "find_restaurant"
         ],
         "speaker": "USER",
         "turn_id": "4",
