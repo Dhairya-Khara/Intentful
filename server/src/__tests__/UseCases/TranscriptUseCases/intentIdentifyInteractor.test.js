@@ -1,3 +1,9 @@
+/**
+ * Tests for the intentIdentifyInteractor Use Case.
+ * Tests that intents are identified and aggregated correctly from both single and multiple transcripts,
+ * and also updates a user's existing intents corrrectly.
+ */
+
 const intentIdentifyInteractor = require('../../../UseCases/TranscriptUseCases/intentIdentifyInteractor');
 const sampleTranscript = require('../../sample transcripts/transcript1.json');
 const sampleTranscript2 = require('../../sample transcripts/transcript2.json');

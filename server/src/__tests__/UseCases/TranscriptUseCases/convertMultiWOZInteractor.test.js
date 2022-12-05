@@ -1,3 +1,10 @@
+/**
+ * Tests for the convertMultiWOZInteractor Use Case.
+ * Tests that MultiWOZ dialogue files are converted correctly into an array containing
+ * simplified/original format transcripts.
+ * Tests both cases where a dialogue file may contain single or multiple transcripts.
+ */
+
 const convertMultiWOZInteractor = require('../../../UseCases/TranscriptUseCases/convertMultiWOZInteractor');
 const convertedTranscript1 = require('../../sample transcripts/transcript1.json')
 const convertedTranscript2 = require('../../sample transcripts/transcript2.json')

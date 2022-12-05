@@ -1,3 +1,9 @@
+/**
+ * Tests for the getSpecificIntentsInteractor Use Case.
+ * Tests that it returns a specific transcript's intents correctly, and if there are no transcripts, 
+ * "No intents" is returned.
+ */
+
 const getSpecificIntentsInteractor = require('../../../UseCases/GetUseCases/getSpecificIntentsInteractor');
 const User = require('../../../Entities/UserSchema');
 const sampleTranscript = require('../../sample transcripts/transcript1.json');

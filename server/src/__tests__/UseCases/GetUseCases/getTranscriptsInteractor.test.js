@@ -1,3 +1,10 @@
+/**
+ * Tests for the getTranscriptsInteractor Use Case.
+ * Tests that it returns a user's list of transcripts correctly if the user has transcripts.
+ * If the User does not have transcripts, an empty list is returned.
+ * If the user is an invalid User, then an error message is thrown.
+ */
+
 const getTranscriptsInteractor = require('../../../UseCases/GetUseCases/getTranscriptsInteractor');
 const User = require('../../../Entities/UserSchema');
 const sampleTranscript = require('../../sample transcripts/transcript1.json');
@@ -15,11 +22,6 @@ describe('getTranscriptsInteractor test', () => {
 
     it('correctly returns a list of transcripts containing multiple transcripts', async () => {
         const mockUser = { email: 'testing@gmail.com', password: 'solid', transcripts: [sampleTranscript, sampleTranscript2, sampleTranscript3] };
-        const expectedIntents = new Map([
-            ['find_restaurant', [3, new Map([['find_hotel', 1]])]],
-            ['find_hotel', [2, new Map([['book_hotel', 1]])]],
-            ['book_hotel', [1, new Map()]]
-        ]);
         const user = new User(mockUser);
         expect(getTranscriptsInteractor(user)).toEqual(mockUser.transcripts);
     });

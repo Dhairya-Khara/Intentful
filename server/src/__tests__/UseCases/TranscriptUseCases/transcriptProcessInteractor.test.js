@@ -1,3 +1,10 @@
+/**
+ * Tests for the transcriptProcessInteractor Use Case.
+ * Tests that transcripts from the "original"/simplified format will be converted with the correct intent values,
+ * with single and multiple transcripts, and also updates a user's existing intents corrrectly.
+ * If more steps are added to the transcriptProcessInteractor, we will update and add additional tests here.
+ */
+
 const transcriptProcessInteractor = require('../../../UseCases/TranscriptUseCases/transcriptProcessInteractor')
 const sampleTranscript = require('../../sample transcripts/transcript1.json')
 const sampleTranscript2 = require('../../sample transcripts/transcript2.json')

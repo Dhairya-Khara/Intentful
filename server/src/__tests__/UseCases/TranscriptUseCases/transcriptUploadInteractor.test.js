@@ -1,11 +1,7 @@
 /**
  * Tests for the transcriptUploadInteractor Use Case.
  * Tests that dialogues with single and multiple transcripts are uploaded correctly, and also tests
- * that successive uploads update the existing intents correctly.
- * @interactor
- * @param {mongoose.Schema} user - The current authorized user of the website
- * @param {JSON} file - The JSON transcript file that the user has uploaded
- * @param {String} filename - Name of the file the user has uploaded
+ * that errors are thrown correctly.
  */
 
 const mongoose = require('mongoose');
