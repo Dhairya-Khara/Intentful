@@ -1,5 +1,5 @@
 # Intentful
-This is the Techy Blinders' Voiceflow Project! (ft. Berke Altiparmak, Chenika Bukes, Krishna Cheemalapati, Dhairya Khara, Aidan Li)
+This is the Techy Blinders' Voiceflow Project!
 
 Intentful was made to help retail companies turn transcripts into conversational assistants. Intentful is potentially an add-on feature for Voiceflow that helps Voiceflow users set up their environment on the Voiceflow platform faster and smarter.
 
@@ -8,6 +8,15 @@ Intentful allows you, a retail company, to find out what matters the most to you
 Intentful also identifies "intent associates": the most frequent intents that come after a specific intent. By letting you know the most common conversation sequences, we help you choose better options for building conversation logic/flow with greater depth. For example, if 'buy_fries' is the most frequent intent after the 'buy_cheeseburger' intent, you can build a chatbot that asks the users whether they would like fries after they mention they want a cheeseburger. 
 
 Consequently, Intentful is perfect to both get you started on Voiceflow and maximize your experience with Voiceflow.
+
+## Authors
+<ul>
+  <li> <a href="https://github.com/BerkeAltiparmak">Berke Altiparmak</a></li>
+  <li> <a href="https://github.com/chenikabukes">Chenika Bukes</a></li>
+  <li> <a href="https://github.com/krishnacheemalapati">Krishna Cheemalapati</a></li>
+  <li> <a href="https://github.com/Dhairya-Khara">Dhairya Khara</a></li>
+  <li> <a href="https://github.com/aidanmrli">Aidan Li</a></li>
+ </ul>
 
 ## Features:
 ### Landing Page 
