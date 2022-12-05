@@ -1,23 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import fakeMain from "./../Images/fakeMain.PNG";
-import fakeFeature from "./../Images/fakeFeature.PNG";
-// The above imports should be replace with the ones below
-// once we have everything fleshed out and finalized:
 import mainImg from "./../Images/mainImg.gif"
 import visImg from "./../Images/vis.png"
 import vfImg from "./../Images/vf.png"
 
 export default function LandingBody() {
   const navigate = useNavigate();
-    
-    const onClickLogin = (e) =>{
-        navigate("/login")
-    }
+
+  const onClickLogin = (e) => {
+    navigate("/login")
+  }
   return (
     <div>
       <div className="HeroSection">
-        <img className="Mainimg" src={mainImg} alt="Main Feature Gif"></img> 
+        <img className="Mainimg" src={mainImg} alt="Main Feature Gif"></img>
         <div className="join">
           <div className="main-text">
             The easiest way to make chatbots <strong>quickly.</strong>
@@ -59,7 +55,7 @@ export default function LandingBody() {
           </div>
           <img
             className="para-img"
-            src={vfImg} alt="Voiceflow Integration"></img> 
+            src={vfImg} alt="Voiceflow Integration"></img>
         </div>
         <div>
           <div className="final-join">
@@ -67,7 +63,7 @@ export default function LandingBody() {
               Voiceflow is an amazing tool. Let us help you unlock <br></br>
               its full potential and make the best of your chatbots.
             </div>
-            <div className = "buttons">
+            <div className="buttons">
               <div className="registerbtn">
                 <div className="register-button newbtni" role="button" onClick={onClickLogin}>Join Today</div>
               </div>
