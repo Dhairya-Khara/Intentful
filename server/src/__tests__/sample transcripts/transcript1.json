@@ -1,7 +1,8 @@
 [
     {
         "intents": [
-            "find_restaurant"
+            "find_restaurant",
+            "find_hotel"
         ],
         "speaker": "USER",
         "turn_id": "0",
@@ -15,11 +16,12 @@
     },
     {
         "intents": [
-            "find_restaurant"
+            "find_restaurant",
+            "find_hotel"
         ],
         "speaker": "USER",
         "turn_id": "2",
-        "utterance": "Any sort of food would be fine, as long as it is a bit expensive."
+        "utterance": "Any sort of food would be fine, as long as it is a bit expensive. Could I get the phone number for your recommendation?"
     },
     {
         "intents": [],

@@ -3,13 +3,13 @@
  * @interactor
  * @param {mongoose.Schema} user - The current authorized user of the website.
  * @param {String} name - Name of the transcript file requested by the user.
- * @returns {Object} user.intents - The intents identified in user's transcipts.
+ * @returns {Object} singleTranscript.intents - The intents identified in the transcript requested (if it exists).
  */
-const getSpecificIntentsInteractor = (user, name) =>{
-    const transcript = user.transcripts
-    for(const obj of transcript){
-        if(name in obj){
-            return obj.intents
+const getSpecificIntentsInteractor = (user, name) => {
+    const allUserTranscripts = user.transcripts
+    for (const singleTranscript of allUserTranscripts) {
+        if (name in singleTranscript) {
+            return singleTranscript.intents
         }
     }
     return "No intents"
