@@ -1,3 +1,8 @@
+/**
+ * Tests for the userLoginInteractor Use Case.
+ * Tests that users can log in correctly, and throws an error if logging into a user that doesn't exist.
+ */
+
 const mongoose = require('mongoose');
 const loginUserInteractor = require('../../../UseCases/UserUseCases/userLoginInteractor');
 const User = require('../../../Entities/UserSchema');
@@ -23,8 +28,9 @@ describe('UserLoginInteractor test', () => {
         const user = new User(mockUser);
         await user.save()
 
-        // need to learn how to mock jwt to check for unique token value
         expect(loginUserInteractor('testing@gmail.com', 'solid')).resolves.toBeDefined();
+        token = await loginUserInteractor('testing@gmail.com', 'solid');
+        expect(typeof token).toBe('string');
     });
 
     it('throws error if user does not exist', async () => {

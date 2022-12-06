@@ -1,3 +1,8 @@
+/**
+ * Tests for the userRegisterInteractor Use Case.
+ * Tests that users can register correctly, and throws an error if registering with an invalid email.
+ */
+
 const mongoose = require('mongoose');
 const createUserInteractor = require('../../../UseCases/UserUseCases/userRegisterInteractor');
 

@@ -1,7 +1,7 @@
 /**
  * Returns a map of the intents of each transcript, and an aggregate
  * intent list, by reading the intents of the  newly uploaded transctipts.
- * If an intent doesn't exist in the map yet, adds it; if italready exists,
+ * If an intent doesn't exist in the map yet, adds it; if it already exists,
  * updates the frequency. Moreover, keeps track of which intents come after
  * which intent in what frequency, to identify "intent associates".
  * @interactor
@@ -26,7 +26,7 @@ function processSingleTranscript(transcript_json, processedMap) {
     // iterate over each message in a single transcript
     for (let i = 0; i < transcript_json.length; i++) {
         let message = transcript_json[i];
-        
+
         // some intents have multiple intents, so we iterate through that as well
         for (const intent of message.intents) {
             // update intent frequency in the processed map
@@ -48,7 +48,7 @@ function processSingleTranscript(transcript_json, processedMap) {
         }
 
         // if the intent exists, update its frequency
-        else { 
+        else {
             const currList = processedMap.get(intent);
             const newIntentFreq = currList[0] + 1;
             const sameAssociateMap = currList[1];
