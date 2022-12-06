@@ -78,8 +78,9 @@ const transcriptUploadInteractor = async (user, file, filename) => {
                 if (i !== 0) {
                     currTranscriptFilename = currTranscriptFilename + `_${i}`
                 }
-                obj[currTranscriptFilename] = file
+                obj["file"] = file
                 obj["intents"] = intentsForThisFile
+                obj["filename"] = currTranscriptFilename
                 user.transcripts = user.transcripts.concat(obj)
             }
             catch (e) {

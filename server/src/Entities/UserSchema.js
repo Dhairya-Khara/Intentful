@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const TranscriptSchema = require('./Transcript')
 
 // TEAM DISCUSSION re: CLEAN ARCHITECTURE
 // We understand that Entities technically should be independent of frameworks like Mongoose.
@@ -17,9 +18,8 @@ let Schema = new mongoose.Schema({
     password: {
         type: String
     },
-    transcripts: [
+    transcripts: [TranscriptSchema],
 
-    ],
     intents: {
 
     }
