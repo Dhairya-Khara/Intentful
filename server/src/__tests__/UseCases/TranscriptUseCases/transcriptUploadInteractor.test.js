@@ -47,7 +47,7 @@ describe('transcriptUploadInteractor test', () => {
             ['find_hotel', [4, new Map([['find_restaurant', 2], ['book_hotel', 1]])]],
             ['book_hotel', [1, new Map()]]
         ]);
-        expect(user.transcripts).toEqual([{ "intents": sampleIntents, "size1_dialogues_001.json": sampleTranscriptJSON }])
+        expect(user.transcripts).toEqual([{ file: sampleTranscriptJSON, "intents": sampleIntents, "filename": 'size1_dialogues_001.json' }])
     });
 
     it('correctly uploads a dialogue with 5 transcripts', async () => {

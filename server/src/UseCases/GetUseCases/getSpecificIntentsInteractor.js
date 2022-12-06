@@ -7,10 +7,10 @@
  */
 
 const getSpecificIntentsInteractor = (user, name) => {
-    const transcripts = user.transcripts
-    for (const obj of transcripts) {
-        if (obj.filename === name) {
-            return obj.intents
+    const allUserTranscripts = user.transcripts
+    for (const singleTranscript of allUserTranscripts) {
+        if (singleTranscript.filename === name) {
+            return singleTranscript.intents
         }
     }
     return "No intents"
