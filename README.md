@@ -40,5 +40,7 @@ If everything is done correctly, you can visit `http://localhost:3000/` in your 
 
 To run the application in your browser, go to: https://intentful.herokuapp.com/
 
-To see documentation for our Use Case Logic, visit https://intentful-docs.herokuapp.com/
+## Documentation
+
+As Techy Blinders, we invite developers to contribute to the Intentful project. Hence, we have provided a documentation for our Use Case Logic, which can be accessed at https://intentful-docs.herokuapp.com/
 
