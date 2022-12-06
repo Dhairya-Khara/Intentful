@@ -28,10 +28,10 @@ const transcriptUploadInteractor = async (user, file, filename) => {
     //make sure the name of the newly uploaded file doesn't exist in database
     //i.e., make sure its name is unique
     let transcriptNames = []
-    const existingTranscriptInfo = Object.entries(user.transcripts)
+    const existingTranscriptInfo = user.transcripts
     try {
         existingTranscriptInfo.forEach(info => {
-            transcriptNames.push(Object.entries(info[1])[0][0])
+            transcriptNames.push(info.filename)
         })
     }
     catch (e) {
