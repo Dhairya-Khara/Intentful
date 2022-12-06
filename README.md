@@ -18,7 +18,7 @@ Consequently, Intentful is perfect to both get you started on Voiceflow and maxi
   <li> <a href="https://github.com/aidanmrli">Aidan Li</a></li>
  </ul>
 
-## Features:
+## Features
 ### Landing Page 
 - Register, Log-in functionality
 - Team Bios
@@ -40,7 +40,8 @@ If everything is done correctly, you can visit `http://localhost:3000/` in your 
 
 To run the application in your browser, go to: https://intentful.herokuapp.com/
 
-## Documentation
+## Documentation and Testing
 
-As Techy Blinders, we invite developers to contribute to the Intentful project. Hence, we have provided a documentation for our Use Case Logic, which can be accessed at https://intentful-docs.herokuapp.com/
+As Techy Blinders, we invite developers to contribute to the Intentful project. See our documentation for our Use Case Logic at https://intentful-docs.herokuapp.com/
 
+Testing for all our Use Case Interactors can be found in the server/src/__tests__ folder.
