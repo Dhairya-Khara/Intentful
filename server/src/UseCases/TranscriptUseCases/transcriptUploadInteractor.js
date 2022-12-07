@@ -25,8 +25,8 @@ const transcriptUploadInteractor = async (user, file, filename) => {
         throw new Error("Not a valid user")
     }
 
-    //make sure the name of the newly uploaded file doesn't exist in database
-    //i.e., make sure its name is unique
+    // This checks the name of the newly uploaded file doesn't exist in database
+    // i.e., make sure its name is unique
     let transcriptNames = []
     const existingTranscriptInfo = user.transcripts
     try {
@@ -37,8 +37,7 @@ const transcriptUploadInteractor = async (user, file, filename) => {
     catch (e) {
         throw new Error("Error in retrieving transcript names", e)
     }
-
-    //confirm the filename is unique, or send an error
+    // confirm the filename is unique, or send an error
     if (!transcriptNames.includes(filename)) {
         userSaveTranscriptAndIntents()
     }
@@ -46,7 +45,7 @@ const transcriptUploadInteractor = async (user, file, filename) => {
         throw new Error("A transcript with the same name already exists")
     }
 
-    //use other use cases to identify intents and save the transcript and intents
+    // use other use cases to identify intents and save the transcript and intents
     async function userSaveTranscriptAndIntents() {
         //retrieve existing transcript information (i.e., identified intents)
         const json = JSON.parse(file)

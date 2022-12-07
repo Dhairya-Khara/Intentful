@@ -1,84 +1,96 @@
 [
     {
         "intents": [
-            "find_train"
+            "find_hotel"
         ],
         "speaker": "USER",
         "turn_id": "0",
-        "utterance": "I would like to book a train that is running on Tuesday and departs anytime after 20:15, can you help me with that?"
+        "utterance": "Hi there! Can you give me some info on Cityroomz?"
     },
     {
         "intents": [],
         "speaker": "SYSTEM",
         "turn_id": "1",
-        "utterance": "Where would you like to travel from and to?"
-    },
-    {
-        "intents": [
-            "find_train"
-        ],
-        "speaker": "USER",
-        "turn_id": "2",
-        "utterance": "The train should depart from cambridge and travel to peterborough."
-    },
-    {
-        "intents": [],
-        "speaker": "SYSTEM",
-        "turn_id": "3",
-        "utterance": "Sure, I have 7 trains that would work. The closest to your requested time is the TR5110 that leaves at 20:34."
-    },
-    {
-        "intents": [
-            "find_train"
-        ],
-        "speaker": "USER",
-        "turn_id": "4",
-        "utterance": "That will work. What is the price and arrival time for that?"
-    },
-    {
-        "intents": [],
-        "speaker": "SYSTEM",
-        "turn_id": "5",
-        "utterance": "That will cost you 16.50 pounds and you will arrive by 21:24."
-    },
-    {
-        "intents": [
-            "find_hotel"
-        ],
-        "speaker": "USER",
-        "turn_id": "6",
-        "utterance": "That is great. I also want to know about a hotel called home from home. Can you find it for me."
-    },
-    {
-        "intents": [],
-        "speaker": "SYSTEM",
-        "turn_id": "7",
-        "utterance": "Certainly. Home from Home is a guesthouse on the north end of the city. It offers free internet and parking and is moderately priced. Would you like to book a room?"
+        "utterance": "Cityroomz is located at Sleeperz Hotel, Station Road in the Centre area. It is a moderatley priced hotel with a 0 star rating. Would you like to book a room?"
     },
     {
         "intents": [
             "book_hotel"
         ],
         "speaker": "USER",
+        "turn_id": "2",
+        "utterance": "Yes please. I need it for 7 people for 3 nights starting on tuesday."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "3",
+        "utterance": "How many days would you like to book it for?"
+    },
+    {
+        "intents": [
+            "book_hotel"
+        ],
+        "speaker": "USER",
+        "turn_id": "4",
+        "utterance": "I would like to book it for 3 nights beginning on Tuesday."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "5",
+        "utterance": "Ok, Your rooms have been booked. Your reference number is CYJDAR7R . Is there anything else I can help you with today?"
+    },
+    {
+        "intents": [
+            "find_restaurant"
+        ],
+        "speaker": "USER",
+        "turn_id": "6",
+        "utterance": "Yeah, I need a restaurant in the west and with expensive pricing."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "7",
+        "utterance": "There are 9 expensive restaurants in the west area. Do you prefer a certain type of food?"
+    },
+    {
+        "intents": [
+            "find_restaurant"
+        ],
+        "speaker": "USER",
         "turn_id": "8",
-        "utterance": "Yes. I would like to book for 8 people for 3 nights starting from Saturday."
+        "utterance": "No, I don't have a preference, but I need the phone number and postcode."
     },
     {
         "intents": [],
         "speaker": "SYSTEM",
         "turn_id": "9",
-        "utterance": "Your booking was successfull! Reference number is I5VKNKJ3"
+        "utterance": "I recommend Graffiti, the number is 01223277977 and the postcode is cb30lx. Would you like me to book a table for you?"
     },
     {
         "intents": [],
         "speaker": "USER",
         "turn_id": "10",
-        "utterance": "Thank you have a nice day."
+        "utterance": "No, right now, I just need the infor. Thanks!"
     },
     {
         "intents": [],
         "speaker": "SYSTEM",
         "turn_id": "11",
-        "utterance": "You too. Goodbye."
+        "utterance": "Can I help you with anything else today?"
+    },
+    {
+        "intents": [],
+        "speaker": "USER",
+        "turn_id": "12",
+        "utterance": "That is all. thanks"
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "13",
+        "utterance": "Thank you for using our system."
     }
 ]
