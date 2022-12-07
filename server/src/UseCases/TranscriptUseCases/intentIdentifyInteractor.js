@@ -9,7 +9,6 @@
  * @param {Array} transcript_json_list - List of transcripts to be uploaded
  * @return {Map} processedMap - Map of all processed transcripts of user and their intents.
  */
-
 function intentIdentifyInteractor(existingProcessedMap, transcript_json_list) {
     let processedMap = new Map(existingProcessedMap)
 

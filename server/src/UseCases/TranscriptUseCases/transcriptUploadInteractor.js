@@ -18,7 +18,6 @@ const convertMultiWOZInteractor = require('./convertMultiWOZInteractor')
  * @param {JSON} file - The JSON transcript file that the user has uploaded
  * @param {String} filename - Name of the file the user has uploaded
  */
-
 const transcriptUploadInteractor = async (user, file, filename) => {
     //throw an error if not a valid user
     if (user.transcripts === undefined || user.email === undefined) {
