@@ -1,7 +1,8 @@
 {
     "plugins": ["plugins/markdown"],
+    "recurseDepth": 10,
     "source": {
-      "include": ["server"],
+      "include": ["src"],
       "includePattern": ".js$",
       "excludePattern": "(node_modules/|docs)"
     },
@@ -10,9 +11,9 @@
       "monospaceLinks": true
     },
     "opts": {
-      "destination": "./documentation/",
+      "destination": "./docs/",
       "recurse": true,
-      "readme": "./readme.md",
+      "readme": "../readme.md",
       "template": "./node_modules/docdash"
     }
 }
