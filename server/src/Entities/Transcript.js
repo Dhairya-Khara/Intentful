@@ -15,6 +15,9 @@ const mongoose = require('mongoose')
 // add in a layer specifically for database implementations. Switching database implementations
 // would be unlikely in the future due to how well MERN works together.
 
+// TranscriptSchema represents a single transcript uploaded by the user
+// and processed by the program. It consists of 
+// intents identified in the backend, the file the user uploaded, and filename.
 const TranscriptSchema = new mongoose.Schema({
     intents: {
 

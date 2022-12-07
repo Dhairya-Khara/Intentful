@@ -16,6 +16,10 @@ const TranscriptSchema = require('./Transcript')
 // add in a layer specifically for database implementations. Switching database implementations
 // would be unlikely in the future due to how well MERN works together.
 
+// UserSchema represents a single user who has registered to Intentful.
+// It consists of the email and the password the user has chosen while signing up,
+// the transcripts (along with the file itself, the filename, and the intents identified for each)
+// that the user has uploaded, and the aggregate of the intents of all transcripts.
 let UserSchema = new mongoose.Schema({
     email: {
         type: String
