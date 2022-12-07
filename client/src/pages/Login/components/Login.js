@@ -19,7 +19,7 @@ export default function Login() {
 
     const onFormSubmit = (e) =>{
         e.preventDefault();
-        const url = `http://localhost:8080/loginUser`
+        const url = `/loginUser`
         axios.post(url, {email, password}).then(async (res)=>{
             dispatch(setAuth({auth: true, token: res.data.token}))
             navigate("/dashboard")

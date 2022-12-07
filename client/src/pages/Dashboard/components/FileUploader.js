@@ -13,7 +13,7 @@ export default function FileUploader() {
         e.preventDefault();
         const data = new FormData();
         data.append('file', selectedFile, selectedFile.name)
-        axios.post("http://localhost:8080/uploadTranscript", data, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
+        axios.post("/uploadTranscript", data, { headers: { "Authorization": "Bearer " + token } }).then(async (res) => {
             setFileUploadStatus("File " + selectedFile.name + " has been upload successfully.")
         }).catch((error) => {
             alert("Not Authenticated")

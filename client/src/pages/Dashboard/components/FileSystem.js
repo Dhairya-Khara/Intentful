@@ -13,7 +13,7 @@ export default function FileSystem() {
   const [bubbleChart, setBubbleChart] = useState({ show: false, intents: [] });
 
   const visualizeData = () => {
-    const url = `http://localhost:8080/getIntents`;
+    const url = `/getIntents`;
     axios
       .get(url, { headers: { Authorization: "Bearer " + token } })
       .then(async (res) => {
@@ -25,7 +25,7 @@ export default function FileSystem() {
   };
 
   const getData = () => {
-    const url = "http://localhost:8080/getTranscripts";
+    const url = "/getTranscripts";
     let dataSoFar = [];
     axios
       .get(url, { headers: { Authorization: "Bearer " + token } })
@@ -45,7 +45,7 @@ export default function FileSystem() {
     const data = new FormData();
     data.append("file", selectedFile, selectedFile.name);
     axios
-      .post("http://localhost:8080/uploadTranscript", data, {
+      .post("/uploadTranscript", data, {
         headers: { Authorization: "Bearer " + token },
       })
       .then(async (res) => {

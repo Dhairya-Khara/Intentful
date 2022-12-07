@@ -27,7 +27,7 @@ class Register extends React.Component {
 
     onFormSubmit = (e) => {
         e.preventDefault()
-        const url = `http://localhost:8080/createUser`
+        const url = `/createUser`
         axios.post(url, { "email": this.state.email, "password": this.state.password }).then(async (res) => {
 
             alert("User with email " + this.state.email + " has been created.")
