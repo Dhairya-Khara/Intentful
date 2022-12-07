@@ -54,7 +54,7 @@ export default function FileSystem() {
         );
       })
       .catch((error) => {
-        alert("Not Authenticated");
+        alert(error.response.data);
       });
     setFiles((oldFiles) => [...oldFiles, selectedFile.name]);
   };
