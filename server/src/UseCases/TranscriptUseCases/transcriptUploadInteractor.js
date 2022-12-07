@@ -25,20 +25,19 @@ const transcriptUploadInteractor = async (user, file, filename) => {
         throw new Error("Not a valid user")
     }
 
-    //make sure the name of the newly uploaded file doesn't exist in database
-    //i.e., make sure its name is unique
+    // This checks the name of the newly uploaded file doesn't exist in database
+    // i.e., make sure its name is unique
     let transcriptNames = []
-    const existingTranscriptInfo = Object.entries(user.transcripts)
+    const existingTranscriptInfo = user.transcripts
     try {
         existingTranscriptInfo.forEach(info => {
-            transcriptNames.push(Object.entries(info[1])[0][0])
+            transcriptNames.push(info.filename)
         })
     }
     catch (e) {
         throw new Error("Error in retrieving transcript names", e)
     }
-
-    //confirm the filename is unique, or send an error
+    // confirm the filename is unique, or send an error
     if (!transcriptNames.includes(filename)) {
         userSaveTranscriptAndIntents()
     }
@@ -46,7 +45,7 @@ const transcriptUploadInteractor = async (user, file, filename) => {
         throw new Error("A transcript with the same name already exists")
     }
 
-    //use other use cases to identify intents and save the transcript and intents
+    // use other use cases to identify intents and save the transcript and intents
     async function userSaveTranscriptAndIntents() {
         //retrieve existing transcript information (i.e., identified intents)
         const json = JSON.parse(file)
@@ -86,8 +85,9 @@ const transcriptUploadInteractor = async (user, file, filename) => {
                 if (i !== 0) {
                     currTranscriptFilename = currTranscriptFilename + `_${i}`
                 }
-                obj[currTranscriptFilename] = file
+                obj["file"] = file
                 obj["intents"] = intentsForThisFile
+                obj["filename"] = currTranscriptFilename
                 user.transcripts = user.transcripts.concat(obj)
             }
             catch (e) {

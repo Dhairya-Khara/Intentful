@@ -5,10 +5,11 @@
  * @param {String} name - Name of the transcript file requested by the user.
  * @returns {Object} singleTranscript.intents - The intents identified in the transcript requested (if it exists).
  */
+
 const getSpecificIntentsInteractor = (user, name) => {
     const allUserTranscripts = user.transcripts
     for (const singleTranscript of allUserTranscripts) {
-        if (name in singleTranscript) {
+        if (singleTranscript.filename === name) {
             return singleTranscript.intents
         }
     }

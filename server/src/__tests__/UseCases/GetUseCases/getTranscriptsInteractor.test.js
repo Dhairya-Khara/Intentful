@@ -21,9 +21,13 @@ describe('getTranscriptsInteractor test', () => {
     });
 
     it('correctly returns a list of transcripts containing multiple transcripts', async () => {
-        const mockUser = { email: 'testing@gmail.com', password: 'solid', transcripts: [sampleTranscript, sampleTranscript2, sampleTranscript3] };
-        const user = new User(mockUser);
-        expect(getTranscriptsInteractor(user)).toEqual(mockUser.transcripts);
+        const mockTranscript1 = { file: sampleTranscript, intents: 'dontcare', filename: 'transcript1.json' }
+        const mockTranscript2 = { file: sampleTranscript2, intents: 'dontcare', filename: 'transcript2.json' }
+        const mockTranscript3 = { file: sampleTranscript3, intents: 'dontcare', filename: 'transcript3.json' }
+        const mockUserInfo = { email: 'testing@gmail.com', password: 'solid', transcripts: [mockTranscript1, mockTranscript2, mockTranscript3] };
+        const user = new User(mockUserInfo);
+
+        expect(getTranscriptsInteractor(user)).toEqual(user.transcripts);
     });
 
     it('correctly returns an error when the User is not a valid user', async () => {

@@ -6,6 +6,7 @@
 
 const getSpecificIntentsInteractor = require('../../../UseCases/GetUseCases/getSpecificIntentsInteractor');
 const User = require('../../../Entities/UserSchema');
+const TranscriptSchema = require('../../../Entities/Transcript');
 const sampleTranscript = require('../../sample transcripts/transcript1.json');
 
 describe('getSpecificIntentsInteractor', () => {
@@ -22,9 +23,10 @@ describe('getSpecificIntentsInteractor', () => {
             ['find_hotel', [2, new Map([['book_hotel', 1]])]],
             ['book_hotel', [1, new Map()]]
         ]);
-        const mockTranscriptObject = { 'transcript1.json': sampleTranscript, 'intents': mockIntents };
-        const mockUser = { email: 'testing@gmail.com', password: 'solid', transcripts: [mockTranscriptObject] };
-        const user = new User(mockUser);
+
+        const mockTranscriptInfo = { file: sampleTranscript, intents: mockIntents, filename: 'transcript1.json' };
+        const mockUserInfo = { email: 'testing@gmail.com', password: 'solid', transcripts: [mockTranscriptInfo] };
+        const user = new User(mockUserInfo);
         const transcriptName = 'transcript1.json'
         expect(getSpecificIntentsInteractor(user, transcriptName)).toBe(mockIntents);
     });

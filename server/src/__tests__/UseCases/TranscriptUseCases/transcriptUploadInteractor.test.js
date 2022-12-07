@@ -2,29 +2,45 @@
  * Tests for the transcriptUploadInteractor Use Case.
  * Tests that dialogues with single and multiple transcripts are uploaded correctly, and also tests
  * that errors are thrown correctly.
+ * 
+ * ------------------------------------NOTES ABOUT MOCKING------------------------------------------------------
+ * We mock the implementations of convertMultiWOZInteractor and transcriptProcessInteractor
+ * used by transcriptUploadInteractor. Our convertMultiWOZInteractor has different mock implementations in different
+ * tests, whereas the transcriptProcessInteractor has a single mock implementation that is used in all tests.
+ * We have different mock implementations of convertMultiWOZInteractor for ease of testing with different
+ * complex dialogue json files that also need a strict return type for the transcriptUploadInteractor to proceed 
+ * without failing for different functionalities (single vs multiple transcripts).
+ * 
+ * We also mock the User entity (Mongoose schema). Our transcriptUploadInteractor does not directly interact with 
+ * any user methods; it only updates attributes of the user, and we can check that these attributes are 
+ * updated correctly with the mock.
  */
 
-const mongoose = require('mongoose');
 const User = require('../../../Entities/UserSchema');
 const transcriptUploadInteractor = require('../../../UseCases/TranscriptUseCases/transcriptUploadInteractor');
 const size1sampleDialogue = require('../../sample transcripts/multiwoz/size1_dialogues_001.json');
-const size5sampleDialogue = require('../../sample transcripts/multiwoz/s5_dialogues_002.json');
+const transcript1 = require('../../sample transcripts/transcript1.json');
+const transcript2 = require('../../sample transcripts/transcript2.json');
+const transcript3 = require('../../sample transcripts/transcript3.json');
+const size3sampleDialogue = require('../../sample transcripts/multiwoz/size3_dialogues_001.json');
 
-// need to mock the User because of issues with the User.save method. 
-// This is valid because our transcriptUploadInteractor does not directly interact with any user methods; it only
-// updates attributes of the user, and we can check that these attributes are updated correctly even with the mock.
+// Mocking convertMultiWOZInteractor (IMPORTANT: the implementation is mocked in individual tests
+// by forcing it to return the correct value so that the transcriptUploadInteractor can proceed without failing)
+const convertMultiWOZInteractor = require('../../../UseCases/TranscriptUseCases/convertMultiWOZInteractor');
+jest.mock('../../../UseCases/TranscriptUseCases/convertMultiWOZInteractor')
+
+// Mocking the implementation of transcriptProcessInteractor. We could change this implementation, but this works.
+const transcriptProcessInteractor = require('../../../UseCases/TranscriptUseCases/transcriptProcessInteractor');
+jest.mock('../../../UseCases/TranscriptUseCases/transcriptProcessInteractor')
+transcriptProcessInteractor.mockImplementation((map, arrayOfTranscripts) =>
+    new Map([...map, [map.size + arrayOfTranscripts[0].length, arrayOfTranscripts[0].length]]))
+
 jest.mock('../../../Entities/UserSchema');
 
 describe('transcriptUploadInteractor test', () => {
-    beforeAll(async () => {
-        mongoose.connect(globalThis.__MONGO_URI__, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-    });
-
-    afterAll(async () => {
-        await mongoose.disconnect();
+    afterAll(() => {
+        jest.resetAllMocks();
+        jest.restoreAllMocks();
     });
 
     afterEach(async () => {
@@ -36,42 +52,38 @@ describe('transcriptUploadInteractor test', () => {
         const user = new User();
         user.email = 'testing@gmail.com'
         user.transcripts = []
-        user.save // Jest mocks user save method
-
         const sampleTranscriptJSON = JSON.stringify(size1sampleDialogue);
         const sampleTranscriptFilename = 'size1_dialogues_001.json'
+
+        // Mock implementation of ConvertMultiWOZInteractor for this test to ensure it returns the correct value.
+        // See this file's header for more comments.
+        // TranscriptProcessInteractor has a mock implementation independent of all tests on line 36.
+        convertMultiWOZInteractor.mockImplementation(() => [JSON.stringify(transcript1)])
         await expect(transcriptUploadInteractor(user, sampleTranscriptJSON, sampleTranscriptFilename)).resolves;
 
-        const sampleIntents = new Map([
-            ['find_restaurant', [3, new Map([['find_hotel', 3]])]],
-            ['find_hotel', [4, new Map([['find_restaurant', 2], ['book_hotel', 1]])]],
-            ['book_hotel', [1, new Map()]]
-        ]);
-        expect(user.transcripts).toEqual([{ "intents": sampleIntents, "size1_dialogues_001.json": sampleTranscriptJSON }])
+        const mockIntentsMap = new Map([[12, 12]])
+
+        expect(user.transcripts).toEqual([{ file: sampleTranscriptJSON, intents: mockIntentsMap, filename: 'size1_dialogues_001.json' }])
     });
 
-    it('correctly uploads a dialogue with 5 transcripts', async () => {
+    it('correctly uploads a dialogue with 3 transcripts and updates aggregate intents', async () => {
         // Jest mock user
         const user = new User();
         user.email = 'testing@gmail.com'
         user.transcripts = []
-        user.save // Jest mocks user save method
+        const sampleTranscriptJSON = JSON.stringify(size3sampleDialogue);
+        const sampleTranscriptFilename = 'size3_dialogues_001.json'
 
-        const sampleTranscriptJSON = JSON.stringify(size5sampleDialogue);
-        const sampleTranscriptFilename = 's5_dialogues_002.json'
+        // Mock implementation of ConvertMultiWOZInteractor for this test to ensure it returns the correct value.
+        // See this file's header for more comments.
+        convertMultiWOZInteractor.mockImplementation(() => [JSON.stringify(transcript1), JSON.stringify(transcript2), JSON.stringify(transcript3)])
+
+        expect(user.transcripts.length).toBe(0) // verify that only transcriptUploadInteractor adds transcripts
         await expect(transcriptUploadInteractor(user, sampleTranscriptJSON, sampleTranscriptFilename)).resolves;
+        expect(user.transcripts.length).toBe(3) // check that we have 3 transcripts
 
-        const sampleIntents = new Map([
-            ['find_restaurant', [12, new Map([['find_hotel', 1], ['book_hotel', 1], ['find_taxi', 1], ['find_train', 1]])]],
-            ['find_taxi', [2, new Map([['book_hotel', 1]])]],
-            ['find_train', [2, new Map([['book_restaurant', 1]])]],
-            ['find_hotel', [5, new Map([['find_restaurant', 2]])]],
-            ['book_hotel', [3, new Map([['find_restaurant', 1]])]],
-            ['book_restaurant', [1, new Map([['find_train', 1]])]],
-            ['find_attraction', [2, new Map([['find_restaurant', 1]])]],
-            ['find_hospital', [2, new Map()]],
-        ]);
-        expect(user.intents).toEqual(sampleIntents) // check intents are okay
+        const mockIntentsMap = new Map([[12, 12], [13, 12], [16, 14]])
+        expect(user.intents).toEqual(mockIntentsMap) // check aggregate intents are okay
     });
 
     it('correctly returns an error when the same transcript is uploaded twice', async () => {
@@ -80,8 +92,6 @@ describe('transcriptUploadInteractor test', () => {
         const user = new User();
         user.email = 'testing@gmail.com'
         user.transcripts = []
-        user.save // Jest mocks user save method
-
         const sampleTranscriptJSON = JSON.stringify(size1sampleDialogue);
         const sampleTranscriptFilename = 'size1_dialogues_001.json'
         await expect(transcriptUploadInteractor(user, sampleTranscriptJSON, sampleTranscriptFilename)).resolves;

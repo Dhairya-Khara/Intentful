@@ -1,0 +1,84 @@
+[
+    {
+        "intents": [
+            "find_train"
+        ],
+        "speaker": "USER",
+        "turn_id": "0",
+        "utterance": "I would like to book a train that is running on Tuesday and departs anytime after 20:15, can you help me with that?"
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "1",
+        "utterance": "Where would you like to travel from and to?"
+    },
+    {
+        "intents": [
+            "find_train"
+        ],
+        "speaker": "USER",
+        "turn_id": "2",
+        "utterance": "The train should depart from cambridge and travel to peterborough."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "3",
+        "utterance": "Sure, I have 7 trains that would work. The closest to your requested time is the TR5110 that leaves at 20:34."
+    },
+    {
+        "intents": [
+            "find_train"
+        ],
+        "speaker": "USER",
+        "turn_id": "4",
+        "utterance": "That will work. What is the price and arrival time for that?"
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "5",
+        "utterance": "That will cost you 16.50 pounds and you will arrive by 21:24."
+    },
+    {
+        "intents": [
+            "find_hotel"
+        ],
+        "speaker": "USER",
+        "turn_id": "6",
+        "utterance": "That is great. I also want to know about a hotel called home from home. Can you find it for me."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "7",
+        "utterance": "Certainly. Home from Home is a guesthouse on the north end of the city. It offers free internet and parking and is moderately priced. Would you like to book a room?"
+    },
+    {
+        "intents": [
+            "book_hotel"
+        ],
+        "speaker": "USER",
+        "turn_id": "8",
+        "utterance": "Yes. I would like to book for 8 people for 3 nights starting from Saturday."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "9",
+        "utterance": "Your booking was successfull! Reference number is I5VKNKJ3"
+    },
+    {
+        "intents": [],
+        "speaker": "USER",
+        "turn_id": "10",
+        "utterance": "Thank you have a nice day."
+    },
+    {
+        "intents": [],
+        "speaker": "SYSTEM",
+        "turn_id": "11",
+        "utterance": "You too. Goodbye."
+    }
+]

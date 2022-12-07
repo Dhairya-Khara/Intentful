@@ -30,9 +30,8 @@ export default function FileSystem() {
     axios
       .get(url, { headers: { Authorization: "Bearer " + token } })
       .then(async (res) => {
-        for (const index in res.data) {
-          const filename = Object.keys(res.data[index])[0];
-          dataSoFar.push(filename);
+        for (const transcript of res.data) {
+          dataSoFar.push(transcript.filename);
         }
         setFiles(dataSoFar);
       })
