@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Global - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#User">User</a></li><li><a href="global.html#convertMultiWOZInteractor">convertMultiWOZInteractor</a></li><li><a href="global.html#getAllIntentsInteractor">getAllIntentsInteractor</a></li><li><a href="global.html#getSpecificIntentsInteractor">getSpecificIntentsInteractor</a></li><li><a href="global.html#getTranscriptsInteractor">getTranscriptsInteractor</a></li><li><a href="global.html#intentIdentifyInteractor">intentIdentifyInteractor</a></li><li><a href="global.html#mongoose">mongoose</a></li><li><a href="global.html#transcriptProcessInteractor">transcriptProcessInteractor</a></li><li><a href="global.html#transcriptUploadInteractor">transcriptUploadInteractor</a></li><li><a href="global.html#userLoginInteractor">userLoginInteractor</a></li><li><a href="global.html#userRegisterInteractor">userRegisterInteractor</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="User"><span class="type-signature type-signature-constant">(constant) </span>User<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the getAllIntentsInteractor Use Case.
+Tests that it returns the user's aggregate intents (&quot;all the intents&quot;, from user.intents) correctly.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_GetUseCases_getAllIntentsInteractor.test.js.html">__tests__/UseCases/GetUseCases/getAllIntentsInteractor.test.js</a>, <a href="-__tests___UseCases_GetUseCases_getAllIntentsInteractor.test.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the getAllIntentsInteractor Use Case.
+Tests that it returns the user's aggregate intents (&quot;all the intents&quot;, from user.intents) correctly.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="User"><span class="type-signature type-signature-constant">(constant) </span>User<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the transcriptUploadInteractor Use Case.
+Tests that dialogues with single and multiple transcripts are uploaded correctly, and also tests
+that errors are thrown correctly.</p>
+<p>------------------------------------NOTES ABOUT MOCKING------------------------------------------------------
+We mock the implementations of convertMultiWOZInteractor and transcriptProcessInteractor
+used by transcriptUploadInteractor. Our convertMultiWOZInteractor has different mock implementations in different
+tests, whereas the transcriptProcessInteractor has a single mock implementation that is used in all tests.
+We have different mock implementations of convertMultiWOZInteractor for ease of testing with different
+complex dialogue json files that also need a strict return type for the transcriptUploadInteractor to proceed
+without failing for different functionalities (single vs multiple transcripts).</p>
+<p>We also mock the User entity (Mongoose schema). Our transcriptUploadInteractor does not directly interact with
+any user methods; it only updates attributes of the user, and we can check that these attributes are
+updated correctly with the mock.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_TranscriptUseCases_transcriptUploadInteractor.test.js.html">__tests__/UseCases/TranscriptUseCases/transcriptUploadInteractor.test.js</a>, <a href="-__tests___UseCases_TranscriptUseCases_transcriptUploadInteractor.test.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the transcriptUploadInteractor Use Case.
+Tests that dialogues with single and multiple transcripts are uploaded correctly, and also tests
+that errors are thrown correctly.</p>
+<p>------------------------------------NOTES ABOUT MOCKING------------------------------------------------------
+We mock the implementations of convertMultiWOZInteractor and transcriptProcessInteractor
+used by transcriptUploadInteractor. Our convertMultiWOZInteractor has different mock implementations in different
+tests, whereas the transcriptProcessInteractor has a single mock implementation that is used in all tests.
+We have different mock implementations of convertMultiWOZInteractor for ease of testing with different
+complex dialogue json files that also need a strict return type for the transcriptUploadInteractor to proceed
+without failing for different functionalities (single vs multiple transcripts).</p>
+<p>We also mock the User entity (Mongoose schema). Our transcriptUploadInteractor does not directly interact with
+any user methods; it only updates attributes of the user, and we can check that these attributes are
+updated correctly with the mock.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="convertMultiWOZInteractor"><span class="type-signature type-signature-constant">(constant) </span>convertMultiWOZInteractor<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the convertMultiWOZInteractor Use Case.
+Tests that MultiWOZ dialogue files are converted correctly into an array containing
+simplified/original format transcripts.
+Tests both cases where a dialogue file may contain single or multiple transcripts.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_TranscriptUseCases_convertMultiWOZInteractor.test.js.html">__tests__/UseCases/TranscriptUseCases/convertMultiWOZInteractor.test.js</a>, <a href="-__tests___UseCases_TranscriptUseCases_convertMultiWOZInteractor.test.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the convertMultiWOZInteractor Use Case.
+Tests that MultiWOZ dialogue files are converted correctly into an array containing
+simplified/original format transcripts.
+Tests both cases where a dialogue file may contain single or multiple transcripts.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="getSpecificIntentsInteractor"><span class="type-signature type-signature-constant">(constant) </span>getSpecificIntentsInteractor<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the getSpecificIntentsInteractor Use Case.
+Tests that it returns a specific transcript's intents correctly, and if there are no transcripts,
+&quot;No intents&quot; is returned.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_GetUseCases_getSpecificIntentsInteractor.test.js.html">__tests__/UseCases/GetUseCases/getSpecificIntentsInteractor.test.js</a>, <a href="-__tests___UseCases_GetUseCases_getSpecificIntentsInteractor.test.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the getSpecificIntentsInteractor Use Case.
+Tests that it returns a specific transcript's intents correctly, and if there are no transcripts,
+&quot;No intents&quot; is returned.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="getTranscriptsInteractor"><span class="type-signature type-signature-constant">(constant) </span>getTranscriptsInteractor<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the getTranscriptsInteractor Use Case.
+Tests that it returns a user's list of transcripts correctly if the user has transcripts.
+If the User does not have transcripts, an empty list is returned.
+If the user is an invalid User, then an error message is thrown.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_GetUseCases_getTranscriptsInteractor.test.js.html">__tests__/UseCases/GetUseCases/getTranscriptsInteractor.test.js</a>, <a href="-__tests___UseCases_GetUseCases_getTranscriptsInteractor.test.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the getTranscriptsInteractor Use Case.
+Tests that it returns a user's list of transcripts correctly if the user has transcripts.
+If the User does not have transcripts, an empty list is returned.
+If the user is an invalid User, then an error message is thrown.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="intentIdentifyInteractor"><span class="type-signature type-signature-constant">(constant) </span>intentIdentifyInteractor<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the intentIdentifyInteractor Use Case.
+Tests that intents are identified and aggregated correctly from both single and multiple transcripts,
+and also updates a user's existing intents corrrectly.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_TranscriptUseCases_intentIdentifyInteractor.test.js.html">__tests__/UseCases/TranscriptUseCases/intentIdentifyInteractor.test.js</a>, <a href="-__tests___UseCases_TranscriptUseCases_intentIdentifyInteractor.test.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the intentIdentifyInteractor Use Case.
+Tests that intents are identified and aggregated correctly from both single and multiple transcripts,
+and also updates a user's existing intents corrrectly.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mongoose"><span class="type-signature type-signature-constant">(constant) </span>mongoose<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the userLoginInteractor Use Case.
+Tests that users can log in correctly, and throws an error if logging into a user that doesn't exist.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_UserUseCases_userLoginInteractor.test.js.html">__tests__/UseCases/UserUseCases/userLoginInteractor.test.js</a>, <a href="-__tests___UseCases_UserUseCases_userLoginInteractor.test.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the userLoginInteractor Use Case.
+Tests that users can log in correctly, and throws an error if logging into a user that doesn't exist.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mongoose"><span class="type-signature type-signature-constant">(constant) </span>mongoose<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the userRegisterInteractor Use Case.
+Tests that users can register correctly, and throws an error if registering with an invalid email.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_UserUseCases_userRegisterInteractor.test.js.html">__tests__/UseCases/UserUseCases/userRegisterInteractor.test.js</a>, <a href="-__tests___UseCases_UserUseCases_userRegisterInteractor.test.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the userRegisterInteractor Use Case.
+Tests that users can register correctly, and throws an error if registering with an invalid email.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="transcriptProcessInteractor"><span class="type-signature type-signature-constant">(constant) </span>transcriptProcessInteractor<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Tests for the transcriptProcessInteractor Use Case.
+Tests that transcripts from the original/simplified format will be converted with the correct intent values,
+with single and multiple transcripts, and also updates a user's existing intents corrrectly.
+If more steps are added to the transcriptProcessInteractor, we will update and add additional tests here.
+IMPORTANT: we mock the implementation of intentIdentifyInteractor used in transcriptProcessInteractor.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="-__tests___UseCases_TranscriptUseCases_transcriptProcessInteractor.test.js.html">__tests__/UseCases/TranscriptUseCases/transcriptProcessInteractor.test.js</a>, <a href="-__tests___UseCases_TranscriptUseCases_transcriptProcessInteractor.test.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Tests for the transcriptProcessInteractor Use Case.
+Tests that transcripts from the original/simplified format will be converted with the correct intent values,
+with single and multiple transcripts, and also updates a user's existing intents corrrectly.
+If more steps are added to the transcriptProcessInteractor, we will update and add additional tests here.
+IMPORTANT: we mock the implementation of intentIdentifyInteractor used in transcriptProcessInteractor.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="convertMultiWOZInteractor"><span class="type-signature"></span>convertMultiWOZInteractor<span class="signature">(multiWOZdialogue)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns an array of JSON-string &quot;original/simplified format&quot; transcripts from the MultiWOZ dialogue
+uploaded by iterating through the MultiWOZ dialogue array and converting the individual
+transcripts in the array to the simplified format one-by-one.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_TranscriptUseCases_convertMultiWOZInteractor.js.html">UseCases/TranscriptUseCases/convertMultiWOZInteractor.js</a>, <a href="UseCases_TranscriptUseCases_convertMultiWOZInteractor.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>multiWOZdialogue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of individual MultiWOZ transcripts to be converted to simplified format</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>multiWOZdialogue - List of simplified transcripts in the &quot;original&quot; format for further processing</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getAllIntentsInteractor"><span class="type-signature"></span>getAllIntentsInteractor<span class="signature">(user)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns the intents of the user.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_GetUseCases_getAllIntentsInteractor.js.html">UseCases/GetUseCases/getAllIntentsInteractor.js</a>, <a href="UseCases_GetUseCases_getAllIntentsInteractor.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">mongoose.Schema</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current authorized user of the website</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>user.intents - intents identified in user's transcipts.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSpecificIntentsInteractor"><span class="type-signature"></span>getSpecificIntentsInteractor<span class="signature">(user, name)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns the intents of the single transcript requested by the user.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_GetUseCases_getSpecificIntentsInteractor.js.html">UseCases/GetUseCases/getSpecificIntentsInteractor.js</a>, <a href="UseCases_GetUseCases_getSpecificIntentsInteractor.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">mongoose.Schema</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current authorized user of the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the transcript file requested by the user.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>singleTranscript.intents - The intents identified in the transcript requested (if it exists).</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getTranscriptsInteractor"><span class="type-signature"></span>getTranscriptsInteractor<span class="signature">(user)</span><span class="type-signature"> &rarr; {mongoose.Schema}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns all the transcripts uploaded by the user.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_GetUseCases_getTranscriptsInteractor.js.html">UseCases/GetUseCases/getTranscriptsInteractor.js</a>, <a href="UseCases_GetUseCases_getTranscriptsInteractor.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">mongoose.Schema</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current authorized user of the website.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>user.transcripts - The transcripts uploaded by the user, which is an entity itself.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">mongoose.Schema</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="intentIdentifyInteractor"><span class="type-signature"></span>intentIdentifyInteractor<span class="signature">(existingProcessedMap, transcript_json_list)</span><span class="type-signature"> &rarr; {Map}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns a map of the intents of each transcript, and an aggregate
+intent list, by reading the intents of the  newly uploaded transctipts.
+If an intent doesn't exist in the map yet, adds it; if it already exists,
+updates the frequency. Moreover, keeps track of which intents come after
+which intent in what frequency, to identify &quot;intent associates&quot;.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_TranscriptUseCases_intentIdentifyInteractor.js.html">UseCases/TranscriptUseCases/intentIdentifyInteractor.js</a>, <a href="UseCases_TranscriptUseCases_intentIdentifyInteractor.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>existingProcessedMap</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Map of already processed transcripts with their intents.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transcript_json_list</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of transcripts to be uploaded</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>processedMap - Map of all processed transcripts of user and their intents.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Map</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="transcriptProcessInteractor"><span class="type-signature"></span>transcriptProcessInteractor<span class="signature">(existingProcessedMap, transcript_json_list)</span><span class="type-signature"> &rarr; {Map}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns a map of all processed transcripts and their identified intents.
+Currently, our processing algorithm iterates through the newly uploaded transcripts and identifies new
+intents using <a href="global.html#intentIdentifyInteractor"><code>intentIdentifyInteractor</code></a> Use Case.
+If we would like to add more processing steps for a transcript in the future, we can easily do so in this file.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_TranscriptUseCases_transcriptProcessInteractor.js.html">UseCases/TranscriptUseCases/transcriptProcessInteractor.js</a>, <a href="UseCases_TranscriptUseCases_transcriptProcessInteractor.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>existingProcessedMap</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Map of already processed transcripts with their intents.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transcript_json_list</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of transcripts to be uploaded</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>allCurrentIntents - Map of all processed transcripts (uploaded by user) and their intents.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Map</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="transcriptUploadInteractor"><span class="type-signature type-signature-async">(async) </span>transcriptUploadInteractor<span class="signature">(user, file, filename)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Processes the transcript that the user has uploaded using the <a href="global.html#convertMultiWOZInteractor"><code>convertMultiWOZInteractor</code></a> and
+<a href="global.html#transcriptProcessInteractor"><code>transcriptProcessInteractor</code></a> Use Cases (the latter of which identifies intents using the
+<code>intentIdentifierInteractor</code> Use Case), and saves the transcript
+and the intents to the database.
+Open-Closed Principle: does not modify our existing code-base significantly;
+only extends the functionality by adding step to convert a MultiWOZ transcript before applying the
+original processTranscript function from transcriptProcessor.
+Liskov Substitution Principle: a transcript containing a single conversation is a subtype
+of a transcript containing multiple conversations, so we may upload a transcript containing
+one conversation as a substitute of a typical transcript containing an unknown number of conversations.
+(Technically, LSP has more to do with interfaces and implementation, but it is still relevant here.)</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_TranscriptUseCases_transcriptUploadInteractor.js.html">UseCases/TranscriptUseCases/transcriptUploadInteractor.js</a>, <a href="UseCases_TranscriptUseCases_transcriptUploadInteractor.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">mongoose.Schema</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current authorized user of the website</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>file</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The JSON transcript file that the user has uploaded</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filename</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the file the user has uploaded</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="userLoginInteractor"><span class="type-signature type-signature-async">(async) </span>userLoginInteractor<span class="signature">(email, password)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Checks if email and password combination exists in the database,
+and if it does, logs the user in.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_UserUseCases_userLoginInteractor.js.html">UseCases/UserUseCases/userLoginInteractor.js</a>, <a href="UseCases_UserUseCases_userLoginInteractor.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The email given by the user</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The password chosen by the user</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="userRegisterInteractor"><span class="type-signature type-signature-async">(async) </span>userRegisterInteractor<span class="signature">(email, password)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Creates the user and registers it to the database.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="UseCases_UserUseCases_userRegisterInteractor.js.html">UseCases/UserUseCases/userRegisterInteractor.js</a>, <a href="UseCases_UserUseCases_userRegisterInteractor.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The email given by the user</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The password chosen by the user</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Wed Dec 07 2022 18:55:18 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
