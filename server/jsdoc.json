@@ -4,7 +4,8 @@
     "source": {
       "include": ["src"],
       "includePattern": ".js$",
-      "excludePattern": "(node_modules/|docs)"
+      "excludePattern": "(node_modules/|docs)",
+      "exclude": ["src/__tests__/"]
     },
     "templates": {
       "cleverLinks": true,
