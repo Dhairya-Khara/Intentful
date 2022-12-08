@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getAllIntentsInteractor">getAllIntentsInteractor</a></li><li><a href="global.html#getSpecificIntentsInteractor">getSpecificIntentsInteractor</a></li><li><a href="global.html#getTranscriptsInteractor">getTranscriptsInteractor</a></li><li><a href="global.html#intentIdentifyInteractor">intentIdentifyInteractor</a></li><li><a href="global.html#transcriptProcessInteractor">transcriptProcessInteractor</a></li><li><a href="global.html#transcriptUploadInteractor">transcriptUploadInteractor</a></li><li><a href="global.html#userLoginInteractor">userLoginInteractor</a></li><li><a href="global.html#userRegisterInteractor">userRegisterInteractor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#convertMultiWOZInteractor">convertMultiWOZInteractor</a></li><li><a href="global.html#getAllIntentsInteractor">getAllIntentsInteractor</a></li><li><a href="global.html#getSpecificIntentsInteractor">getSpecificIntentsInteractor</a></li><li><a href="global.html#getTranscriptsInteractor">getTranscriptsInteractor</a></li><li><a href="global.html#intentIdentifyInteractor">intentIdentifyInteractor</a></li><li><a href="global.html#transcriptProcessInteractor">transcriptProcessInteractor</a></li><li><a href="global.html#transcriptUploadInteractor">transcriptUploadInteractor</a></li><li><a href="global.html#userLoginInteractor">userLoginInteractor</a></li><li><a href="global.html#userRegisterInteractor">userRegisterInteractor</a></li></ul>
     
 </nav>
 
@@ -124,6 +124,166 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="convertMultiWOZInteractor"><span class="type-signature"></span>convertMultiWOZInteractor<span class="signature">(multiWOZdialogue)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns an array of JSON-string &quot;original/simplified format&quot; transcripts from the MultiWOZ dialogue
+uploaded by iterating through the MultiWOZ dialogue array and converting the individual
+transcripts in the array to the simplified format one-by-one.</p></li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TranscriptUseCases_convertMultiWOZInteractor.js.html">TranscriptUseCases/convertMultiWOZInteractor.js</a>, <a href="TranscriptUseCases_convertMultiWOZInteractor.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>multiWOZdialogue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of individual MultiWOZ transcripts to be converted to simplified format</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>multiWOZdialogue - List of simplified transcripts in the &quot;original&quot; format for further processing</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
 
         
             
@@ -443,7 +603,7 @@
 
         
 <div class="param-desc">
-    <p>user.intents - The intents identified in user's transcipts.</p>
+    <p>singleTranscript.intents - The intents identified in the transcript requested (if it exists).</p>
 </div>
 
 
@@ -470,7 +630,7 @@
 
     
 
-    <h4 class="name" id="getTranscriptsInteractor"><span class="type-signature"></span>getTranscriptsInteractor<span class="signature">(user)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="getTranscriptsInteractor"><span class="type-signature"></span>getTranscriptsInteractor<span class="signature">(user)</span><span class="type-signature"> &rarr; {mongoose.Schema}</span></h4>
 
     
 
@@ -601,7 +761,7 @@
 
         
 <div class="param-desc">
-    <p>user.transcripts - The transcripts uploaded by the user</p>
+    <p>user.transcripts - The transcripts uploaded by the user, which is an entity itself.</p>
 </div>
 
 
@@ -612,7 +772,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Object</span>
+<span class="param-type">mongoose.Schema</span>
 
 
 
@@ -640,7 +800,7 @@
     <dt class="tag-description">Description:</dt>
     <dd class="tag-description"><ul class="dummy"><li><p>Returns a map of the intents of each transcript, and an aggregate
 intent list, by reading the intents of the  newly uploaded transctipts.
-If an intent doesn't exist in the map yet, adds it; if italready exists,
+If an intent doesn't exist in the map yet, adds it; if it already exists,
 updates the frequency. Moreover, keeps track of which intents come after
 which intent in what frequency, to identify &quot;intent associates&quot;.</p></li></ul></dd>
     
@@ -648,7 +808,7 @@ which intent in what frequency, to identify &quot;intent associates&quot;.</p></
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TranscriptUseCases_intentIdentifyInteractor.js.html">TranscriptUseCases/intentIdentifyInteractor.js</a>, <a href="TranscriptUseCases_intentIdentifyInteractor.js.html#line13">line 13</a>
+        <a href="TranscriptUseCases_intentIdentifyInteractor.js.html">TranscriptUseCases/intentIdentifyInteractor.js</a>, <a href="TranscriptUseCases_intentIdentifyInteractor.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -824,15 +984,16 @@ which intent in what frequency, to identify &quot;intent associates&quot;.</p></
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Returns a map of all processed transcripts and their identified intents
-by reading through the newly uploaded trasnscripts and identifying new
-transcripts using <code>intentIdentifierInteractor</code> Use Case.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Returns a map of all processed transcripts and their identified intents.
+Currently, our processing algorithm iterates through the newly uploaded transcripts and identifies new
+intents using <a href="global.html#intentIdentifyInteractor"><code>intentIdentifyInteractor</code></a> Use Case.
+If we would like to add more processing steps for a transcript in the future, we can easily do so in this file.</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TranscriptUseCases_transcriptProcessInteractor.js.html">TranscriptUseCases/transcriptProcessInteractor.js</a>, <a href="TranscriptUseCases_transcriptProcessInteractor.js.html#line12">line 12</a>
+        <a href="TranscriptUseCases_transcriptProcessInteractor.js.html">TranscriptUseCases/transcriptProcessInteractor.js</a>, <a href="TranscriptUseCases_transcriptProcessInteractor.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -1008,16 +1169,23 @@ transcripts using <code>intentIdentifierInteractor</code> Use Case.</p></li></ul
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Processes the transcript that the user has uploaded using
-<a href="global.html#transcriptProcessInteractor"><code>transcriptProcessInteractor</code></a> Use Case, which identifies intents using
-<code>intentIdentifierInteractor</code> Use Case, and finally saves the transcript
-and the intents to the database.</p></li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li><p>Processes the transcript that the user has uploaded using the <a href="global.html#convertMultiWOZInteractor"><code>convertMultiWOZInteractor</code></a> and
+<a href="global.html#transcriptProcessInteractor"><code>transcriptProcessInteractor</code></a> Use Cases (the latter of which identifies intents using the
+<code>intentIdentifierInteractor</code> Use Case), and saves the transcript
+and the intents to the database.
+Open-Closed Principle: does not modify our existing code-base significantly;
+only extends the functionality by adding step to convert a MultiWOZ transcript before applying the
+original processTranscript function from transcriptProcessor.
+Liskov Substitution Principle: a transcript containing a single conversation is a subtype
+of a transcript containing multiple conversations, so we may upload a transcript containing
+one conversation as a substitute of a typical transcript containing an unknown number of conversations.
+(Technically, LSP has more to do with interfaces and implementation, but it is still relevant here.)</p></li></ul></dd>
     
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TranscriptUseCases_transcriptUploadInteractor.js.html">TranscriptUseCases/transcriptUploadInteractor.js</a>, <a href="TranscriptUseCases_transcriptUploadInteractor.js.html#line13">line 13</a>
+        <a href="TranscriptUseCases_transcriptUploadInteractor.js.html">TranscriptUseCases/transcriptUploadInteractor.js</a>, <a href="TranscriptUseCases_transcriptUploadInteractor.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -1518,7 +1686,7 @@ and if it does, logs the user in.</p></li></ul></dd>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Wed Nov 30 2022 01:47:19 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Wed Dec 07 2022 19:02:14 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -6,14 +6,15 @@
  * @param {Array} multiWOZdialogue - List of individual MultiWOZ transcripts to be converted to simplified format
  * @return {Array} multiWOZdialogue - List of simplified transcripts in the "original" format for further processing
  */
-
 function convertMultiWOZInteractor(multiWOZdialogue) {
-    for (let i = 0; i < multiWOZdialogue.length; i++) { // multiWOZdialogue is an array of individual transcripts
+    // Iterates multiWOZdialogue, an array of individual transcripts, and converts one by one.
+    for (let i = 0; i < multiWOZdialogue.length; i++) {
         multiWOZdialogue[i] = convertSingleMultiWOZtoRaw(multiWOZdialogue[i])
     }
     return multiWOZdialogue
 }
 
+// Converts a MultiWOZ into a JSON object that we can work with.
 function convertSingleMultiWOZtoRaw(singleMultiWOZtranscript) {
     let newFormatTranscript = [];
 
@@ -33,7 +34,7 @@ function convertSingleMultiWOZtoRaw(singleMultiWOZtranscript) {
     newFormatTranscript = JSON.stringify(newFormatTranscript)
     return newFormatTranscript;
 
-
+    // Returns the intents of each turn in the MultiWOZ object.
     function getTurnIntents(turnObj) {
         let intentsArray = [];
         for (const frame in turnObj.frames) { // frames is a list of frame objects, each frame is a service
