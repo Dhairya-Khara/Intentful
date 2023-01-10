@@ -39,9 +39,3 @@ Consequently, Intentful is perfect to both get you started on Voiceflow and maxi
 If everything is done correctly, you can visit `http://localhost:3000/` in your favourite browser to start using the application.
 
 To run the application in your browser, go to: https://intentful.herokuapp.com/
-
-## Documentation and Testing
-
-As Techy Blinders, we invite developers to contribute to the Intentful project. See our documentation for our Use Case Logic at https://intentful-docs.herokuapp.com/
-
-Testing for all our Use Case Interactors can be found in the server/src/__tests__ folder.
