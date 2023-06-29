@@ -37,5 +37,3 @@ Consequently, Intentful is perfect to both get you started on Voiceflow and maxi
 - To start the server run `cd server`, `npm install`, `npm run start` from the root of the project. Note, if you have `nodemon` installed, you can also run `npm run dev` instead of `npm run start` for a better development experience.
 
 If everything is done correctly, you can visit `http://localhost:3000/` in your favourite browser to start using the application.
-
-To run the application in your browser, go to: https://intentful.herokuapp.com/
