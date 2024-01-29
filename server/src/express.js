@@ -7,7 +7,6 @@ const uploadTranscriptController = require('./Controllers/transcriptUploadContro
 const getIntentsController = require('./Controllers/getIntents')
 const getOneTranscriptIntentsController = require('./Controllers/getOneTranscriptIntents')
 const getTranscriptsController = require('./Controllers/getTranscripts')
-
 const app = express()
 app.use(cors())
 app.use(createUserController)
